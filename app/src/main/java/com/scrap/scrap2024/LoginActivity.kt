@@ -1,6 +1,6 @@
 package com.scrap.scrap2024
 
-import android.content.res.ColorStateList
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -33,6 +33,13 @@ class LoginActivity : AppCompatActivity() {
         binding.textDescription.setTextColor(Color.Black.hashCode())
         binding.textDescription.typeface = Typeface.DEFAULT_BOLD
 
-
+        binding.buttonLoginNaver.setOnClickListener {
+            val intent = Intent(this, CategoryActivity::class.java)
+            startActivity(intent)
+        }
+        binding.buttonLoginGoogle.setOnClickListener {
+            val intent = Intent(this, CategoryActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
