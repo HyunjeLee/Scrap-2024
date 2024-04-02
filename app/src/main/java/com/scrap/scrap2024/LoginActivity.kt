@@ -31,7 +31,6 @@ class LoginActivity : AppCompatActivity() {
         binding.textDescription.setText(R.string.catchphrase)
         binding.textDescription.textSize = 22f
         binding.textDescription.setTextColor(Color.Black.hashCode())
-        binding.textDescription.typeface = Typeface.DEFAULT_BOLD
 
         binding.buttonLoginNaver.setOnClickListener {
             val intent = Intent(this, CategoryActivity::class.java)
