@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--    바텀 네비게이션 뷰의 아이콘과 텍스트 간 간격 조정-->
+    <dimen name="design_bottom_navigation_height" tools:override="true">70dp</dimen>
+    <!--    바텀 네비게이션 뷰의 아이콘 크기-->
+    <dimen name="design_bottom_navigation_icon_size" tools:override="true">30dp</dimen>
+    <!--    바텀 네비게이션 뷰의 텍스트 크기-->
+    <dimen name="design_bottom_navigation_text_size" tools:override="true">12sp</dimen>
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">14sp</dimen>
+</resources>

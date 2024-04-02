@@ -1,7 +1,6 @@
 package com.scrap.scrap2024
 
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -28,16 +27,17 @@ class LoginActivity : AppCompatActivity() {
         binding.textLogin.text = "로그인"
         binding.textLogin.textSize = 18f
         binding.textLogin.setTextColor(Color.Black.hashCode())
-        binding.textDescription.setText(R.string.catchphrase)
+//        binding.textDescription.setText(R.string.catchphrase)
+        binding.textDescription.setText("어디서든\n간편하게\n스크랩하기")
         binding.textDescription.textSize = 22f
         binding.textDescription.setTextColor(Color.Black.hashCode())
 
         binding.buttonLoginNaver.setOnClickListener {
-            val intent = Intent(this, CategoryActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
         binding.buttonLoginGoogle.setOnClickListener {
-            val intent = Intent(this, CategoryActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
