@@ -12,12 +12,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textCategory"
+            android:id="@+id/textAddCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:padding="10dp"
-            android:paddingStart="30dp"
+            android:paddingStart="37dp"
             android:text="카테고리"
             android:textSize="18sp" />
 
