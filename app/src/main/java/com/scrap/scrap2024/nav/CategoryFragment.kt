@@ -5,8 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import com.scrap.scrap2024.R
 import com.scrap.scrap2024.databinding.FragmentCategoryBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -42,8 +40,7 @@ class CategoryFragment : Fragment() {
         binding = FragmentCategoryBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        binding.floatingActionButton.setOnClickListener {
-        }
+
 
         return view
     }
