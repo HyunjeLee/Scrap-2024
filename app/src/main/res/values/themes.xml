@@ -5,4 +5,10 @@
         <item name="android:fontFamily">@font/notosanskr_regular</item>
     </style>
 
+    <!--    override-->
+    <style name="CustomClickedLabelFont" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:fontFamily">@font/notosanskr_regular</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
