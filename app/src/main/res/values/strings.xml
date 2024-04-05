@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">스크랩</string>
     <string name="catchphrase">언제 어디서든\n간편하게\n스크랩하기</string>
+    <string name="login">로그인</string>
 </resources>
