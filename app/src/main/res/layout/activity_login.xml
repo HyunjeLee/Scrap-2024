@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
-        android:text="TextView"
+        android:text="@string/login"
         android:fontFamily="@font/notosanskr_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
         android:layout_marginTop="185dp"
-        android:text="TextView"
+        android:text="@string/catchphrase"
         android:fontFamily="@font/notosanskr_extra_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
