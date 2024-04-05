@@ -3,6 +3,7 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:fontFamily">@font/notosanskr_regular</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <!--    override-->
