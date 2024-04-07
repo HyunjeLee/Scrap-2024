@@ -13,7 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
-        android:text="TextView"
+        android:text="@string/login"
+        android:textSize="18sp"
         android:fontFamily="@font/notosanskr_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,13 +26,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
         android:layout_marginTop="185dp"
-        android:text="TextView"
+        android:text="@string/catchphrase"
+        android:textSize="22sp"
         android:fontFamily="@font/notosanskr_extra_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonLoginQuick"
+    <ImageView
+        android:id="@+id/imageLoginQuick"
         android:layout_width="133dp"
         android:layout_height="35dp"
         android:layout_marginBottom="16dp"

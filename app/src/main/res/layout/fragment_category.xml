@@ -21,9 +21,17 @@
             android:text="카테고리"
             android:textSize="18sp" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <View
+            android:id="@+id/divider2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewCategory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_category" />
 
     </LinearLayout>
 

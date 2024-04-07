@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         // 바텀 네비게이션 뷰의 하단 공백 생김 방지
         binding.navigationView.setOnApplyWindowInsetsListener(null)
+        // 바텀 네비게이션뷰에서 선택된 아이템에 따라 fragment 표시
         binding.navigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.categoryFragment -> setFragment(TAG_CATEGORY, CategoryFragment())
@@ -50,10 +51,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // 인자로 받아온 프래그먼트를 표시하고 나머지 프래그먼트는 숨기는 함수
     private fun setFragment(tag: String, fragment: Fragment) {
         val manager: FragmentManager = supportFragmentManager
         val fragTransaction = manager.beginTransaction()
 
+        // 처음 실행 시 트랜잭션에 tag 추가
         if (manager.findFragmentByTag(tag) == null) {
             fragTransaction.add(R.id.mainFrameLayout, fragment, tag)
         }
@@ -64,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         val search = manager.findFragmentByTag(TAG_SEARCH)
         val mypage = manager.findFragmentByTag(TAG_MYPAGE)
 
-
+        // 초기화 // 전부 숨기기
         if (category != null) {
             fragTransaction.hide(category)
         }
@@ -81,6 +84,7 @@ class MainActivity : AppCompatActivity() {
             fragTransaction.hide(mypage)
         }
 
+        // tag 값에 따라 해당 프래그먼트 표시
         if (tag == TAG_CATEGORY) {
             if (category != null) {
                 fragTransaction.show(category)
