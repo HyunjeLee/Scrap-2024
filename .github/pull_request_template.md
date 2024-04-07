@@ -13,7 +13,7 @@
 ## 🔁 변경 사항
 
 ## 📸 구현 화면 스크린샷
-<img src="your_url" width="300" height="600">
+<img src="your_url" width="300" height="651">
 
 ## 👀 기타 더 이야기해볼 점
 
