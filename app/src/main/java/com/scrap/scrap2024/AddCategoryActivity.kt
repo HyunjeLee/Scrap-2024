@@ -1,6 +1,10 @@
 package com.scrap.scrap2024
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.EditorInfo
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -18,6 +22,34 @@ class AddCategoryActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val clickCancelListener = View.OnClickListener {
+            setResult(Activity.RESULT_CANCELED)
+            finish()
+        }
+        val clickAddListener = View.OnClickListener {
+            val intentCategory = Intent()
+            val name = binding.editAddCategory.text.toString()
+            intentCategory.putExtra("name", name)
+            setResult(Activity.RESULT_OK, intentCategory)
+            finish()
+        }
+
+        // 카테고리 추가 취소 시
+        binding.buttonCancel.setOnClickListener(clickCancelListener)
+        binding.imageCancel.setOnClickListener(clickCancelListener)
+
+        // 카테고리 추가 시
+        binding.buttonAdd.setOnClickListener(clickAddListener)
+        binding.editAddCategory.setOnEditorActionListener { _, actionId, _ ->
+            // 키보드에서 완료 클릭 시 바로 카테고리 추가
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                binding.buttonAdd.performClick()
+                true
+            } else {
+                false
+            }
         }
     }
 }

@@ -34,4 +34,9 @@ class CategoryAdapter(private val categoryList: MutableList<MutableList<String>>
         return categoryList.size
     }
 
+    // 카테고리 추가 시
+    fun addCategory(category: MutableList<String>) {
+        categoryList.add(category)
+        notifyItemInserted(categoryList.size - 1)
+    }
 }
