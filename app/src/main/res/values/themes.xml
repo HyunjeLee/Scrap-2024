@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Scrap2024" parent="android:Theme.Material.Light.NoActionBar" />
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:fontFamily">@font/notosanskr_regular</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!--    override-->
+    <style name="CustomClickedLabelFont" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:fontFamily">@font/notosanskr_regular</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

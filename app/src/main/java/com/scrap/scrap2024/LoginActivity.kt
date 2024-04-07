@@ -1,7 +1,6 @@
 package com.scrap.scrap2024
 
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -25,12 +24,13 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+
         binding.buttonLoginNaver.setOnClickListener {
-            val intent = Intent(this, CategoryActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
         binding.buttonLoginGoogle.setOnClickListener {
-            val intent = Intent(this, CategoryActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
