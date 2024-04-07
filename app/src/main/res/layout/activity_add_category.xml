@@ -14,7 +14,8 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:id="@+id/imageCancel"
@@ -22,7 +23,9 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:paddingStart="8dp"
-            app:srcCompat="@drawable/expand_left" />
+            app:srcCompat="@drawable/expand_left"
+            android:importantForAccessibility="no"
+            tools:ignore="RtlSymmetry" />
 
         <TextView
             android:id="@+id/textAddCategory"
@@ -30,7 +33,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="카테고리 추가하기"
+            android:text="@string/add_category"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -44,7 +47,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/add_category_bg" />
+        app:srcCompat="@drawable/add_category_bg"
+        android:importantForAccessibility="no" />
 
     <EditText
         android:id="@+id/editAddCategory"
@@ -55,7 +59,7 @@
         android:layout_marginEnd="31dp"
         android:background="@drawable/edit_add_category_bg"
         android:textCursorDrawable="@drawable/custom_cursor"
-        android:hint="카테고리명을 입력하세요"
+        android:hint="@string/hint_add_category"
         android:textSize="15sp"
         android:imeOptions="actionDone"
         android:inputType="text"
@@ -64,7 +68,8 @@
         android:textColorHint="#999999"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/buttonCancel"
@@ -75,7 +80,7 @@
         android:layout_marginBottom="30dp"
         android:background="@drawable/bg_button"
         android:backgroundTint="#EDEDED"
-        android:text="취소"
+        android:text="@string/cancel"
         android:textSize="18sp"
         android:textColor="#7E7E7E"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -91,7 +96,7 @@
         android:layout_marginBottom="30dp"
         android:background="@drawable/bg_button"
         android:backgroundTint="@color/main_heavy"
-        android:text="추가하기"
+        android:text="@string/add"
         android:textSize="18sp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

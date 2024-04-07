@@ -3,4 +3,8 @@
     <string name="catchphrase">언제 어디서든\n간편하게\n스크랩하기</string>
     <string name="login">로그인</string>
     <string name="hello_blank_fragment">빈 프래그먼트</string>
+    <string name="add_category">카테고리 추가하기</string>
+    <string name="hint_add_category">카테고리명을 입력하세요</string>
+    <string name="add">추가하기</string>
+    <string name="cancel">취소</string>
 </resources>
