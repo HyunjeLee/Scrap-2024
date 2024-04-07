@@ -57,7 +57,7 @@
         android:layout_marginStart="31dp"
         android:layout_marginTop="103dp"
         android:layout_marginEnd="31dp"
-        android:background="@drawable/edit_add_category_bg"
+        android:background="@drawable/bg_edit_add_category"
         android:textCursorDrawable="@drawable/custom_cursor"
         android:hint="@string/hint_add_category"
         android:textSize="15sp"
