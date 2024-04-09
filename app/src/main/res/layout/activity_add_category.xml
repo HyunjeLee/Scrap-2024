@@ -55,7 +55,7 @@
         app:srcCompat="@drawable/add_category_bg" />
 
     <EditText
-        android:id="@+id/editAddCategory"
+        android:id="@+id/editTextAddCategory"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="31dp"
