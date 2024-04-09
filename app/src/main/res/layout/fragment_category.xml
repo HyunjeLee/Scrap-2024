@@ -8,21 +8,27 @@
     tools:context=".nav.CategoryFragment">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textCategory"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="@color/main"
-            android:padding="10dp"
-            android:paddingStart="30dp"
-            android:text="@string/category"
-            android:textSize="18sp"
-            tools:ignore="RtlSymmetry" />
+            android:layout_height="68dp">
+
+            <TextView
+                android:id="@+id/textCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="37dp"
+                android:background="@color/main"
+                android:text="@string/category"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
             android:id="@+id/divider2"
@@ -45,9 +51,9 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="20dp"
+        android:importantForAccessibility="no"
         android:src="@drawable/fab"
         app:backgroundTint="@color/white"
-        app:maxImageSize="30dp"
-        android:importantForAccessibility="no" />
+        app:maxImageSize="30dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
