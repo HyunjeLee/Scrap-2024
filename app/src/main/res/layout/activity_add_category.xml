@@ -62,7 +62,6 @@
         android:textCursorDrawable="@drawable/custom_cursor"
         android:hint="@string/hint_add_category"
         android:textSize="15sp"
-        android:imeOptions="actionDone"
         android:inputType="text"
         android:paddingStart="14dp"
         android:paddingEnd="14dp"

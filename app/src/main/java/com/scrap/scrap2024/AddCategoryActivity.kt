@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.EditorInfo
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -42,14 +41,6 @@ class AddCategoryActivity : AppCompatActivity() {
 
         // 카테고리 추가 시
         binding.buttonAdd.setOnClickListener(clickAddListener)
-        binding.editAddCategory.setOnEditorActionListener { _, actionId, _ ->
-            // 키보드에서 완료 클릭 시 바로 카테고리 추가
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                binding.buttonAdd.performClick()
-                true
-            } else {
-                false
-            }
-        }
+
     }
 }
