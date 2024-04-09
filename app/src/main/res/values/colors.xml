@@ -8,6 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="main">#FFFFFF</color>
+    <color name="main_light">#F5F9F3</color>
     <color name="main_heavy">#29973B</color>
+    <color name="favorite">#FFDE32</color>
+    <color name="warning">#FF0000</color>
+    <color name="caution">#FF7A00</color>
     <color name="background">#FCFCFC</color>
 </resources>
