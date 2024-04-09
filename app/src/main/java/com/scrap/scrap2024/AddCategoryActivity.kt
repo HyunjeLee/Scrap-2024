@@ -29,8 +29,8 @@ class AddCategoryActivity : AppCompatActivity() {
         }
         val clickAddListener = View.OnClickListener {
             val intentCategory = Intent()
-            val name = binding.editAddCategory.text.toString()
-            intentCategory.putExtra("name", name)
+            val title = binding.editAddCategory.text.toString()
+            intentCategory.putExtra("title", title)
             setResult(Activity.RESULT_OK, intentCategory)
             finish()
         }

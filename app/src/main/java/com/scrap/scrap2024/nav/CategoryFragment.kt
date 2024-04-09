@@ -33,10 +33,10 @@ class CategoryFragment : Fragment() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val data: Intent? = result.data
-                val categoryName: String? = data?.getStringExtra("name")
+                val categoryTitle: String? = data?.getStringExtra("title")
                 // 전달받은 name을 카테고리뷰에 추가 및 동기화 // "0"은 카테고리 내부 스크랩 개수
-                categoryName?.let { name ->
-                    categoryAdapter.addCategory(mutableListOf(name, "0"))
+                categoryTitle?.let { title ->
+                    categoryAdapter.addCategory(mutableListOf(title, "0"))
                 }
             }
         }
@@ -48,7 +48,7 @@ class CategoryFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentCategoryBinding.inflate(inflater, container, false)
         val view = binding.root
