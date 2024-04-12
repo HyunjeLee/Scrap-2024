@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        // 레이아웃 inflate
+        // layout inflate
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -90,23 +90,19 @@ class MainActivity : AppCompatActivity() {
             if (category != null) {
                 fragTransaction.show(category)
             }
-        }
-        else if (tag == TAG_SCRAP) {
+        } else if (tag == TAG_SCRAP) {
             if (scrap != null) {
                 fragTransaction.show(scrap)
             }
-        }
-        else if (tag == TAG_FAVORITE) {
+        } else if (tag == TAG_FAVORITE) {
             if (favorite != null) {
                 fragTransaction.show(favorite)
             }
-        }
-        else if (tag == TAG_SEARCH) {
+        } else if (tag == TAG_SEARCH) {
             if (search != null) {
                 fragTransaction.show(search)
             }
-        }
-        else if (tag == TAG_MYPAGE) {
+        } else if (tag == TAG_MYPAGE) {
             if (mypage != null) {
                 fragTransaction.show(mypage)
             }
