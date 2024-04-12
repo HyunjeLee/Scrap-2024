@@ -9,4 +9,8 @@
     <string name="favorite">즐겨찾기</string>
     <string name="search">검색</string>
     <string name="mypage">마이페이지</string>
+    <string name="add_category">카테고리 추가하기</string>
+    <string name="hint_add_category">카테고리명을 입력하세요</string>
+    <string name="add">추가하기</string>
+    <string name="cancel">취소</string>
 </resources>

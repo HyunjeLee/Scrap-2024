@@ -12,9 +12,9 @@ class CategoryAdapter(private val categoryList: MutableList<MutableList<String>>
     inner class ViewHolder(private val binding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        // 카테고리 이름과 스크랩 숫자 바인딩
+        // 카테고리명과 스크랩 숫자 바인딩
         fun bind(item: List<String>) {
-            binding.textCategoryItem.text = item[0]
+            binding.textCategoryTitle.text = item[0]
             binding.textCategoryCount.text = item[1]
         }
     }
@@ -34,4 +34,9 @@ class CategoryAdapter(private val categoryList: MutableList<MutableList<String>>
         return categoryList.size
     }
 
+    // 카테고리 추가 시
+    fun addCategory(category: MutableList<String>) {
+        categoryList.add(category)
+        notifyItemInserted(categoryList.size - 1)
+    }
 }
