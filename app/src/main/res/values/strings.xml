@@ -4,8 +4,6 @@
     <string name="login">로그인</string>
     <string name="hello_blank_fragment">빈 프래그먼트</string>
     <string name="category">카테고리</string>
-    <string name="test_item">테스트_아이템</string>
-    <string name="test_count">99</string>
     <string name="favorite">즐겨찾기</string>
     <string name="search">검색</string>
     <string name="mypage">마이페이지</string>
