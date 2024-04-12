@@ -13,9 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
+        android:fontFamily="@font/notosanskr_regular"
         android:text="@string/login"
         android:textSize="18sp"
-        android:fontFamily="@font/notosanskr_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,9 +26,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
         android:layout_marginTop="185dp"
+        android:fontFamily="@font/notosanskr_extra_bold"
         android:text="@string/catchphrase"
         android:textSize="22sp"
-        android:fontFamily="@font/notosanskr_extra_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,7 +40,8 @@
         android:background="@drawable/login_quick"
         app:layout_constraintBottom_toTopOf="@+id/buttonLoginNaver"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:importantForAccessibility="no" />
 
     <Button
         android:id="@+id/buttonLoginNaver"
