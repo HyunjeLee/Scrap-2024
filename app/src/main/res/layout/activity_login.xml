@@ -13,9 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
+        android:fontFamily="@font/notosanskr_regular"
         android:text="@string/login"
         android:textSize="18sp"
-        android:fontFamily="@font/notosanskr_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,9 +26,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
         android:layout_marginTop="185dp"
+        android:fontFamily="@font/notosanskr_extra_bold"
         android:text="@string/catchphrase"
         android:textSize="22sp"
-        android:fontFamily="@font/notosanskr_extra_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,17 +36,18 @@
         android:id="@+id/imageLoginQuick"
         android:layout_width="133dp"
         android:layout_height="35dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="25dp"
         android:background="@drawable/login_quick"
         app:layout_constraintBottom_toTopOf="@+id/buttonLoginNaver"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:importantForAccessibility="no" />
 
     <Button
         android:id="@+id/buttonLoginNaver"
         android:layout_width="273dp"
         android:layout_height="52dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/login_naver"
         app:layout_constraintBottom_toTopOf="@+id/buttonLoginGoogle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,11 +57,22 @@
         android:id="@+id/buttonLoginGoogle"
         android:layout_width="273dp"
         android:layout_height="52dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="131dp"
         android:background="@drawable/login_google"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="VERSION"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

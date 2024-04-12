@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.graphics.Color
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.scrap.scrap2024.databinding.ActivityLoginBinding
@@ -16,6 +15,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        // layout inflate
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -24,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+        binding.textVersion.text = packageManager.getPackageInfo(packageName, 0).versionName
 
         binding.buttonLoginNaver.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)

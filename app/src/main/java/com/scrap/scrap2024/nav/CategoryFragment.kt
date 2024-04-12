@@ -48,8 +48,8 @@ class CategoryFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
+    ): View? {
+        // 레이아웃 inflate
         binding = FragmentCategoryBinding.inflate(inflater, container, false)
         val view = binding.root
 
