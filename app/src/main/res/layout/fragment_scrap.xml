@@ -1,15 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
     tools:context=".nav.ScrapFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="151dp"
+        android:background="@color/main">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/textCategoryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="37dp"
+            android:layout_marginTop="19dp"
+            android:includeFontPadding="false"
+            android:text="_CATEGORYTITLE"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <ImageButton
+            android:id="@+id/buttonEdit"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="305dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="60dp"
+            android:background="@color/main"
+            android:scaleType="centerCrop"
+            android:src="@drawable/edit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/edit_category" />
+
+        <ImageButton
+            android:id="@+id/buttonDelete"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="343dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="22dp"
+            android:background="@color/main"
+            android:scaleType="centerCrop"
+            android:src="@drawable/delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/delete_category" />
+
+        <ImageView
+            android:id="@+id/imageBgSearch"
+            android:layout_width="345dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="58dp"
+            android:layout_marginBottom="51dp"
+            android:src="@drawable/bg_color_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:importantForAccessibility="no" />
+
+        <ImageView
+            android:id="@+id/imageSearch"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/search"
+            app:layout_constraintBottom_toBottomOf="@+id/imageBgSearch"
+            app:layout_constraintStart_toStartOf="@+id/imageBgSearch"
+            app:layout_constraintTop_toTopOf="@+id/imageBgSearch"
+            android:importantForAccessibility="no" />
+
+        <EditText
+            android:id="@+id/editTextSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="41dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@android:color/transparent"
+            android:hint="@string/hint_search"
+            android:includeFontPadding="false"
+            android:inputType="text"
+            android:textColorHint="#9E9E9E"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageBgSearch"
+            app:layout_constraintStart_toStartOf="@+id/imageBgSearch"
+            app:layout_constraintTop_toTopOf="@+id/imageBgSearch"
+            android:importantForAutofill="no" />
+
+        <ImageButton
+            android:id="@+id/buttonSort"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="197dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/main"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sort"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textSortType"
+            app:layout_constraintStart_toStartOf="parent"
+            android:contentDescription="@string/change_sort" />
+
+        <TextView
+            android:id="@+id/textSortType"
+            android:layout_width="104dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="15dp"
+            android:includeFontPadding="false"
+            android:text="_SORT_TYPE"
+            android:textColor="#A4A4A4"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonViewType"
+            app:layout_constraintStart_toEndOf="@+id/buttonSort"
+            tools:ignore="HardcodedText" />
+
+        <ImageButton
+            android:id="@+id/buttonViewType"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/main"
+            android:scaleType="centerCrop"
+            android:src="@drawable/dashboard"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textSortType"
+            android:contentDescription="@string/change_view_type" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="167dp"
+        android:layout_gravity="center_horizontal" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddScrap"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:fabCustomSize="60dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/fab_add"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="@string/add_scrap"
+        app:backgroundTint="@color/white"
+        app:maxImageSize="30dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabUp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="97dp"
+        android:clickable="true"
+        android:contentDescription="@string/go_up"
+        android:focusable="true"
+        android:src="@drawable/fab_up"
+        app:backgroundTint="@color/white"
+        app:fabCustomSize="45dp"
+        app:maxImageSize="20dp"
+        tools:ignore="TouchTargetSizeCheck" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
