@@ -53,7 +53,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="20dp"
         android:contentDescription="@string/add_category"
-        android:src="@drawable/fab"
+        android:src="@drawable/fab_add"
         app:backgroundTint="@color/white"
         app:maxImageSize="30dp" />
 
