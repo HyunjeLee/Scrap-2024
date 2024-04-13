@@ -48,7 +48,7 @@ class CategoryFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // 레이아웃 inflate
         binding = FragmentCategoryBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -57,7 +57,7 @@ class CategoryFragment : Fragment() {
         binding.recyclerViewCategory.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewCategory.adapter = categoryAdapter
 
-        binding.floatingActionButton.setOnClickListener {
+        binding.fabAddCategory.setOnClickListener {
             // 카테고리 추가 화면으로 이동
             addCategoryActivityResultLauncher.launch(
                 Intent(
