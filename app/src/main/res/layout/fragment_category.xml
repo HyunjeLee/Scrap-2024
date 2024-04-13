@@ -55,6 +55,8 @@
         android:layout_marginBottom="20dp"
         android:contentDescription="@string/add_category"
         android:src="@drawable/fab_add"
+        android:clickable="true"
+        android:focusable="true"
         app:backgroundTint="@color/white"
         app:maxImageSize="30dp" />
 
