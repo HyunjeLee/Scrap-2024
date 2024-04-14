@@ -32,6 +32,7 @@ class ScrapFragment : Fragment() {
         binding.recyclerViewScrap.layoutManager = GridLayoutManager(context, 2)
         binding.recyclerViewScrap.adapter = scrapAdapter
 
+        // recyclerview 스크롤 시 fabUp 표시 여부
         binding.recyclerViewScrap.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -44,6 +45,7 @@ class ScrapFragment : Fragment() {
                 }
             }
         })
+        // fabUp 클릭 시 맨 위로 스크롤 이동
         binding.fabUp.setOnClickListener {
             binding.recyclerViewScrap.smoothScrollToPosition(0)
         }
