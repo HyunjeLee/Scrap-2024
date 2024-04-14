@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.scrap.scrap2024.R
+import androidx.recyclerview.widget.GridLayoutManager
+import com.scrap.scrap2024.adapter.ScrapAdapter
 import com.scrap.scrap2024.data.Scrap
+import com.scrap.scrap2024.databinding.FragmentScrapBinding
 
 // 테스트 데이터 // 스크랩
 
@@ -55,6 +57,9 @@ private val scrapList = mutableListOf(
 
 class ScrapFragment : Fragment() {
 
+    private lateinit var binding: FragmentScrapBinding
+
+    private val scrapAdapter: ScrapAdapter by lazy { ScrapAdapter(scrapList) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -62,9 +67,14 @@ class ScrapFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // 레이아웃 inflate
-        return inflater.inflate(R.layout.fragment_scrap, container, false)
+        binding = FragmentScrapBinding.inflate(inflater, container, false)
+
+        binding.recyclerViewScrap.layoutManager = GridLayoutManager(context, 2)
+        binding.recyclerViewScrap.adapter = scrapAdapter
+
+        return binding.root
     }
 
 }
