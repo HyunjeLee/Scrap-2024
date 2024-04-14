@@ -18,8 +18,10 @@ class ScrapAdapter(private val scrapList: MutableList<Scrap>) :
             Glide.with(binding.root.context)
                 .load(item.imageURL)
                 .into(binding.imageScrap)
+
             // 즐겨찾기 여부에 따른 즐겨찾기 표시
             if (item.isStar) binding.imageIsFavorite.visibility = View.VISIBLE
+
             // 해당하는 text 바인딩
             binding.textScrapTitle.text = item.title
             binding.textScrapLink.text = item.scrapURL

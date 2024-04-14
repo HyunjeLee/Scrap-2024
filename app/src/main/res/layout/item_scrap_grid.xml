@@ -25,6 +25,7 @@
             android:layout_height="97dp"
             android:background="@drawable/bg_image_scrap"
             android:contentDescription="@string/image_scrap"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
