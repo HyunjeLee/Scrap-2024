@@ -183,6 +183,7 @@
         android:contentDescription="@string/go_up"
         android:focusable="true"
         android:src="@drawable/fab_up"
+        android:visibility="gone"
         app:backgroundTint="@color/white"
         app:fabCustomSize="45dp"
         app:maxImageSize="20dp"
