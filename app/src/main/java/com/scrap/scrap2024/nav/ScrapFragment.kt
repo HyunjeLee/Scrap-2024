@@ -6,16 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.scrap.scrap2024.R
+import com.scrap.scrap2024.data.Scrap
 
 // 테스트 데이터 // 스크랩
-private data class Scrap(
-    val scrapId: Int,
-    val title: String,
-    val scrapURL: String,
-    val imageURL: String,
-    val isStar: Boolean,
-    val scrapDate: String
-)
+
 
 private val scrap1 = Scrap(
     scrapId = 1,
