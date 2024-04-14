@@ -66,19 +66,19 @@ private val scrap6 = Scrap(
 
 private val scrap7 = Scrap(
     scrapId = 7,
-    title = "일곱 번째 스크랩",
-    scrapURL = "https://example.com/scrap7",
-    imageURL = "https://example.com/image7.jpg",
+    title = "알고리즘 문제해결 학습의 이정표 \uD83D\uDEA9 Baekjoon Online Judge 문제들의 난이도 및 티어 정보를 제공하는 사이트입니다.",
+    scrapURL = "https://solved.ac/",
+    imageURL = "https://static.solved.ac/og.jpg",
     isStar = false,
     scrapDate = "2024-04-07"
 )
 
 private val scrap8 = Scrap(
     scrapId = 8,
-    title = "여덟 번째 스크랩",
-    scrapURL = "https://example.com/scrap8",
-    imageURL = "https://example.com/image8.jpg",
-    isStar = true,
+    title = "커리어리 | 요즘 개발자 커뮤니티",
+    scrapURL = "https://careerly.co.kr/home",
+    imageURL = "https://careerly.co.kr/_next/static/images/img_meta_engineer-community-7b5078162ebdd783a2bede0d89d85396.png",
+    isStar = false,
     scrapDate = "2024-04-06"
 )
 
@@ -93,9 +93,9 @@ private val scrap9 = Scrap(
 
 private val scrap10 = Scrap(
     scrapId = 10,
-    title = "열 번째 스크랩",
-    scrapURL = "https://example.com/scrap10",
-    imageURL = "https://example.com/image10.jpg",
+    title = "모든 Android 기기의 개발자를 위한 최신 앱 개발 도구, 플랫폼 업데이트, 교육, 문서를 확인하세요.",
+    scrapURL = "https://developer.android.com/?hl=ko",
+    imageURL = "https://developer.android.com/static/images/social/android-developers.png?hl=ko",
     isStar = true,
     scrapDate = "2024-04-04"
 )
