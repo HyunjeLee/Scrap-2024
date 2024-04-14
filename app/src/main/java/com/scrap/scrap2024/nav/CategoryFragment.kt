@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.scrap.scrap2024.AddCategoryActivity
-import com.scrap.scrap2024.CategoryAdapter
+import com.scrap.scrap2024.adapter.CategoryAdapter
 import com.scrap.scrap2024.databinding.FragmentCategoryBinding
 
 

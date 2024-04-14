@@ -1,4 +1,4 @@
-package com.scrap.scrap2024
+package com.scrap.scrap2024.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
