@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.scrap.scrap2024.ScrapDetailActivity
 import com.scrap.scrap2024.data.Scrap
 import com.scrap.scrap2024.databinding.ItemScrapGridBinding
 
@@ -21,6 +22,12 @@ class ScrapAdapter(private val scrapList: MutableList<Scrap>) :
                 val url = scrapList[adapterPosition].scrapURL
                 val intent = Intent(Intent.ACTION_VIEW)
                 intent.data = Uri.parse(url)
+                binding.root.context.startActivity(intent)
+            }
+
+            // 스크랩 클릭 시 스크랩 세부 화면으로 이동
+            binding.constraintLayoutScrap.setOnClickListener {
+                val intent = Intent(binding.root.context, ScrapDetailActivity::class.java)
                 binding.root.context.startActivity(intent)
             }
         }
