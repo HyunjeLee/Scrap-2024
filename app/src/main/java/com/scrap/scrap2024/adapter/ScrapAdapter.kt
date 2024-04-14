@@ -1,5 +1,7 @@
 package com.scrap.scrap2024.adapter
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,17 @@ class ScrapAdapter(private val scrapList: MutableList<Scrap>) :
     RecyclerView.Adapter<ScrapAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemScrapGridBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            // 스크랩 이미지 클릭 시 해당 스크랩 링크로 이동
+            binding.imageScrap.setOnClickListener {
+                val url = scrapList[adapterPosition].scrapURL
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(url)
+                binding.root.context.startActivity(intent)
+            }
+        }
+
         // 인자로 받은 아이템에 해당하는 스크랩 아이템 바인딩 함수
         fun bind(item: Scrap) {
             // 스크랩의 미리보기 이미지 바인딩
