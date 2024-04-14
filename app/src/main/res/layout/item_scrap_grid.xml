@@ -2,87 +2,103 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="164dp"
-    android:layout_height="190dp"
-    android:background="@drawable/bg_item_scrap_grid">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageScrap"
-        android:layout_width="0dp"
-        android:layout_height="97dp"
-        android:background="@drawable/bg_image_scrap"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/image_scrap" />
-
-    <ImageView
-        android:id="@+id/imageIsChecked"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="7dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="160dp"
+        android:layout_height="190dp"
+        android:layout_marginStart="11dp"
         android:layout_marginTop="7dp"
-        android:visibility="gone"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_item_scrap_grid"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/uncheck"
-        android:contentDescription="@string/is_checked" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageIsFavorite"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="9dp"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageScrap"
-        app:srcCompat="@drawable/favorite"
-        android:contentDescription="@string/is_favorite" />
 
-    <TextView
-        android:id="@+id/textScrapTitle"
-        android:layout_width="121dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="8dp"
-        android:ellipsize="end"
-        android:includeFontPadding="false"
-        android:maxLines="2"
-        android:text="_SCRAP_TITLE"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageScrap"
-        tools:ignore="HardcodedText" />
+        <ImageView
+            android:id="@+id/imageScrap"
+            android:layout_width="0dp"
+            android:layout_height="97dp"
+            android:background="@drawable/bg_image_scrap"
+            android:contentDescription="@string/image_scrap"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textScrapLink"
-        android:layout_width="89dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="50dp"
-        android:ellipsize="end"
-        android:includeFontPadding="false"
-        android:maxLines="1"
-        android:text="_SCRAP_LINK"
-        android:textColor="#A3A3A3"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageScrap"
-        tools:ignore="HardcodedText" />
+        <ImageView
+            android:id="@+id/imageIsChecked"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="7dp"
+            android:contentDescription="@string/is_checked"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/uncheck" />
 
-    <TextView
-        android:id="@+id/textScrapDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="67dp"
-        android:includeFontPadding="false"
-        android:text="_SCRAP_DATE"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageScrap"
-        tools:ignore="HardcodedText" />
+        <ImageView
+            android:id="@+id/imageIsFavorite"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="9dp"
+            android:contentDescription="@string/is_favorite"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageScrap"
+            app:srcCompat="@drawable/favorite" />
+
+        <TextView
+            android:id="@+id/textScrapTitle"
+            android:layout_width="117dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="2"
+            android:text="_SCRAP_TITLE"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageScrap"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/textScrapLink"
+            android:layout_width="89dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="50dp"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="_SCRAP_LINK"
+            android:textColor="#A3A3A3"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageScrap"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/textScrapDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="67dp"
+            android:includeFontPadding="false"
+            android:text="_SCRAP_DATE"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageScrap"
+            tools:ignore="HardcodedText" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
