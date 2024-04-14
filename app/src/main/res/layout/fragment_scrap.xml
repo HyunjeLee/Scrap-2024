@@ -58,16 +58,18 @@
 
         <ImageView
             android:id="@+id/imageBgSearch"
-            android:layout_width="345dp"
+            android:layout_width="0dp"
             android:layout_height="42dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="58dp"
+            android:layout_marginEnd="24dp"
             android:layout_marginBottom="51dp"
+            android:importantForAccessibility="no"
             android:src="@drawable/bg_color_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:importantForAccessibility="no" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageSearch"
@@ -104,47 +106,56 @@
             android:id="@+id/buttonSort"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginStart="197dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="8dp"
-            android:background="@color/main"
+            android:background="?attr/selectableItemBackground"
+            android:backgroundTint="@color/main"
+            android:contentDescription="@string/change_sort"
             android:scaleType="centerCrop"
             android:src="@drawable/sort"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textSortType"
-            app:layout_constraintStart_toStartOf="parent"
-            android:contentDescription="@string/change_sort" />
+            app:layout_constraintEnd_toStartOf="@+id/textSortType" />
 
         <TextView
             android:id="@+id/textSortType"
-            android:layout_width="104dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginEnd="2dp"
+            android:layout_marginEnd="7dp"
             android:layout_marginBottom="15dp"
             android:includeFontPadding="false"
-            android:text="_SORT_TYPE"
+            android:text="@string/sort_by_date"
             android:textColor="#A4A4A4"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/buttonViewType"
-            app:layout_constraintStart_toEndOf="@+id/buttonSort"
+            app:layout_constraintEnd_toStartOf="@+id/textView"
             tools:ignore="HardcodedText" />
 
         <ImageButton
             android:id="@+id/buttonViewType"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginStart="2dp"
             android:layout_marginEnd="26dp"
             android:layout_marginBottom="10dp"
             android:background="@color/main"
+            android:contentDescription="@string/change_view_type"
             android:scaleType="centerCrop"
             android:src="@drawable/dashboard"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textSortType"
-            android:contentDescription="@string/change_view_type" />
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
+            android:layout_marginBottom="17dp"
+            android:includeFontPadding="false"
+            android:text="|"
+            android:textColor="#8C8C8C"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonViewType"
+            tools:ignore="HardcodedText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
