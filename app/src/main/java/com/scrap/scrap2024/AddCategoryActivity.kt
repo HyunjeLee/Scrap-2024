@@ -1,18 +1,23 @@
 package com.scrap.scrap2024
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.scrap.scrap2024.databinding.ActivityAddCategoryBinding
+
 
 class AddCategoryActivity : AppCompatActivity() {
 
@@ -23,11 +28,20 @@ class AddCategoryActivity : AppCompatActivity() {
         finish()
     }
     val clickAddListener = View.OnClickListener {
-        val intentCategory = Intent()
-        val title = binding.editTextAddCategory.text.toString()
-        intentCategory.putExtra("title", title)
-        setResult(Activity.RESULT_OK, intentCategory)
-        finish()
+        // 에러 토스트 메시지 출력
+        if (binding.editTextAddCategory.text.isNullOrEmpty()) {
+            errorToast(getString(R.string.error_text_length_0))
+        } else if (binding.editTextAddCategory.text.length > 21) {
+            errorToast(getString(R.string.error_text_length_22))
+
+        } else {
+            // 카테고리명 전달 후 액티비티 종료
+            val intentCategory = Intent()
+            val title = binding.editTextAddCategory.text.toString()
+            intentCategory.putExtra("title", title)
+            setResult(Activity.RESULT_OK, intentCategory)
+            finish()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +55,6 @@ class AddCategoryActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        Log.i("_TEXT_STATUS", "create : ${binding.editTextAddCategory.text.toString()}")
 
         // 카테고리 추가 취소 시
         binding.buttonCancel.setOnClickListener(clickCancelListener)
@@ -51,7 +64,6 @@ class AddCategoryActivity : AppCompatActivity() {
 
         // editText의 상태에 따른 추가하기 버튼 활성화 함수
         binding.editTextAddCategory.addTextChangedListener(object : TextWatcher {
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 updateButtonState(s)
             }
@@ -62,17 +74,31 @@ class AddCategoryActivity : AppCompatActivity() {
     }
 
     private fun updateButtonState(text: CharSequence?) {
-        // edittext가 비어있거나 21글자 초과 시 버튼 비활성화
         if (text.isNullOrEmpty() || text.length > 21) {
-            binding.buttonAdd.isEnabled = false
+            // 버튼 비활성화 // edittext가 비어있거나 21글자 초과 시
             binding.buttonAdd.backgroundTintList =
                 ColorStateList.valueOf(getColor(R.color.button_deactivated))
             binding.buttonAdd.setTextColor(getColor(R.color.black))
-        } else {    // 그 외의 경우 버튼 활성화
-            binding.buttonAdd.isEnabled = true
+        } else {
+            // 버튼 활성화
             binding.buttonAdd.backgroundTintList =
                 ColorStateList.valueOf(getColor(R.color.main_heavy))
             binding.buttonAdd.setTextColor(getColor(R.color.white))
         }
     }
+
+    // 커스텀 토스트 메시지
+    @Suppress("DEPRECATION")
+    @SuppressLint("InflateParams")
+    private fun errorToast(message: String) {
+        val toast = Toast(this@AddCategoryActivity)
+        val toastView: View =
+            LayoutInflater.from(this@AddCategoryActivity).inflate(R.layout.toast_text, null)
+        toastView.findViewById<TextView>(R.id.textToast).text = message
+        toast.view = toastView
+        toast.duration = Toast.LENGTH_SHORT
+        toast.setGravity(Gravity.BOTTOM, 0, 350)
+        toast.show()
+    }
+
 }
