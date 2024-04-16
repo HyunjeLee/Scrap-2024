@@ -11,29 +11,31 @@ import androidx.core.view.WindowInsetsCompat
 import com.scrap.scrap2024.databinding.ActivityAddCategoryBinding
 
 class AddCategoryActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityAddCategoryBinding
+
+    val clickCancelListener = View.OnClickListener {
+        setResult(Activity.RESULT_CANCELED)
+        finish()
+    }
+    val clickAddListener = View.OnClickListener {
+        val intentCategory = Intent()
+        val title = binding.editTextAddCategory.text.toString()
+        intentCategory.putExtra("title", title)
+        setResult(Activity.RESULT_OK, intentCategory)
+        finish()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        // layout inflate
+        // 레이아웃 inflate
         binding = ActivityAddCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-        }
-
-        val clickCancelListener = View.OnClickListener {
-            setResult(Activity.RESULT_CANCELED)
-            finish()
-        }
-        val clickAddListener = View.OnClickListener {
-            val intentCategory = Intent()
-            val title = binding.editTextAddCategory.text.toString()
-            intentCategory.putExtra("title", title)
-            setResult(Activity.RESULT_OK, intentCategory)
-            finish()
         }
 
         // 카테고리 추가 취소 시
