@@ -100,7 +100,6 @@
         android:layout_marginBottom="30dp"
         android:background="@drawable/bg_button"
         android:backgroundTint="@color/button_deactivated"
-        android:enabled="false"
         android:text="@string/add"
         android:textColor="@color/black"
         android:textSize="18sp"
