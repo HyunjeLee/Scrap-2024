@@ -15,4 +15,5 @@
     <color name="warning">#FF0000</color>
     <color name="caution">#FF7A00</color>
     <color name="background">#FCFCFC</color>
+    <color name="button_deactivated">#EDEDED</color>
 </resources>
