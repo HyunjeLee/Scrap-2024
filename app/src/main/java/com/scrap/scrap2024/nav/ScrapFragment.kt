@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.scrap.scrap2024.R
 import com.scrap.scrap2024.adapter.ScrapAdapter
 import com.scrap.scrap2024.data.scrapList
 import com.scrap.scrap2024.databinding.FragmentScrapBinding
@@ -56,23 +55,6 @@ class ScrapFragment : Fragment() {
 
         // 정렬 버튼 클릭 시
         binding.buttonSort.setOnClickListener {
-            when (binding.textSortType.text) {
-                getString(R.string.sort_by_date) -> {
-                    // 제목 순 정렬 스코프
-                    binding.textSortType.text = getString(R.string.sort_by_title)
-                    scrapAdapter = ScrapAdapter(scrapList.sortedBy { it.title }.toMutableList())
-                    binding.recyclerViewScrap.adapter = scrapAdapter
-                }
-
-                getString(R.string.sort_by_title) -> {
-                    // 스크랩한 날짜 순 정렬 스코프
-                    binding.textSortType.text = getString(R.string.sort_by_date)
-                    scrapAdapter = ScrapAdapter(scrapList.sortedBy { it.scrapDate }.toMutableList())
-                    binding.recyclerViewScrap.adapter = scrapAdapter
-                }
-
-                else -> {}
-            }
         }
 
         return binding.root
