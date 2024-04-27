@@ -112,7 +112,7 @@
             android:backgroundTint="@color/main"
             android:contentDescription="@string/change_sort"
             android:scaleType="centerCrop"
-            android:src="@drawable/sort"
+            android:src="@drawable/sort_ascending"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textSortType" />
 

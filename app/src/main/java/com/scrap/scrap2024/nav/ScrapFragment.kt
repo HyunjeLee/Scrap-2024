@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.scrap.scrap2024.R
 import com.scrap.scrap2024.adapter.ScrapAdapter
 import com.scrap.scrap2024.data.scrapList
 import com.scrap.scrap2024.databinding.FragmentScrapBinding
@@ -16,8 +17,8 @@ import com.scrap.scrap2024.databinding.FragmentScrapBinding
 class ScrapFragment : Fragment() {
 
     private lateinit var binding: FragmentScrapBinding
-
     private lateinit var scrapAdapter: ScrapAdapter
+    private var isAscending: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +56,15 @@ class ScrapFragment : Fragment() {
 
         // 정렬 버튼 클릭 시
         binding.buttonSort.setOnClickListener {
+            if (isAscending) {
+                isAscending = false
+                binding.buttonSort.setImageResource(R.drawable.sort_descending)
+                // 추후 api 연결
+            } else {
+                isAscending = true
+                binding.buttonSort.setImageResource(R.drawable.sort_ascending)
+                // 추후 api 연결
+            }
         }
 
         return binding.root
