@@ -1,16 +1,12 @@
 package com.scrap.scrap2024
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -30,9 +26,17 @@ class AddCategoryActivity : AppCompatActivity() {
     val clickAddListener = View.OnClickListener {
         // 에러 토스트 메시지 출력
         if (binding.editTextAddCategory.text.isNullOrEmpty()) {
-            errorToast(getString(R.string.error_text_length_0))
+            Toast.makeText(
+                this@AddCategoryActivity,
+                getString(R.string.error_text_length_0),
+                Toast.LENGTH_SHORT
+            ).show()
         } else if (binding.editTextAddCategory.text.length > 21) {
-            errorToast(getString(R.string.error_text_length_22))
+            Toast.makeText(
+                this@AddCategoryActivity,
+                getString(R.string.error_text_length_22),
+                Toast.LENGTH_SHORT
+            ).show()
 
         } else {
             // 카테고리명 전달 후 액티비티 종료
@@ -85,20 +89,6 @@ class AddCategoryActivity : AppCompatActivity() {
                 ColorStateList.valueOf(getColor(R.color.main_heavy))
             binding.buttonAdd.setTextColor(getColor(R.color.white))
         }
-    }
-
-    // 커스텀 토스트 메시지
-    @Suppress("DEPRECATION")
-    @SuppressLint("InflateParams")
-    private fun errorToast(message: String) {
-        val toast = Toast(this@AddCategoryActivity)
-        val toastView: View =
-            LayoutInflater.from(this@AddCategoryActivity).inflate(R.layout.toast_text, null)
-        toastView.findViewById<TextView>(R.id.textToast).text = message
-        toast.view = toastView
-        toast.duration = Toast.LENGTH_SHORT
-        toast.setGravity(Gravity.BOTTOM, 0, 350)
-        toast.show()
     }
 
 }
