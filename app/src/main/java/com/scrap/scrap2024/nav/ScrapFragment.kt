@@ -17,12 +17,8 @@ import com.scrap.scrap2024.databinding.FragmentScrapBinding
 class ScrapFragment : Fragment() {
 
     private lateinit var binding: FragmentScrapBinding
-    private lateinit var scrapAdapter: ScrapAdapter
+    private var scrapAdapter: ScrapAdapter = ScrapAdapter(scrapList)
     private var isAscending: Boolean = true
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +29,6 @@ class ScrapFragment : Fragment() {
 
 
         binding.recyclerViewScrap.layoutManager = GridLayoutManager(context, 2)
-        scrapAdapter = ScrapAdapter(scrapList)
         binding.recyclerViewScrap.adapter = scrapAdapter
 
         // recyclerview 스크롤 시 fabUp 표시 여부
