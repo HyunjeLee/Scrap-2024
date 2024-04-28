@@ -160,12 +160,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewScrap"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginStart="11dp"
         android:layout_marginTop="164dp"
-        android:layout_marginEnd="11dp"
+        android:clipToPadding="false"
         tools:listitem="@layout/item_scrap_grid" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

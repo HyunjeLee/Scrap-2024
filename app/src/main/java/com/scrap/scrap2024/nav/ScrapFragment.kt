@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scrap.scrap2024.R
+import com.scrap.scrap2024.adapter.GridSpacingItemDecoration
 import com.scrap.scrap2024.adapter.ScrapAdapter
 import com.scrap.scrap2024.data.scrapList
 import com.scrap.scrap2024.databinding.FragmentScrapBinding
@@ -30,6 +31,7 @@ class ScrapFragment : Fragment() {
 
         binding.recyclerViewScrap.layoutManager = GridLayoutManager(context, 2)
         binding.recyclerViewScrap.adapter = scrapAdapter
+        binding.recyclerViewScrap.addItemDecoration(GridSpacingItemDecoration(requireContext()))
 
         // recyclerview 스크롤 시 fabUp 표시 여부
         binding.recyclerViewScrap.addOnScrollListener(object : RecyclerView.OnScrollListener() {
