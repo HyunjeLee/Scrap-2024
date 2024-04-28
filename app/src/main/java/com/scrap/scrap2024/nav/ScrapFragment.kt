@@ -33,7 +33,7 @@ class ScrapFragment : Fragment() {
 
 
         binding.recyclerViewScrap.layoutManager = GridLayoutManager(context, 2)
-        scrapAdapter = ScrapAdapter(scrapList.sortedBy { it.scrapDate }.toMutableList())
+        scrapAdapter = ScrapAdapter(scrapList)
         binding.recyclerViewScrap.adapter = scrapAdapter
 
         // recyclerview 스크롤 시 fabUp 표시 여부
