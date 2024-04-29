@@ -1,5 +1,7 @@
 package com.scrap.scrap2024
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.scrap.scrap2024.databinding.ActivityScrapDetailBinding
@@ -17,5 +19,12 @@ class ScrapDetailActivity : AppCompatActivity() {
         binding.bottomNavigationView.itemIconTintList = null
         // 뒤로가기 버튼 기능 구현
         binding.buttonBack.setOnClickListener { finish() }
+        // 대표이미지 클릭 시 해당 스크랩 링크로 이동
+        binding.buttonThumbnail.setOnClickListener {
+            val url = binding.textLink.text.toString()
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+        }
     }
 }
