@@ -1,5 +1,7 @@
 package com.scrap.scrap2024
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -25,6 +27,13 @@ class ScrapDetailActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(url)
             startActivity(intent)
+        }
+        // 링크 복사 버튼 클릭 시 클립보드에 링크 복사
+        binding.buttonCopyLink.setOnClickListener {
+            val clipboard: ClipboardManager =
+                getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("label", binding.textLink.text)
+            clipboard.setPrimaryClip(clip)
         }
     }
 }
