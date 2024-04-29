@@ -13,6 +13,7 @@ class ScrapDetailActivity : AppCompatActivity() {
         binding = ActivityScrapDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        // 아이콘의 original color 구현 위함 // xml 상에서 적용 불가하므로 코드에서 구현
+        binding.bottomNavigationView.itemIconTintList = null
     }
 }
