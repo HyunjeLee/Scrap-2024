@@ -66,22 +66,23 @@
                 android:background="@drawable/bg_button"
                 android:backgroundTint="#D9D9D9"
                 android:importantForAccessibility="no"
-                app:layout_constraintBottom_toTopOf="@+id/imageBackground1"
+                app:layout_constraintBottom_toTopOf="@+id/imageBackgroundMain"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageBackground1"
+                android:id="@+id/imageBackgroundMain"
                 android:layout_width="364dp"
                 android:layout_height="257dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="15dp"
                 android:background="@drawable/bg_round_8dp"
                 android:backgroundTint="@color/main_light"
                 android:importantForAccessibility="no"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/buttonThumbnail" />
 
@@ -100,9 +101,9 @@
                 android:paddingStart="15dp"
                 android:paddingEnd="55dp"
                 android:text="_LINK"
-                app:layout_constraintEnd_toEndOf="@+id/imageBackground1"
-                app:layout_constraintStart_toStartOf="@+id/imageBackground1"
-                app:layout_constraintTop_toTopOf="@+id/imageBackground1"
+                app:layout_constraintEnd_toEndOf="@+id/imageBackgroundMain"
+                app:layout_constraintStart_toStartOf="@+id/imageBackgroundMain"
+                app:layout_constraintTop_toTopOf="@+id/imageBackgroundMain"
                 tools:ignore="HardcodedText" />
 
             <Button
@@ -125,7 +126,7 @@
                 android:text="@string/main_description"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toTopOf="@+id/textMainDescription"
-                app:layout_constraintStart_toStartOf="@+id/imageBackground1" />
+                app:layout_constraintStart_toStartOf="@+id/imageBackgroundMain" />
 
             <TextView
                 android:id="@+id/textMainDescription"
@@ -142,9 +143,9 @@
                 android:paddingEnd="20dp"
                 android:text="@string/main_description_default"
                 android:textColor="#A1A1A1"
-                app:layout_constraintBottom_toBottomOf="@+id/imageBackground1"
-                app:layout_constraintEnd_toEndOf="@+id/imageBackground1"
-                app:layout_constraintStart_toStartOf="@+id/imageBackground1" />
+                app:layout_constraintBottom_toBottomOf="@+id/imageBackgroundMain"
+                app:layout_constraintEnd_toEndOf="@+id/imageBackgroundMain"
+                app:layout_constraintStart_toStartOf="@+id/imageBackgroundMain" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -154,10 +155,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageBackground1">
+                app:layout_constraintTop_toBottomOf="@+id/imageBackgroundMain">
 
                 <ImageView
-                    android:id="@+id/imageBackground2"
+                    android:id="@+id/imageBackgroundMemo"
                     android:layout_width="364dp"
                     android:layout_height="0dp"
                     android:background="@drawable/bg_round_8dp"
@@ -177,8 +178,8 @@
                     android:includeFontPadding="false"
                     android:text="@string/memo"
                     android:textSize="15sp"
-                    app:layout_constraintStart_toStartOf="@+id/imageBackground2"
-                    app:layout_constraintTop_toTopOf="@+id/imageBackground2" />
+                    app:layout_constraintStart_toStartOf="@+id/imageBackgroundMemo"
+                    app:layout_constraintTop_toTopOf="@+id/imageBackgroundMemo" />
 
                 <TextView
                     android:id="@+id/textMemo"
