@@ -19,8 +19,10 @@ class ScrapDetailActivity : AppCompatActivity() {
 
         // 아이콘의 original color 구현 위함 // xml 상에서 적용 불가하므로 코드에서 구현
         binding.bottomNavigationView.itemIconTintList = null
+
         // 뒤로가기 버튼 기능 구현
         binding.buttonBack.setOnClickListener { finish() }
+
         // 대표이미지 클릭 시 해당 스크랩 링크로 이동
         binding.buttonThumbnail.setOnClickListener {
             val url = binding.textLink.text.toString()
@@ -28,6 +30,7 @@ class ScrapDetailActivity : AppCompatActivity() {
             intent.data = Uri.parse(url)
             startActivity(intent)
         }
+
         // 링크 복사 버튼 클릭 시 클립보드에 링크 복사
         binding.buttonCopyLink.setOnClickListener {
             val clipboard: ClipboardManager =
@@ -35,5 +38,8 @@ class ScrapDetailActivity : AppCompatActivity() {
             val clip = ClipData.newPlainText("label", binding.textLink.text)
             clipboard.setPrimaryClip(clip)
         }
+
+        // TODO: 동작 테스트를 위한 URL 설정 // #18 머지 후 삭제 필요
+        binding.textLink.text = "https://github.com/HyunjeLee/Scrap-2024/pull/25"
     }
 }
