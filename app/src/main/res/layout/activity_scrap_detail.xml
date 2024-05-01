@@ -195,7 +195,6 @@
                     android:layout_marginBottom="12dp"
                     android:background="@drawable/bg_round_10dp"
                     android:backgroundTint="@color/background"
-                    android:elevation="8dp"
                     android:minLines="5"
                     android:paddingStart="20dp"
 
