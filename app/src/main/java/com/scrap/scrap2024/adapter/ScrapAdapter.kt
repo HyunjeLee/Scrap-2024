@@ -30,6 +30,9 @@ class ScrapAdapter(private val scrapList: MutableList<Scrap>) :
                 val intent = Intent(binding.root.context, ScrapDetailActivity::class.java)
                 binding.root.context.startActivity(intent)
             }
+
+            // 스크랩 이미지 출력 시 상단의 라운딩 처리 유지 위함
+            binding.imageScrap.clipToOutline = true
         }
 
         // 인자로 받은 아이템에 해당하는 스크랩 아이템 바인딩 함수
