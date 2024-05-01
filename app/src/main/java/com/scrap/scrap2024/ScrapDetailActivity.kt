@@ -41,5 +41,9 @@ class ScrapDetailActivity : AppCompatActivity() {
 
         // TODO: 동작 테스트를 위한 URL 설정 // #18 머지 후 삭제 필요
         binding.textLink.text = "https://github.com/HyunjeLee/Scrap-2024/pull/25"
+        // TODO: 동작 테스트를 위한 memo 설정 // #18 머지 후 삭제 필요
+        binding.textMemo.text =
+            "test\ntesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\n"
+
     }
 }
