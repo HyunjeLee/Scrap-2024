@@ -8,7 +8,7 @@
     android:layout_height="190dp"
     android:background="@drawable/bg_item_scrap_grid"
     android:clipToPadding="false"
-    android:elevation="8dp">
+    android:elevation="2dp">
 
 
     <ImageView
