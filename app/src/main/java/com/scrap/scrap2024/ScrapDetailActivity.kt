@@ -24,7 +24,7 @@ class ScrapDetailActivity : AppCompatActivity() {
         binding.buttonBack.setOnClickListener { finish() }
 
         // 대표이미지 클릭 시 해당 스크랩 링크로 이동
-        binding.buttonThumbnail.setOnClickListener {
+        binding.imageThumbnail.setOnClickListener {
             val url = binding.textLink.text.toString()
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(url)
@@ -38,12 +38,6 @@ class ScrapDetailActivity : AppCompatActivity() {
             val clip = ClipData.newPlainText("label", binding.textLink.text)
             clipboard.setPrimaryClip(clip)
         }
-
-        // TODO: 동작 테스트를 위한 URL 설정 // #18 머지 후 삭제 필요
-        binding.textLink.text = "https://github.com/HyunjeLee/Scrap-2024/pull/25"
-        // TODO: 동작 테스트를 위한 memo 설정 // #18 머지 후 삭제 필요
-        binding.textMemo.text =
-            "test\ntesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\n"
 
     }
 }
