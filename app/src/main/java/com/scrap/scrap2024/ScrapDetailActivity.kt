@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.scrap.scrap2024.databinding.ActivityScrapDetailBinding
 
 class ScrapDetailActivity : AppCompatActivity() {
@@ -16,6 +17,23 @@ class ScrapDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityScrapDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 스크랩 이미지 출력 시 상단의 라운딩 처리 유지 위함
+        binding.imageThumbnail.clipToOutline = true
+
+        // 이전 화면에서의 변수 바인딩
+        binding.textTitle.text = intent.getStringExtra("title")
+        binding.textLink.text = intent.getStringExtra("link")
+        binding.textMainDescription.text = intent.getStringExtra("description")
+        binding.textMemo.text = intent.getStringExtra("memo")
+        Glide.with(applicationContext)
+            .load(intent.getStringExtra("imageUrl"))
+            .into(binding.imageThumbnail)
+        if (intent.getBooleanExtra("isFavorited", true)) {
+            // 즐겨찾기 여부에 따른 즐겨찾기 아이콘 변경
+            binding.bottomNavigationView.menu.findItem(R.id.favoriteIcon)
+                .setIcon(R.drawable.favorite)
+        }
 
         // 아이콘의 original color 구현 위함 // xml 상에서 적용 불가하므로 코드에서 구현
         binding.bottomNavigationView.itemIconTintList = null
