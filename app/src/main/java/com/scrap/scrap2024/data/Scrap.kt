@@ -19,8 +19,8 @@ private val scrap1 = Scrap(
     imageURL = "https://example.com/image1.jpg",
     isStar = true,
     scrapDate = "2024-04-13",
-    description = null,
-    memo = null
+    description = "",
+    memo = "테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n"
 )
 
 private val scrap2 = Scrap(
@@ -80,13 +80,13 @@ private val scrap6 = Scrap(
 
 private val scrap7 = Scrap(
     scrapId = 7,
-    title = "알고리즘 문제해결 학습의 이정표 \uD83D\uDEA9 Baekjoon Online Judge 문제들의 난이도 및 티어 정보를 제공하는 사이트입니다.",
+    title = "solved.ac",
     scrapURL = "https://solved.ac/",
     imageURL = "https://static.solved.ac/og.jpg",
     isStar = false,
     scrapDate = "2024-04-07",
-    description = null,
-    memo = null
+    description = "알고리즘 문제해결 학습의 이정표 \uD83D\uDEA9 Baekjoon Online Judge 문제들의 난이도 및 티어 정보를 제공하는 사이트입니다.",
+    memo = "알고리즘용"
 )
 
 private val scrap8 = Scrap(
@@ -96,8 +96,8 @@ private val scrap8 = Scrap(
     imageURL = "https://careerly.co.kr/_next/static/images/img_meta_engineer-community-7b5078162ebdd783a2bede0d89d85396.png",
     isStar = false,
     scrapDate = "2024-04-06",
-    description = null,
-    memo = null
+    description = "개발 트렌드, Q&amp;A, 탑 개발자들과의 네트워킹까지. 누구나 쉽고 간편하게 성장할 수 있도록. 요즘 개발자들의 필수 커뮤니티",
+    memo = ""
 )
 
 private val scrap9 = Scrap(
@@ -113,13 +113,13 @@ private val scrap9 = Scrap(
 
 private val scrap10 = Scrap(
     scrapId = 10,
-    title = "모든 Android 기기의 개발자를 위한 최신 앱 개발 도구, 플랫폼 업데이트, 교육, 문서를 확인하세요.",
+    title = "Android 모바일 앱 개발자 도구 - Android 개발자 &nbsp;|&nbsp; Android Developers",
     scrapURL = "https://developer.android.com/?hl=ko",
     imageURL = "https://developer.android.com/static/images/social/android-developers.png?hl=ko",
     isStar = true,
     scrapDate = "2024-04-04",
-    description = null,
-    memo = null
+    description = "모든 Android 기기의 개발자를 위한 최신 앱 개발 도구, 플랫폼 업데이트, 교육, 문서를 확인하세요.",
+    memo = "안드로이드 개발 공식 홈페이지"
 )
 
 val scrapList = mutableListOf(
