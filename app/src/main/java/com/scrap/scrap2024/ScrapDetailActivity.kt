@@ -21,19 +21,26 @@ class ScrapDetailActivity : AppCompatActivity() {
         // 스크랩 이미지 출력 시 상단의 라운딩 처리 유지 위함
         binding.imageThumbnail.clipToOutline = true
 
-        // 이전 화면에서의 변수 바인딩
+        /*** 이전 화면에서의 변수 바인딩 ***/
         binding.textTitle.text = intent.getStringExtra("title")
         binding.textLink.text = intent.getStringExtra("link")
-        binding.textMainDescription.text = intent.getStringExtra("description")
-        binding.textMemo.text = intent.getStringExtra("memo")
+        // 스크랩 이미지 출력
         Glide.with(applicationContext)
             .load(intent.getStringExtra("imageUrl"))
             .into(binding.imageThumbnail)
+        // 즐겨찾기 여부에 따른 즐겨찾기 아이콘 변경
         if (intent.getBooleanExtra("isFavorited", true)) {
-            // 즐겨찾기 여부에 따른 즐겨찾기 아이콘 변경
             binding.bottomNavigationView.menu.findItem(R.id.favoriteIcon)
                 .setIcon(R.drawable.favorite)
         }
+        if (intent.getStringExtra("description").isNullOrEmpty()) {
+            binding.textMainDescription.text = getString(R.string.main_description_default)
+            binding.textMainDescription.setTextColor(getColor(R.color.gray))
+        } else {
+            binding.textMainDescription.text = intent.getStringExtra("description")
+        }
+        binding.textMemo.text = intent.getStringExtra("memo")
+        /*** 이전 화면에서의 변수 바인딩 ***/
 
         // 아이콘의 original color 구현 위함 // xml 상에서 적용 불가하므로 코드에서 구현
         binding.bottomNavigationView.itemIconTintList = null
