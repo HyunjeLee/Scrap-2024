@@ -1,15 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
     tools:context=".nav.ScrapFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="151dp"
+        android:background="@color/main">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/textCategoryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="37dp"
+            android:layout_marginTop="19dp"
+            android:includeFontPadding="false"
+            android:text="_CATEGORYTITLE"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <ImageButton
+            android:id="@+id/buttonEdit"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="305dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="60dp"
+            android:background="@color/main"
+            android:scaleType="centerCrop"
+            android:src="@drawable/edit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/edit_category" />
+
+        <ImageButton
+            android:id="@+id/buttonDelete"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="343dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="22dp"
+            android:background="@color/main"
+            android:scaleType="centerCrop"
+            android:src="@drawable/delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/delete_category" />
+
+        <ImageView
+            android:id="@+id/imageBgSearch"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="58dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="51dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/bg_color_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageSearch"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/search"
+            app:layout_constraintBottom_toBottomOf="@+id/imageBgSearch"
+            app:layout_constraintStart_toStartOf="@+id/imageBgSearch"
+            app:layout_constraintTop_toTopOf="@+id/imageBgSearch"
+            android:importantForAccessibility="no" />
+
+        <EditText
+            android:id="@+id/editTextSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="41dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@android:color/transparent"
+            android:hint="@string/hint_search"
+            android:includeFontPadding="false"
+            android:inputType="text"
+            android:textColorHint="@color/gray_heavy"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageBgSearch"
+            app:layout_constraintStart_toStartOf="@+id/imageBgSearch"
+            app:layout_constraintTop_toTopOf="@+id/imageBgSearch"
+            android:importantForAutofill="no" />
+
+        <ImageButton
+            android:id="@+id/buttonSort"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="8dp"
+            android:background="?attr/selectableItemBackground"
+            android:backgroundTint="@color/main"
+            android:contentDescription="@string/change_sort"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sort_ascending"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textSortType" />
+
+        <TextView
+            android:id="@+id/textSortType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="7dp"
+            android:layout_marginBottom="15dp"
+            android:includeFontPadding="false"
+            android:text="@string/sort_by_date"
+            android:textColor="@color/gray"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView"
+            tools:ignore="HardcodedText" />
+
+        <ImageButton
+            android:id="@+id/buttonViewType"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/main"
+            android:contentDescription="@string/change_view_type"
+            android:scaleType="centerCrop"
+            android:src="@drawable/dashboard"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
+            android:layout_marginBottom="17dp"
+            android:includeFontPadding="false"
+            android:text="|"
+            android:textColor="#8C8C8C"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonViewType"
+            tools:ignore="HardcodedText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewScrap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="151dp"
+        android:clipToPadding="false"
+        tools:listitem="@layout/item_scrap_grid" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddScrap"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:fabCustomSize="60dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/fab_add"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="@string/add_scrap"
+        app:backgroundTint="@color/white"
+        app:maxImageSize="30dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabUp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="97dp"
+        android:clickable="true"
+        android:contentDescription="@string/go_up"
+        android:focusable="true"
+        android:src="@drawable/fab_up"
+        android:visibility="gone"
+        app:backgroundTint="@color/white"
+        app:fabCustomSize="45dp"
+        app:maxImageSize="20dp"
+        tools:ignore="TouchTargetSizeCheck" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

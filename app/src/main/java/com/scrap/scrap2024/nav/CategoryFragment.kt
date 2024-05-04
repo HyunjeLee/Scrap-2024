@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.scrap.scrap2024.AddCategoryActivity
-import com.scrap.scrap2024.CategoryAdapter
+import com.scrap.scrap2024.adapter.CategoryAdapter
 import com.scrap.scrap2024.databinding.FragmentCategoryBinding
 
 
@@ -48,7 +48,7 @@ class CategoryFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // 레이아웃 inflate
         binding = FragmentCategoryBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -57,7 +57,7 @@ class CategoryFragment : Fragment() {
         binding.recyclerViewCategory.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewCategory.adapter = categoryAdapter
 
-        binding.floatingActionButton.setOnClickListener {
+        binding.fabAddCategory.setOnClickListener {
             // 카테고리 추가 화면으로 이동
             addCategoryActivityResultLauncher.launch(
                 Intent(
