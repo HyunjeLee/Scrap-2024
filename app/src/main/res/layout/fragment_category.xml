@@ -46,14 +46,17 @@
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floating_action_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/fabAddCategory"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:fabCustomSize="60dp"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="20dp"
         android:contentDescription="@string/add_category"
-        android:src="@drawable/fab"
+        android:src="@drawable/fab_add"
+        android:clickable="true"
+        android:focusable="true"
         app:backgroundTint="@color/white"
         app:maxImageSize="30dp" />
 

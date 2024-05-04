@@ -81,7 +81,7 @@ class AddCategoryActivity : AppCompatActivity() {
         if (text.isNullOrEmpty() || text.length > 21) {
             // 버튼 비활성화 // edittext가 비어있거나 21글자 초과 시
             binding.buttonAdd.backgroundTintList =
-                ColorStateList.valueOf(getColor(R.color.button_deactivated))
+                ColorStateList.valueOf(getColor(R.color.gray_light))
             binding.buttonAdd.setTextColor(getColor(R.color.black))
         } else {
             // 버튼 활성화
