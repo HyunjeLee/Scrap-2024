@@ -55,8 +55,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/buttonThumbnail"
+            <ImageView
+                android:id="@+id/imageThumbnail"
                 android:layout_width="307dp"
                 android:layout_height="161dp"
                 android:layout_marginStart="43dp"
@@ -84,7 +84,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buttonThumbnail" />
+                app:layout_constraintTop_toBottomOf="@+id/imageThumbnail" />
 
             <TextView
                 android:id="@+id/textLink"
