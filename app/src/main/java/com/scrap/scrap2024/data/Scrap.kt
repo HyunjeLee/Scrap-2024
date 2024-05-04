@@ -4,9 +4,11 @@ data class Scrap(
     val scrapId: Int,
     val title: String,
     val scrapURL: String,
-    val imageURL: String,
+    val imageURL: String?,
     val isStar: Boolean,
-    val scrapDate: String
+    val scrapDate: String,
+    val description: String?,
+    val memo: String?
 )
 
 // 테스트 데이터 // 스크랩
@@ -16,7 +18,9 @@ private val scrap1 = Scrap(
     scrapURL = "https://example.com/scrap1",
     imageURL = "https://example.com/image1.jpg",
     isStar = true,
-    scrapDate = "2024-04-13"
+    scrapDate = "2024-04-13",
+    description = null,
+    memo = null
 )
 
 private val scrap2 = Scrap(
@@ -25,7 +29,9 @@ private val scrap2 = Scrap(
     scrapURL = "https://example.com/scrap2",
     imageURL = "https://example.com/image2.jpg",
     isStar = false,
-    scrapDate = "2024-04-12"
+    scrapDate = "2024-04-12",
+    description = null,
+    memo = null
 )
 
 private val scrap3 = Scrap(
@@ -34,7 +40,9 @@ private val scrap3 = Scrap(
     scrapURL = "https://example.com/scrap3",
     imageURL = "https://example.com/image3.jpg",
     isStar = false,
-    scrapDate = "2024-04-11"
+    scrapDate = "2024-04-11",
+    description = null,
+    memo = null
 )
 
 private val scrap4 = Scrap(
@@ -43,7 +51,9 @@ private val scrap4 = Scrap(
     scrapURL = "https://example.com/scrap4",
     imageURL = "https://example.com/image4.jpg",
     isStar = true,
-    scrapDate = "2024-04-10"
+    scrapDate = "2024-04-10",
+    description = null,
+    memo = null
 )
 
 private val scrap5 = Scrap(
@@ -52,7 +62,9 @@ private val scrap5 = Scrap(
     scrapURL = "https://example.com/scrap5",
     imageURL = "https://example.com/image5.jpg",
     isStar = false,
-    scrapDate = "2024-04-09"
+    scrapDate = "2024-04-09",
+    description = null,
+    memo = null
 )
 
 private val scrap6 = Scrap(
@@ -61,7 +73,9 @@ private val scrap6 = Scrap(
     scrapURL = "https://example.com/scrap6",
     imageURL = "https://example.com/image6.jpg",
     isStar = true,
-    scrapDate = "2024-04-08"
+    scrapDate = "2024-04-08",
+    description = null,
+    memo = null
 )
 
 private val scrap7 = Scrap(
@@ -70,7 +84,9 @@ private val scrap7 = Scrap(
     scrapURL = "https://solved.ac/",
     imageURL = "https://static.solved.ac/og.jpg",
     isStar = false,
-    scrapDate = "2024-04-07"
+    scrapDate = "2024-04-07",
+    description = null,
+    memo = null
 )
 
 private val scrap8 = Scrap(
@@ -79,7 +95,9 @@ private val scrap8 = Scrap(
     scrapURL = "https://careerly.co.kr/home",
     imageURL = "https://careerly.co.kr/_next/static/images/img_meta_engineer-community-7b5078162ebdd783a2bede0d89d85396.png",
     isStar = false,
-    scrapDate = "2024-04-06"
+    scrapDate = "2024-04-06",
+    description = null,
+    memo = null
 )
 
 private val scrap9 = Scrap(
@@ -88,7 +106,9 @@ private val scrap9 = Scrap(
     scrapURL = "https://example.com/scrap9",
     imageURL = "https://example.com/image9.jpg",
     isStar = false,
-    scrapDate = "2024-04-05"
+    scrapDate = "2024-04-05",
+    description = null,
+    memo = null
 )
 
 private val scrap10 = Scrap(
@@ -97,7 +117,9 @@ private val scrap10 = Scrap(
     scrapURL = "https://developer.android.com/?hl=ko",
     imageURL = "https://developer.android.com/static/images/social/android-developers.png?hl=ko",
     isStar = true,
-    scrapDate = "2024-04-04"
+    scrapDate = "2024-04-04",
+    description = null,
+    memo = null
 )
 
 val scrapList = mutableListOf(
