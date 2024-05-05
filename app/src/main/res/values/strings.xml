@@ -13,6 +13,13 @@
     <string name="cancel">취소</string>
     <string name="error_text_length_0">최소 1글자 이상 적어야 합니다.</string>
     <string name="error_text_length_22">최대 21자까지만 입력할 수 있습니다.</string>
+    <string name="memo">메모</string>
+    <string name="main_description_default">본문 내용이 없습니다</string>
+    <string name="main_description">본문내용</string>
+    <string name="move">이동</string>
+    <string name="share">공유</string>
+    <string name="memo_edit">메모 수정</string>
+    <string name="delete">삭제</string>
     <string name="add_scrap">스크랩 추가하기</string>
     <string name="go_up">맨 위로 이동</string>
     <string name="change_view_type">보기 방식 변경</string>

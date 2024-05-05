@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/deleteIcon"
+        android:title="@string/delete"
+        android:icon="@drawable/delete" />
+
+    <item
+        android:id="@+id/editIcon"
+        android:title="@string/memo_edit"
+        android:icon="@drawable/edit" />
+
+    <item
+        android:id="@+id/shareIcon"
+        android:title="@string/share"
+        android:icon="@drawable/share" />
+
+    <item
+        android:id="@+id/moveIcon"
+        android:title="@string/move"
+        android:icon="@drawable/move_file" />
+
+    <item
+        android:id="@+id/favoriteIcon"
+        android:title="@string/favorite"
+        android:icon="@drawable/nav_favorite" />
+</menu>

@@ -5,14 +5,231 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".ScrapDetailActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="스크랩 세부 화면"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@color/main"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        tools:ignore="UseCompoundDrawables">
+
+        <Button
+            android:id="@+id/buttonBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/expand_left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="37dp"
+            android:singleLine="true"
+            android:text="_TITLE"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageThumbnail"
+                android:layout_width="307dp"
+                android:layout_height="161dp"
+                android:layout_marginStart="43dp"
+                android:layout_marginTop="34dp"
+                android:layout_marginEnd="43dp"
+                android:layout_marginBottom="26dp"
+                android:background="@drawable/bg_button"
+                android:backgroundTint="#D9D9D9"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toTopOf="@+id/imageBackgroundMain"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageBackgroundMain"
+                android:layout_width="0dp"
+                android:layout_height="257dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/bg_round_8dp"
+                android:backgroundTint="@color/main_light"
+                android:importantForAccessibility="no"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageThumbnail" />
+
+            <TextView
+                android:id="@+id/textLink"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/bg_round_10dp"
+                android:backgroundTint="@color/background"
+                android:ellipsize="end"
+                android:gravity="center|start"
+                android:maxLines="1"
+                android:paddingStart="15dp"
+                android:paddingEnd="55dp"
+                android:text="_LINK"
+                app:layout_constraintEnd_toEndOf="@+id/imageBackgroundMain"
+                app:layout_constraintStart_toStartOf="@+id/imageBackgroundMain"
+                app:layout_constraintTop_toTopOf="@+id/imageBackgroundMain"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/buttonCopyLink"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/copy"
+                app:layout_constraintBottom_toBottomOf="@+id/textLink"
+                app:layout_constraintEnd_toEndOf="@+id/textLink"
+                app:layout_constraintTop_toTopOf="@+id/textLink" />
+
+            <TextView
+                android:id="@+id/textMAINDESCRIPTION"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:layout_marginBottom="17dp"
+                android:includeFontPadding="false"
+                android:text="@string/main_description"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/textMainDescription"
+                app:layout_constraintStart_toStartOf="@+id/imageBackgroundMain" />
+
+            <TextView
+                android:id="@+id/textMainDescription"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="19dp"
+                android:background="@drawable/bg_round_10dp"
+                android:backgroundTint="@color/background"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="3"
+                android:paddingStart="20dp"
+                android:paddingTop="23dp"
+                android:paddingEnd="20dp"
+                android:text="_DESCRIPTION"
+                app:layout_constraintBottom_toBottomOf="@+id/imageBackgroundMain"
+                app:layout_constraintEnd_toEndOf="@+id/imageBackgroundMain"
+                app:layout_constraintStart_toStartOf="@+id/imageBackgroundMain"
+                tools:ignore="HardcodedText" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageBackgroundMain">
+
+                <ImageView
+                    android:id="@+id/imageBackgroundMemo"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/bg_round_8dp"
+                    android:backgroundTint="@color/main_light"
+                    android:importantForAccessibility="no"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textMEMO"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="12dp"
+                    android:includeFontPadding="false"
+                    android:text="@string/memo"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="@+id/imageBackgroundMemo"
+                    app:layout_constraintTop_toTopOf="@+id/imageBackgroundMemo" />
+
+                <TextView
+                    android:id="@+id/textMemo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_round_10dp"
+                    android:backgroundTint="@color/background"
+                    android:minLines="5"
+                    android:paddingStart="20dp"
+
+                    android:paddingEnd="20dp"
+                    android:text="_MEMO"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:ignore="HardcodedText" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/bg_nav_round"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        app:itemTextAppearanceActive="@style/CustomClickedLabelFontSize"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView"
+        app:menu="@menu/menu_scrap_detail" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,7 +30,7 @@ class ScrapFragment : Fragment() {
 
         binding.recyclerViewScrap.layoutManager = GridLayoutManager(context, 2)
         binding.recyclerViewScrap.adapter = scrapAdapter
-//        binding.recyclerViewScrap.addItemDecoration(GridSpacingItemDecoration(requireContext()))
+// TODO:        binding.recyclerViewScrap.addItemDecoration(GridSpacingItemDecoration(requireContext()))
 
         // recyclerview 스크롤 시 fabUp 표시 여부
         binding.recyclerViewScrap.addOnScrollListener(object : RecyclerView.OnScrollListener() {
