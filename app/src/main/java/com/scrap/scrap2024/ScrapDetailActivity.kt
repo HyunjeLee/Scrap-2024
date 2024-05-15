@@ -64,5 +64,31 @@ class ScrapDetailActivity : AppCompatActivity() {
             clipboard.setPrimaryClip(clip)
         }
 
+        // 바텀네비게이션뷰의 각각의 아이콘 클릭 시
+        clickMenu()
+
+    }
+
+    private fun clickMenu() {
+        binding.bottomNavigationView.setOnItemSelectedListener {
+            when (it.itemId) {
+                // 삭제
+                R.id.deleteIcon -> {
+                    true
+                }
+
+                // 메모 수정
+                R.id.editIcon -> {
+                    true
+                }
+
+                // 즐겨찾기
+                R.id.favoriteIcon -> {
+                    true
+                }
+
+                else -> false
+            }
+        }
     }
 }
