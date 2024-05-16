@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScrapDetailEditMemoActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@color/main"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseCompoundDrawables">
+
+        <Button
+            android:id="@+id/buttonBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/expand_left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textEditMemo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:text="@string/memo_edit"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageBackgroundEditMemo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/bg_round_8dp"
+        android:backgroundTint="@color/main_light"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        android:importantForAccessibility="no" />
+
+    <EditText
+        android:id="@+id/editEditMemo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/bg_round_10dp_background"
+        android:elevation="4dp"
+        android:gravity="top"
+        android:includeFontPadding="false"
+        android:inputType="textMultiLine"
+        android:padding="20dp"
+        android:text="_EDIT_MEMO"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageBackgroundEditMemo"
+        app:layout_constraintEnd_toEndOf="@+id/imageBackgroundEditMemo"
+        app:layout_constraintStart_toStartOf="@+id/imageBackgroundEditMemo"
+        app:layout_constraintTop_toTopOf="@+id/imageBackgroundEditMemo"
+        android:importantForAutofill="no"
+        tools:ignore="HardcodedText,LabelFor" />
+
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="158dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="22dp"
+        android:background="@drawable/bg_button"
+        android:backgroundTint="@color/gray_light"
+        android:text="@string/cancel"
+        android:textColor="@color/gray_heavy"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonEdit"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="21dp"
+        android:background="@drawable/bg_button_gradient"
+        android:text="@string/edit"
+        android:textColor="@color/main"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonCancel"
+        app:layout_constraintTop_toBottomOf="@+id/imageBackgroundEditMemo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
