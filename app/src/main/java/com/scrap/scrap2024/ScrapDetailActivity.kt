@@ -79,6 +79,13 @@ class ScrapDetailActivity : AppCompatActivity() {
 
                 // 메모 수정
                 R.id.editIcon -> {
+                    startActivity(
+                        Intent(
+                            this@ScrapDetailActivity,
+                            ScrapDetailEditMemoActivity::class.java
+                        )
+                    )
+
                     true
                 }
 
