@@ -65,7 +65,6 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         android:background="@drawable/bg_round_10dp_background"
-        android:elevation="4dp"
         android:gravity="top"
         android:includeFontPadding="false"
         android:inputType="textMultiLine"
