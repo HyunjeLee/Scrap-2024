@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="318dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_round_20dp"
+    android:backgroundTint="@color/main">
+
+    <ImageView
+        android:id="@+id/imageClose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="18dp"
+        android:importantForAccessibility="no"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/close_round_fill" />
+
+    <TextView
+        android:id="@+id/textAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:includeFontPadding="false"
+        android:text="_TEXT_ALERT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageClose"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="130dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="21dp"
+        android:background="@drawable/bg_button"
+        android:backgroundTint="@color/gray_light"
+        android:text="@string/cancel"
+        android:textColor="@color/gray_heavy"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDelete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textAlert" />
+
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="130dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="21dp"
+        android:background="@drawable/bg_button"
+        android:backgroundTint="@color/warning"
+        android:text="@string/delete"
+        android:textColor="@color/main"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonCancel"
+        app:layout_constraintTop_toBottomOf="@+id/textAlert" />
+</androidx.constraintlayout.widget.ConstraintLayout>
