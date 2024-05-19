@@ -84,6 +84,11 @@ class ScrapDetailActivity : AppCompatActivity() {
 
                 // 메모 수정
                 R.id.editIcon -> {
+                    val intent =
+                        Intent(this@ScrapDetailActivity, ScrapDetailEditMemoActivity::class.java)
+                    intent.putExtra("memo", binding.textMemo.text)
+                    startActivity(intent)
+
                     true
                 }
 
