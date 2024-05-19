@@ -94,11 +94,12 @@
 
     <Button
         android:id="@+id/buttonEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="158dp"
+        android:layout_height="61dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="22dp"
-        android:background="@drawable/bg_button_gradient"
+        android:background="@drawable/bg_button"
+        android:backgroundTint="@color/main_heavy"
         android:text="@string/edit"
         android:textColor="@color/main"
         android:textSize="18sp"

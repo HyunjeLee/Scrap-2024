@@ -11,15 +11,19 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.scrap.scrap2024.databinding.ActivityScrapDetailBinding
+import kotlin.properties.Delegates
 
 class ScrapDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityScrapDetailBinding
+    private var isFavorited by Delegates.notNull<Boolean>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScrapDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        isFavorited = intent.getBooleanExtra("isFavorited", true)
 
         // 스크랩 이미지 출력 시 상단의 라운딩 처리 유지 위함
         binding.imageThumbnail.clipToOutline = true
@@ -32,7 +36,7 @@ class ScrapDetailActivity : AppCompatActivity() {
             .load(intent.getStringExtra("imageUrl"))
             .into(binding.imageThumbnail)
         // 즐겨찾기 여부에 따른 즐겨찾기 아이콘 변경
-        if (intent.getBooleanExtra("isFavorited", true)) {
+        if (isFavorited) {
             binding.bottomNavigationView.menu.findItem(R.id.favoriteIcon)
                 .setIcon(R.drawable.favorite)
         }
@@ -92,8 +96,19 @@ class ScrapDetailActivity : AppCompatActivity() {
                     true
                 }
 
-                // 즐겨찾기
+                // 즐겨찾기 토글
                 R.id.favoriteIcon -> {
+                    if (isFavorited) {
+                        // api 연결 시 수정 필요
+                        isFavorited = false
+                        binding.bottomNavigationView.menu.findItem(R.id.favoriteIcon)
+                            .setIcon(R.drawable.nav_favorite)
+                    } else {
+                        isFavorited = true
+                        binding.bottomNavigationView.menu.findItem(R.id.favoriteIcon)
+                            .setIcon(R.drawable.favorite)
+                    }
+
                     true
                 }
 
