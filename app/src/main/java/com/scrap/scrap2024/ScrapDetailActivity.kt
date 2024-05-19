@@ -1,10 +1,13 @@
 package com.scrap.scrap2024
 
+import android.app.Dialog
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.scrap.scrap2024.databinding.ActivityScrapDetailBinding
@@ -78,11 +81,18 @@ class ScrapDetailActivity : AppCompatActivity() {
             when (it.itemId) {
                 // 삭제
                 R.id.deleteIcon -> {
+                    showDeleteDialog()
+
                     true
                 }
 
                 // 메모 수정
                 R.id.editIcon -> {
+                    val intent =
+                        Intent(this@ScrapDetailActivity, ScrapDetailEditMemoActivity::class.java)
+                    intent.putExtra("memo", binding.textMemo.text)
+                    startActivity(intent)
+
                     true
                 }
 
@@ -106,4 +116,26 @@ class ScrapDetailActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun showDeleteDialog() {
+        val dialog = Dialog(this@ScrapDetailActivity)
+        dialog.setContentView(R.layout.dialog_delete)
+        // 다이얼로그 라운딩 처리
+        dialog.window?.setBackgroundDrawableResource(R.drawable.bg_round_20dp)
+
+        // 경고 문구 출력
+        dialog.findViewById<TextView>(R.id.textAlert).text = getString(R.string.alert_delete)
+        // 취소 시
+        dialog.findViewById<Button>(R.id.buttonCancel).setOnClickListener {
+            dialog.dismiss()
+        }
+        // 삭제 시
+        dialog.findViewById<Button>(R.id.buttonDelete).setOnClickListener {
+            dialog.dismiss()
+            finish()
+        }
+
+        dialog.show()
+    }
+
 }
