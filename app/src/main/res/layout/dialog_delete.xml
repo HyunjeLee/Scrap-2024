@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="318dp"
     android:layout_height="199dp"
     android:background="@drawable/bg_round_20dp"
@@ -11,11 +12,11 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="18dp"
+        android:importantForAccessibility="no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/close_round_fill"
-        android:importantForAccessibility="no" />
+        app:srcCompat="@drawable/close_round_fill" />
 
     <TextView
         android:id="@+id/textAlert"
@@ -23,10 +24,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:includeFontPadding="false"
-        android:text="@string/alert_delete"
+        android:text="_TEXT_ALERT"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageClose" />
+        app:layout_constraintTop_toBottomOf="@+id/imageClose"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/buttonCancel"
