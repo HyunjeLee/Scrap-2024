@@ -34,4 +34,6 @@
     <string name="sort_by_title">제목 순</string>
     <string name="edit">수정하기</string>
     <string name="alert_delete">정말 스크랩을 삭제하시겠습니까?</string>
+    <string name="hint_link">링크를 입력하세요</string>
+    <string name="hint_memo">메모를 입력하세요</string>
 </resources>
