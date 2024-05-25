@@ -1,5 +1,6 @@
 package com.scrap.scrap2024.nav
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.scrap.scrap2024.AddScrapActivity
 import com.scrap.scrap2024.R
 import com.scrap.scrap2024.adapter.ScrapAdapter
 import com.scrap.scrap2024.data.scrapList
@@ -31,6 +33,11 @@ class ScrapFragment : Fragment() {
         binding.recyclerViewScrap.layoutManager = GridLayoutManager(context, 2)
         binding.recyclerViewScrap.adapter = scrapAdapter
 // TODO:        binding.recyclerViewScrap.addItemDecoration(GridSpacingItemDecoration(requireContext()))
+
+        // 스크랩 추가 버튼 클릭 시
+        binding.fabAddScrap.setOnClickListener {
+            startActivity(Intent(context, AddScrapActivity::class.java))
+        }
 
         // recyclerview 스크롤 시 fabUp 표시 여부
         binding.recyclerViewScrap.addOnScrollListener(object : RecyclerView.OnScrollListener() {
