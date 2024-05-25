@@ -124,7 +124,7 @@ class ScrapDetailActivity : AppCompatActivity() {
         dialog.window?.setBackgroundDrawableResource(R.drawable.bg_round_20dp)
 
         // 경고 문구 출력
-        dialog.findViewById<TextView>(R.id.textAlert).text = getString(R.string.alert_delete)
+        dialog.findViewById<TextView>(R.id.textAlert).text = getString(R.string.alert_delete_scrap)
         // 취소 시
         dialog.findViewById<Button>(R.id.buttonCancel).setOnClickListener {
             dialog.dismiss()
