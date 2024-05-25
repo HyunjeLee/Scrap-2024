@@ -3,5 +3,5 @@
     <item
         android:width="15dp"
         android:height="15dp"
-        android:drawable="@drawable/custom_radio_checked" />
+        android:drawable="@drawable/custom_checkbox_checked" />
 </layer-list>
