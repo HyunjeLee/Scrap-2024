@@ -13,25 +13,39 @@
         android:layout_height="151dp"
         android:background="@color/main">
 
+        <TextView
+            android:id="@+id/textCategoryTitle"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:includeFontPadding="false"
+            android:textSize="18sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="_CATEGORYTITLE"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+
         <EditText
             android:id="@+id/editTextCategoryTitle"
-            android:layout_width="250dp"
+            android:visibility="gone"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
             android:background="@null"
-            android:enabled="false"
+            android:importantForAutofill="no"
             android:includeFontPadding="false"
+            android:inputType="textVisiblePassword|textNoSuggestions"
+            android:maxLines="1"
             android:text="_CATEGORYTITLE"
-            android:textSize="18sp"
             android:textColor="@color/black"
-            android:inputType="text"
-            android:lines="1"
-            android:ellipsize="end"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="HardcodedText,LabelFor"
-            android:importantForAutofill="no" />
+            tools:ignore="HardcodedText,LabelFor" />
 
         <ImageButton
             android:id="@+id/buttonEdit"

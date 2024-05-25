@@ -2,12 +2,15 @@ package com.scrap.scrap2024.nav
 
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scrap.scrap2024.R
@@ -21,6 +24,7 @@ class ScrapFragment : Fragment() {
     private lateinit var binding: FragmentScrapBinding
     private var scrapAdapter: ScrapAdapter = ScrapAdapter(scrapList)
     private var isAscending: Boolean = true
+    private var editState: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,23 +79,72 @@ class ScrapFragment : Fragment() {
             binding.buttonEditCheck.visibility = View.VISIBLE
         }
 
+        // editTextCategoryTitle의 글자 수에 따른 editState 변경
+        binding.editTextCategoryTitle.addTextChangedListener(object : TextWatcher {
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                if (p0.isNullOrEmpty()) {
+                    binding.buttonEditCheck.setImageResource(R.drawable.check_error)
+
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.error_text_length_0),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    editState = false
+                } else if (p0.length > 21) {
+                    binding.buttonEditCheck.setImageResource(R.drawable.check_error)
+
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.error_text_length_22),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    editState = false
+                } else {
+                    binding.buttonEditCheck.setImageResource(R.drawable.check)
+
+                    editState = true
+                }
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun afterTextChanged(p0: Editable?) {}
+
+        })
+
         // 수정 완료 시
         binding.buttonEditCheck.setOnClickListener {
-            binding.buttonEdit.visibility = View.VISIBLE
-            binding.buttonDelete.visibility = View.VISIBLE
-            binding.buttonEditCheck.visibility = View.GONE
+            if (editState) {
 
-            // 카테고리명 수정 비활성화
-            binding.editTextCategoryTitle.isEnabled = false
-            // 카테고리명 수정
+                binding.buttonEdit.visibility = View.VISIBLE
+                binding.buttonDelete.visibility = View.VISIBLE
+                binding.buttonEditCheck.visibility = View.GONE
+
+                // textview switch & pass
+                binding.textCategoryTitle.text = binding.editTextCategoryTitle.text.toString()
+                binding.editTextCategoryTitle.visibility = View.GONE
+                binding.textCategoryTitle.visibility = View.VISIBLE
+
+                // 카테고리명 수정
+                // TODO: 추후 api 연결 후 구현
+            }
         }
 
         return binding.root
     }
 
     private fun activateEdit() {
-        // editText 활성화
-        binding.editTextCategoryTitle.isEnabled = true
+
+        // editState 초기화
+        editState = binding.editTextCategoryTitle.length() in 1..21
+
+        // textview switch
+        binding.editTextCategoryTitle.visibility = View.VISIBLE
+        binding.textCategoryTitle.visibility = View.GONE
 
         // 커서 표시
         binding.editTextCategoryTitle.requestFocus()
