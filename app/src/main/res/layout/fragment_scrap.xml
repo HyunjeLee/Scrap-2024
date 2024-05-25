@@ -13,48 +13,51 @@
         android:layout_height="151dp"
         android:background="@color/main">
 
-        <TextView
-            android:id="@+id/textCategoryTitle"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/editTextCategoryTitle"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="37dp"
-            android:layout_marginTop="19dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:background="@null"
+            android:enabled="false"
             android:includeFontPadding="false"
             android:text="_CATEGORYTITLE"
             android:textSize="18sp"
+            android:textColor="@color/black"
+            android:inputType="text"
+            android:lines="1"
+            android:ellipsize="end"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText,LabelFor"
+            android:importantForAutofill="no" />
 
         <ImageButton
             android:id="@+id/buttonEdit"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:layout_marginStart="305dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="60dp"
             android:background="@color/main"
+            android:contentDescription="@string/edit_category"
             android:scaleType="centerCrop"
             android:src="@drawable/edit"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/edit_category" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/buttonDelete"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:layout_marginStart="343dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="22dp"
             android:background="@color/main"
+            android:contentDescription="@string/delete_category"
             android:scaleType="centerCrop"
             android:src="@drawable/delete"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/delete_category" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageBgSearch"
@@ -156,6 +159,21 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/buttonViewType"
             tools:ignore="HardcodedText" />
+
+        <ImageButton
+            android:id="@+id/buttonEditCheck"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="25dp"
+            android:background="@null"
+            android:scaleType="centerCrop"
+            android:src="@drawable/check"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:importantForAccessibility="no" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -198,4 +216,5 @@
         app:fabCustomSize="45dp"
         app:maxImageSize="20dp"
         tools:ignore="TouchTargetSizeCheck" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
