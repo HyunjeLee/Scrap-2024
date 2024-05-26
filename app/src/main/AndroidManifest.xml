@@ -15,6 +15,9 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
+            android:name=".AddScrapActivity"
+            android:exported="false" />
+        <activity
             android:name=".ScrapDetailEditMemoActivity"
             android:exported="false" />
         <activity
