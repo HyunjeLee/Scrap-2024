@@ -14,12 +14,12 @@
         <item name="fontFamily">@font/notosanskr_bold</item>
     </style>
 
-    <!--    override--> <!-- 바텀 네비게이션의 라벨-->
+    <!-- 바텀 네비게이션의 라벨-->
     <style name="CustomClickedLabelFont" parent="TextAppearance.Material3.TitleSmall">
         <item name="android:fontFamily">@font/notosanskr_regular</item>
         <item name="android:textStyle">bold</item>
     </style>
-    <!--    override--> <!-- 바텀 네비게이션의 라벨 사이즈 커스텀-->
+    <!-- 바텀 네비게이션의 라벨 사이즈 커스텀-->
     <style name="CustomClickedLabelFontSize" parent="TextAppearance.Material3.TitleSmall">
         <item name="android:fontFamily">@font/notosanskr_regular</item>
         <item name="android:textStyle">bold</item>
