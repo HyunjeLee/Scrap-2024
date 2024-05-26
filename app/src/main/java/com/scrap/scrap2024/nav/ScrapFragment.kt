@@ -25,6 +25,8 @@ class ScrapFragment : Fragment() {
     private var scrapAdapter: ScrapAdapter = ScrapAdapter(scrapList)
     private var isAscending: Boolean = true
     private var editState: Boolean = false
+    private val imm by lazy { requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -129,6 +131,9 @@ class ScrapFragment : Fragment() {
                 binding.editTextCategoryTitle.visibility = View.GONE
                 binding.textCategoryTitle.visibility = View.VISIBLE
 
+                // 키보드 내리기
+                imm.hideSoftInputFromWindow(binding.editTextCategoryTitle.windowToken, 0)
+
                 // 카테고리명 수정
                 // TODO: 추후 api 연결 후 구현
             }
@@ -152,8 +157,6 @@ class ScrapFragment : Fragment() {
         binding.editTextCategoryTitle.setSelection(binding.editTextCategoryTitle.length())
 
         // 키보드 표시
-        val imm =
-            requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(binding.editTextCategoryTitle, InputMethodManager.SHOW_IMPLICIT)
     }
 
