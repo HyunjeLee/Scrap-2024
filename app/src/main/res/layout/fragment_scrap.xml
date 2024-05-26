@@ -15,11 +15,13 @@
 
         <TextView
             android:id="@+id/textCategoryTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="37dp"
             android:layout_marginTop="19dp"
+            android:ellipsize="end"
             android:includeFontPadding="false"
+            android:lines="1"
             android:text="_CATEGORYTITLE"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,31 +32,27 @@
             android:id="@+id/buttonEdit"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:layout_marginStart="305dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="60dp"
             android:background="@color/main"
+            android:contentDescription="@string/edit_category"
             android:scaleType="centerCrop"
             android:src="@drawable/edit"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/edit_category" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/buttonDelete"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:layout_marginStart="343dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="22dp"
             android:background="@color/main"
+            android:contentDescription="@string/delete_category"
             android:scaleType="centerCrop"
             android:src="@drawable/delete"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/delete_category" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageBgSearch"

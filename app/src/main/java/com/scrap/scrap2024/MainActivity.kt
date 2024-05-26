@@ -110,4 +110,10 @@ class MainActivity : AppCompatActivity() {
 
         fragTransaction.commitAllowingStateLoss()
     }
+
+    // TODO: 코드 리뷰 필요
+    fun goToCategoryFragment() {
+        binding.navigationView.menu.findItem(R.id.categoryFragment).isChecked = true
+        setFragment(TAG_CATEGORY, CategoryFragment())
+    }
 }
