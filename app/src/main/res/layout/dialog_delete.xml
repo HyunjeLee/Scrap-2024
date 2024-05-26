@@ -77,7 +77,6 @@
         android:includeFontPadding="false"
         android:paddingStart="6dp"
         android:text="@string/delete_category_radio_checked"
-        android:textColor="#545454"
         android:textSize="12sp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
