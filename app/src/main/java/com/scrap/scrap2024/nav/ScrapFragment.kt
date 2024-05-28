@@ -27,7 +27,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.scrap.scrap2024.AddScrapActivity
 import com.scrap.scrap2024.MainActivity
 import com.scrap.scrap2024.R
-import com.scrap.scrap2024.adapter.ScrapAdapter
+import com.scrap.scrap2024.adapter.ScrapGridAdapter
 import com.scrap.scrap2024.data.scrapList
 import com.scrap.scrap2024.databinding.FragmentScrapBinding
 
@@ -35,7 +35,7 @@ import com.scrap.scrap2024.databinding.FragmentScrapBinding
 class ScrapFragment : Fragment() {
 
     private lateinit var binding: FragmentScrapBinding
-    private var scrapAdapter: ScrapAdapter = ScrapAdapter(scrapList)
+    private var scrapAdapter: ScrapGridAdapter = ScrapGridAdapter(scrapList)
     private var isAscending: Boolean = true
     private var editState: Boolean = false
     private val imm by lazy { requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager }

@@ -11,8 +11,8 @@ import com.scrap.scrap2024.ScrapDetailActivity
 import com.scrap.scrap2024.data.Scrap
 import com.scrap.scrap2024.databinding.ItemScrapGridBinding
 
-class ScrapAdapter(private val scrapList: MutableList<Scrap>) :
-    RecyclerView.Adapter<ScrapAdapter.ViewHolder>() {
+class ScrapGridAdapter(private val scrapList: MutableList<Scrap>) :
+    RecyclerView.Adapter<ScrapGridAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemScrapGridBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
