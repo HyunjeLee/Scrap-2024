@@ -69,8 +69,10 @@ class ScrapFragment : Fragment() {
         // 레이아웃 inflate
         binding = FragmentScrapBinding.inflate(inflater, container, false)
 
+        // 뒤로가기 콜백 추가
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
+        // 그리드뷰 스크랩 표시
         binding.recyclerViewScrap.layoutManager = GridLayoutManager(context, 2)
         binding.recyclerViewScrap.adapter = scrapAdapter
 // TODO:        binding.recyclerViewScrap.addItemDecoration(GridSpacingItemDecoration(requireContext()))
