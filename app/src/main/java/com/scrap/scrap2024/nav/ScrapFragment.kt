@@ -250,9 +250,9 @@ class ScrapFragment : Fragment() {
         // 삭제 시
         dialog.findViewById<Button>(R.id.buttonDelete).setOnClickListener {
 
-            if (dialog.findViewById<CheckBox>(R.id.checkboxAlert).isChecked) {
-                // TODO:    현재 스크랩을 모두 '분류되지 않음' 카테고리로 이동 // 추후 구현
-            }
+//            if (dialog.findViewById<CheckBox>(R.id.checkboxAlert).isChecked) {
+//                // TODO:    현재 스크랩을 모두 '분류되지 않음' 카테고리로 이동 // 추후 구현
+//            }
 
             dialog.dismiss()
 
