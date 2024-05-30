@@ -14,7 +14,7 @@ data class Scrap(
 // 테스트 데이터 // 스크랩
 private val scrap1 = Scrap(
     scrapId = 1,
-    title = "첫 번째 스크랩",
+    title = "첫 번째 스크랩\n\n\n\n\n\ntesting",
     scrapURL = "https://example.com/scrap1",
     imageURL = "https://example.com/image1.jpg",
     isStar = true,
@@ -91,7 +91,13 @@ private val scrap7 = Scrap(
 
 private val scrap8 = Scrap(
     scrapId = 8,
-    title = "커리어리 | 요즘 개발자 커뮤니티",
+    title = "커리어리 | 요즘 개발자 커뮤니티\n" +
+            "\n" +
+            "\n" +
+            "\n" +
+            "\n" +
+            "\n" +
+            "testing",
     scrapURL = "https://careerly.co.kr/home",
     imageURL = "https://careerly.co.kr/_next/static/images/img_meta_engineer-community-7b5078162ebdd783a2bede0d89d85396.png",
     isStar = false,
