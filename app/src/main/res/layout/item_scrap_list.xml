@@ -31,7 +31,7 @@
         android:visibility="gone"
         app:layout_constraintStart_toEndOf="@id/imageScrap"
         app:layout_constraintTop_toTopOf="@id/imageScrap"
-        tools:srcCompat="@drawable/favorite"
+        app:srcCompat="@drawable/favorite"
         android:contentDescription="@string/is_favorite" />
 
     <TextView
