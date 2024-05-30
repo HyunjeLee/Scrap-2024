@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.scrap.scrap2024.ScrapDetailActivity
+import com.scrap.scrap2024.ui.ScrapDetailActivity
 import com.scrap.scrap2024.data.Scrap
 import com.scrap.scrap2024.databinding.ItemScrapGridBinding
 

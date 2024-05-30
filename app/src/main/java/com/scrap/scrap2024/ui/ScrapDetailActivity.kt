@@ -1,4 +1,4 @@
-package com.scrap.scrap2024
+package com.scrap.scrap2024.ui
 
 import android.app.Dialog
 import android.content.ClipData
@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.scrap.scrap2024.R
 import com.scrap.scrap2024.databinding.ActivityScrapDetailBinding
 import kotlin.properties.Delegates
 

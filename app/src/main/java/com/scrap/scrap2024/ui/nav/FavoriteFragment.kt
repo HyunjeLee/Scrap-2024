@@ -1,4 +1,4 @@
-package com.scrap.scrap2024.nav
+package com.scrap.scrap2024.ui.nav
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.scrap.scrap2024.R
 
 
-class MypageFragment : Fragment() {
+class FavoriteFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +19,7 @@ class MypageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // 레이아웃 inflate
-        return inflater.inflate(R.layout.fragment_mypage, container, false)
+        return inflater.inflate(R.layout.fragment_favorite, container, false)
     }
 
 }
