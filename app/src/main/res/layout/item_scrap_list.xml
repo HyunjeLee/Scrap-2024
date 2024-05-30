@@ -23,11 +23,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageisFavorited"
+        android:id="@+id/imageIsFavorited"
         android:layout_width="15dp"
         android:layout_height="15dp"
         android:layout_marginStart="6dp"
         android:layout_marginTop="1dp"
+        android:visibility="gone"
         app:layout_constraintStart_toEndOf="@id/imageScrap"
         app:layout_constraintTop_toTopOf="@id/imageScrap"
         tools:srcCompat="@drawable/favorite"
@@ -37,14 +38,14 @@
         android:id="@+id/textScrapTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="9dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
         android:includeFontPadding="false"
         android:text="_SCRAP_TITLE"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imageisFavorited"
+        app:layout_constraintStart_toEndOf="@id/imageIsFavorited"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
 
