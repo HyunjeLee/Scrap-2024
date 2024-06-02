@@ -30,6 +30,8 @@ import com.scrap.scrap2024.ui.MainActivity
 import com.scrap.scrap2024.R
 import com.scrap.scrap2024.adapter.ScrapGridAdapter
 import com.scrap.scrap2024.adapter.ScrapListAdapter
+import com.scrap.scrap2024.data.ViewType
+import com.scrap.scrap2024.data.ViewTypeManager
 import com.scrap.scrap2024.data.scrapList
 import com.scrap.scrap2024.databinding.FragmentScrapBinding
 
@@ -38,13 +40,11 @@ class ScrapFragment : Fragment() {
 
     private lateinit var binding: FragmentScrapBinding
     private var linearLayoutManager = LinearLayoutManager(context)
-    private var scrapListAdapter: ScrapListAdapter = ScrapListAdapter(scrapList)
     private var gridLayoutManager = GridLayoutManager(context, 2)
+    private var scrapListAdapter: ScrapListAdapter = ScrapListAdapter(scrapList)
     private var scrapGridAdapter: ScrapGridAdapter = ScrapGridAdapter(scrapList)
+    private lateinit var viewType: ViewType
     private var isAscending: Boolean = true
-    private var viewType: Int = 0
-    private val listview: Int = 1
-    private val gridview: Int = 2
     private var editState: Boolean = false
     private val imm by lazy { requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager }
     private val callback by lazy {
@@ -80,11 +80,19 @@ class ScrapFragment : Fragment() {
         // 뒤로가기 콜백 추가
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
-        // 초기화 // 리스트뷰 스크랩 표시
-        viewType = listview
-        binding.recyclerViewScrap.layoutManager = linearLayoutManager
-        binding.recyclerViewScrap.adapter = scrapListAdapter
+        // 뷰타입 초기화
+        viewType = ViewTypeManager.initalViewType(requireContext())
+        when (viewType) {
+            ViewType.LIST -> {  // 첫 실행 // 또는 저장된 뷰타입이 리스트뷰
+                binding.recyclerViewScrap.layoutManager = linearLayoutManager
+                binding.recyclerViewScrap.adapter = scrapListAdapter
+            }
 
+            ViewType.GRID -> {  // 저장된 뷰타입이 그리드뷰
+                binding.recyclerViewScrap.layoutManager = gridLayoutManager
+                binding.recyclerViewScrap.adapter = scrapGridAdapter
+            }
+        }
 
         // 스크랩 추가 버튼 클릭 시
         binding.fabAddScrap.setOnClickListener {
@@ -125,24 +133,23 @@ class ScrapFragment : Fragment() {
         // 리스트/그리드뷰 토글 버튼 클릭 시
         binding.buttonViewType.setOnClickListener {
             when (viewType) {
-                listview -> { // 그리드뷰로 변경
+                ViewType.LIST -> { // 그리드뷰로 변경
                     binding.buttonViewType.setImageResource(R.drawable.viewtype_grid)
                     binding.recyclerViewScrap.layoutManager = gridLayoutManager
                     binding.recyclerViewScrap.adapter = scrapGridAdapter
                     // TODO:        binding.recyclerViewScrap.addItemDecoration(GridSpacingItemDecoration(requireContext()))
-                    viewType = gridview
+                    // 그리드뷰 뷰타입 저장
+                    ViewTypeManager.saveViewType(requireContext(), ViewType.GRID)
                 }
 
-                gridview -> { // 리스트뷰로 변경
+                ViewType.GRID -> { // 리스트뷰로 변경
                     binding.buttonViewType.setImageResource(R.drawable.viewtype_list)
                     binding.recyclerViewScrap.layoutManager = linearLayoutManager
                     binding.recyclerViewScrap.adapter = scrapListAdapter
-                    viewType = listview
+                    // 리스트뷰 뷰타입 저장
+                    ViewTypeManager.saveViewType(requireContext(), ViewType.LIST)
                 }
 
-                else -> { // ERROR
-                    Log.e("ERROR_VIEWTYPE", "VIEWTYPE ERROR")
-                }
             }
         }
 
