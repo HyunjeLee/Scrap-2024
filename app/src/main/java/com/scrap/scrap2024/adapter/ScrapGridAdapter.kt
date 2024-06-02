@@ -31,8 +31,8 @@ class ScrapGridAdapter(private val scrapList: MutableList<Scrap>) :
 
                 // title, imageUrl, link, 즐겨찾기 여부 전달
                 intent.putExtra("title", scrapList[adapterPosition].title)
-                intent.putExtra("imageUrl", scrapList[adapterPosition].imageURL)
-                intent.putExtra("link", scrapList[adapterPosition].scrapURL)
+                intent.putExtra("imageURL", scrapList[adapterPosition].imageURL)
+                intent.putExtra("scrapURL", scrapList[adapterPosition].scrapURL)
                 intent.putExtra("isFavorited", scrapList[adapterPosition].isStar)
                 intent.putExtra("description", scrapList[adapterPosition].description)
                 intent.putExtra("memo", scrapList[adapterPosition].memo)

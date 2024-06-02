@@ -31,10 +31,10 @@ class ScrapDetailActivity : AppCompatActivity() {
 
         /*** 이전 화면에서의 변수 바인딩 ***/
         binding.textTitle.text = intent.getStringExtra("title")
-        binding.textLink.text = intent.getStringExtra("link")
+        binding.textLink.text = intent.getStringExtra("scrapURL")
         // 스크랩 이미지 출력
         Glide.with(applicationContext)
-            .load(intent.getStringExtra("imageUrl"))
+            .load(intent.getStringExtra("imageURL"))
             .into(binding.imageThumbnail)
         // 즐겨찾기 여부에 따른 즐겨찾기 아이콘 변경
         if (isFavorited) {
