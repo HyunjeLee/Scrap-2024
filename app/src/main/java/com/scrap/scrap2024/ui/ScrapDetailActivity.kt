@@ -44,6 +44,7 @@ class ScrapDetailActivity : AppCompatActivity() {
         if (intent.getStringExtra("description").isNullOrEmpty()) {
             binding.textMainDescription.text = getString(R.string.main_description_default)
             binding.textMainDescription.setTextColor(getColor(R.color.gray))
+            // TODO: medium_normal
         } else {
             binding.textMainDescription.text = intent.getStringExtra("description")
         }

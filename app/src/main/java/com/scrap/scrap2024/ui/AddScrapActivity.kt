@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.scrap.scrap2024.databinding.ActivityAddScrapBinding
 
 class AddScrapActivity : AppCompatActivity() {
+    // TODO: hint -> medium_normal 변경 // 입력 시 원상복귀
+
 
     private lateinit var binding: ActivityAddScrapBinding
 

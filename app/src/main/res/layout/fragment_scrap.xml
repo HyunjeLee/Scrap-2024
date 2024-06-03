@@ -110,14 +110,16 @@
             android:layout_marginBottom="12dp"
             android:background="@android:color/transparent"
             android:hint="@string/hint_search"
+            android:importantForAutofill="no"
             android:includeFontPadding="false"
             android:inputType="text"
             android:textColorHint="@color/gray_heavy"
             android:textSize="15sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/notosanskr_medium"
             app:layout_constraintBottom_toBottomOf="@+id/imageBgSearch"
             app:layout_constraintStart_toStartOf="@+id/imageBgSearch"
-            app:layout_constraintTop_toTopOf="@+id/imageBgSearch"
-            android:importantForAutofill="no" />
+            app:layout_constraintTop_toTopOf="@+id/imageBgSearch" />
 
         <ImageButton
             android:id="@+id/buttonSort"

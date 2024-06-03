@@ -37,6 +37,7 @@ import com.scrap.scrap2024.databinding.FragmentScrapBinding
 
 
 class ScrapFragment : Fragment() {
+    // TODO: 카테고리명 동일 시 api 요청 X // UI는 동일하게 클릭 가능
 
     private lateinit var binding: FragmentScrapBinding
     private var linearLayoutManager = LinearLayoutManager(context)
