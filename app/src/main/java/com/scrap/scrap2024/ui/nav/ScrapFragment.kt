@@ -85,11 +85,15 @@ class ScrapFragment : Fragment() {
         viewType = ViewTypeManager.initalViewType(requireContext())
         when (viewType) {
             ViewType.LIST -> {  // 첫 실행 // 또는 저장된 뷰타입이 리스트뷰
+                binding.buttonViewType.setImageResource(R.drawable.viewtype_list)
+
                 binding.recyclerViewScrap.layoutManager = linearLayoutManager
                 binding.recyclerViewScrap.adapter = scrapListAdapter
             }
 
             ViewType.GRID -> {  // 저장된 뷰타입이 그리드뷰
+                binding.buttonViewType.setImageResource(R.drawable.viewtype_grid)
+
                 binding.recyclerViewScrap.layoutManager = gridLayoutManager
                 binding.recyclerViewScrap.adapter = scrapGridAdapter
             }
@@ -139,7 +143,9 @@ class ScrapFragment : Fragment() {
                     binding.recyclerViewScrap.layoutManager = gridLayoutManager
                     binding.recyclerViewScrap.adapter = scrapGridAdapter
                     // TODO:        binding.recyclerViewScrap.addItemDecoration(GridSpacingItemDecoration(requireContext()))
+
                     // 그리드뷰 뷰타입 저장
+                    viewType = ViewType.GRID
                     ViewTypeManager.saveViewType(requireContext(), ViewType.GRID)
                 }
 
@@ -147,7 +153,9 @@ class ScrapFragment : Fragment() {
                     binding.buttonViewType.setImageResource(R.drawable.viewtype_list)
                     binding.recyclerViewScrap.layoutManager = linearLayoutManager
                     binding.recyclerViewScrap.adapter = scrapListAdapter
+
                     // 리스트뷰 뷰타입 저장
+                    viewType = ViewType.LIST
                     ViewTypeManager.saveViewType(requireContext(), ViewType.LIST)
                 }
 
