@@ -43,7 +43,6 @@ class ScrapListAdapter(private val scrapList: MutableList<Scrap>) :
 
             // 스크랩 클릭 시 스크랩 세부 화면으로 이동
             binding.root.setOnClickListener(goToDetailClickListener)
-            binding.buttonGoDetail.setOnClickListener(goToDetailClickListener)
 
 
         }
