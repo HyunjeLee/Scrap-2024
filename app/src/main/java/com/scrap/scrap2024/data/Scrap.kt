@@ -12,72 +12,6 @@ data class Scrap(
 )
 
 // 테스트 데이터 // 스크랩
-private val scrap1 = Scrap(
-    scrapId = 1,
-    title = "첫 번째 스크랩\n\n\n\n\n\ntesting",
-    scrapURL = "https://example.com/scrap1",
-    imageURL = "https://example.com/image1.jpg",
-    isFavorited = true,
-    scrapDate = "2024-04-13",
-    description = "",
-    memo = "테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n테스트\n"
-)
-
-private val scrap2 = Scrap(
-    scrapId = 2,
-    title = "두 번째 스크랩",
-    scrapURL = "https://example.com/scrap2",
-    imageURL = "https://example.com/image2.jpg",
-    isFavorited = false,
-    scrapDate = "2024-04-12",
-    description = null,
-    memo = null
-)
-
-private val scrap3 = Scrap(
-    scrapId = 3,
-    title = "세 번째 스크랩",
-    scrapURL = "https://example.com/scrap3",
-    imageURL = "https://example.com/image3.jpg",
-    isFavorited = false,
-    scrapDate = "2024-04-11",
-    description = null,
-    memo = null
-)
-
-private val scrap4 = Scrap(
-    scrapId = 4,
-    title = "네 번째 스크랩",
-    scrapURL = "https://example.com/scrap4",
-    imageURL = "https://example.com/image4.jpg",
-    isFavorited = true,
-    scrapDate = "2024-04-10",
-    description = null,
-    memo = null
-)
-
-private val scrap5 = Scrap(
-    scrapId = 5,
-    title = "다섯 번째 스크랩",
-    scrapURL = "https://example.com/scrap5",
-    imageURL = "https://example.com/image5.jpg",
-    isFavorited = false,
-    scrapDate = "2024-04-09",
-    description = null,
-    memo = null
-)
-
-private val scrap6 = Scrap(
-    scrapId = 6,
-    title = "여섯 번째 스크랩",
-    scrapURL = "https://example.com/scrap6",
-    imageURL = "https://example.com/image6.jpg",
-    isFavorited = true,
-    scrapDate = "2024-04-08",
-    description = null,
-    memo = null
-)
-
 private val scrap7 = Scrap(
     scrapId = 7,
     title = "solved.ac",
@@ -206,12 +140,6 @@ private val scrap26 = Scrap(
 )
 
 val scrapList = mutableListOf(
-    scrap1,
-    scrap2,
-    scrap3,
-    scrap4,
-    scrap5,
-    scrap6,
     scrap7,
     scrap8,
     scrap9,
