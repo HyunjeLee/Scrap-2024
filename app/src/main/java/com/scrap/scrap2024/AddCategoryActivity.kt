@@ -16,6 +16,8 @@ import com.scrap.scrap2024.databinding.ActivityAddCategoryBinding
 
 
 class AddCategoryActivity : AppCompatActivity() {
+    // TODO: hint -> medium_normal 변경 // 입력 시 원상복귀
+
 
     private lateinit var binding: ActivityAddCategoryBinding
 
