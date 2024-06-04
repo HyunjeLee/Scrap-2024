@@ -33,7 +33,7 @@ class ScrapGridAdapter(private val scrapList: MutableList<Scrap>) :
                 intent.putExtra("title", scrapList[adapterPosition].title)
                 intent.putExtra("imageURL", scrapList[adapterPosition].imageURL)
                 intent.putExtra("scrapURL", scrapList[adapterPosition].scrapURL)
-                intent.putExtra("isFavorited", scrapList[adapterPosition].isFavorited)
+                intent.putExtra("isFavorite", scrapList[adapterPosition].isFavorite)
                 intent.putExtra("description", scrapList[adapterPosition].description)
                 intent.putExtra("memo", scrapList[adapterPosition].memo)
 
@@ -52,7 +52,7 @@ class ScrapGridAdapter(private val scrapList: MutableList<Scrap>) :
                 .into(binding.imageScrap)
 
             // 즐겨찾기 여부에 따른 즐겨찾기 표시
-            if (item.isFavorited) binding.imageIsFavorited.visibility = View.VISIBLE
+            if (item.isFavorite) binding.imageIsFavorited.visibility = View.VISIBLE
 
             // 해당하는 text 바인딩
             binding.textScrapTitle.text = item.title
