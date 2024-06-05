@@ -15,9 +15,11 @@ class AddScrapActivity : AppCompatActivity() {
         binding = ActivityAddScrapBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.layoutTitleWithBack.textTitle.text = getString(R.string.add_scrap)
+
         // 스크랩 추가 취소 시
         binding.buttonCancel.setOnClickListener { finish() }
-        binding.buttonBack.setOnClickListener { finish() }
+        binding.layoutTitleWithBack.buttonBack.setOnClickListener { finish() }
         // 스크랩 추가 시
         binding.buttonAdd.setOnClickListener {
             // 추후 api 연결 시 구현
