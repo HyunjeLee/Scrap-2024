@@ -90,15 +90,18 @@
                 app:layout_constraintTop_toTopOf="@+id/imageBackgroundMain"
                 tools:ignore="HardcodedText" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/buttonCopyLink"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="8dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:background="@drawable/copy"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="@+id/textLink"
                 app:layout_constraintEnd_toEndOf="@+id/textLink"
-                app:layout_constraintTop_toTopOf="@+id/textLink" />
+                app:layout_constraintTop_toTopOf="@+id/textLink"
+                android:contentDescription="@string/link_copy" />
 
             <TextView
                 android:id="@+id/textMAINDESCRIPTION"

@@ -43,25 +43,29 @@
         app:layout_constraintStart_toStartOf="parent"
         android:importantForAccessibility="no" />
 
-    <Button
+    <ImageButton
         android:id="@+id/buttonLoginNaver"
         android:layout_width="273dp"
         android:layout_height="52dp"
         android:layout_marginBottom="30dp"
+        android:foreground="?attr/selectableItemBackground"
         android:background="@drawable/login_naver"
         app:layout_constraintBottom_toTopOf="@+id/buttonLoginGoogle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/login" />
 
-    <Button
+    <ImageButton
         android:id="@+id/buttonLoginGoogle"
         android:layout_width="273dp"
         android:layout_height="52dp"
         android:layout_marginBottom="131dp"
+        android:foreground="?attr/selectableItemBackground"
         android:background="@drawable/login_google"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/login" />
 
     <TextView
         android:id="@+id/textVersion"
