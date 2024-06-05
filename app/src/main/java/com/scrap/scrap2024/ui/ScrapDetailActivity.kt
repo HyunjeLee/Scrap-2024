@@ -1,4 +1,4 @@
-package com.scrap.scrap2024
+package com.scrap.scrap2024.ui
 
 import android.app.Dialog
 import android.content.ClipData
@@ -10,33 +10,34 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.scrap.scrap2024.R
 import com.scrap.scrap2024.databinding.ActivityScrapDetailBinding
 import kotlin.properties.Delegates
 
 class ScrapDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityScrapDetailBinding
-    private var isFavorited by Delegates.notNull<Boolean>()
+    private var isFavorite by Delegates.notNull<Boolean>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScrapDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        isFavorited = intent.getBooleanExtra("isFavorited", true)
+        isFavorite = intent.getBooleanExtra("isFavorite", true)
 
         // 스크랩 이미지 출력 시 상단의 라운딩 처리 유지 위함
         binding.imageThumbnail.clipToOutline = true
 
         /*** 이전 화면에서의 변수 바인딩 ***/
         binding.textTitle.text = intent.getStringExtra("title")
-        binding.textLink.text = intent.getStringExtra("link")
+        binding.textLink.text = intent.getStringExtra("scrapURL")
         // 스크랩 이미지 출력
         Glide.with(applicationContext)
-            .load(intent.getStringExtra("imageUrl"))
+            .load(intent.getStringExtra("imageURL"))
             .into(binding.imageThumbnail)
         // 즐겨찾기 여부에 따른 즐겨찾기 아이콘 변경
-        if (isFavorited) {
+        if (isFavorite) {
             binding.bottomNavigationView.menu.findItem(R.id.favoriteIcon)
                 .setIcon(R.drawable.favorite)
         }
@@ -99,13 +100,13 @@ class ScrapDetailActivity : AppCompatActivity() {
 
                 // 즐겨찾기 토글
                 R.id.favoriteIcon -> {
-                    if (isFavorited) {
+                    if (isFavorite) {
                         // api 연결 시 수정 필요
-                        isFavorited = false
+                        isFavorite = false
                         binding.bottomNavigationView.menu.findItem(R.id.favoriteIcon)
                             .setIcon(R.drawable.nav_favorite)
                     } else {
-                        isFavorited = true
+                        isFavorite = true
                         binding.bottomNavigationView.menu.findItem(R.id.favoriteIcon)
                             .setIcon(R.drawable.favorite)
                     }

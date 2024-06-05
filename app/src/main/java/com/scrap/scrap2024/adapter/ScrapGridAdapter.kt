@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.scrap.scrap2024.ScrapDetailActivity
+import com.scrap.scrap2024.ui.ScrapDetailActivity
 import com.scrap.scrap2024.data.Scrap
 import com.scrap.scrap2024.databinding.ItemScrapGridBinding
 
-class ScrapAdapter(private val scrapList: MutableList<Scrap>) :
-    RecyclerView.Adapter<ScrapAdapter.ViewHolder>() {
+class ScrapGridAdapter(private val scrapList: MutableList<Scrap>) :
+    RecyclerView.Adapter<ScrapGridAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemScrapGridBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -31,9 +31,9 @@ class ScrapAdapter(private val scrapList: MutableList<Scrap>) :
 
                 // title, imageUrl, link, 즐겨찾기 여부 전달
                 intent.putExtra("title", scrapList[adapterPosition].title)
-                intent.putExtra("imageUrl", scrapList[adapterPosition].imageURL)
-                intent.putExtra("link", scrapList[adapterPosition].scrapURL)
-                intent.putExtra("isFavorited", scrapList[adapterPosition].isStar)
+                intent.putExtra("imageURL", scrapList[adapterPosition].imageURL)
+                intent.putExtra("scrapURL", scrapList[adapterPosition].scrapURL)
+                intent.putExtra("isFavorite", scrapList[adapterPosition].isFavorite)
                 intent.putExtra("description", scrapList[adapterPosition].description)
                 intent.putExtra("memo", scrapList[adapterPosition].memo)
 
@@ -52,7 +52,7 @@ class ScrapAdapter(private val scrapList: MutableList<Scrap>) :
                 .into(binding.imageScrap)
 
             // 즐겨찾기 여부에 따른 즐겨찾기 표시
-            if (item.isStar) binding.imageIsFavorited.visibility = View.VISIBLE
+            if (item.isFavorite) binding.imageIsFavorited.visibility = View.VISIBLE
 
             // 해당하는 text 바인딩
             binding.textScrapTitle.text = item.title

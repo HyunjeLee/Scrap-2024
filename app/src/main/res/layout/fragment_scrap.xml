@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".nav.ScrapFragment">
+    tools:context=".ui.nav.ScrapFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -126,13 +126,13 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="2dp"
-            android:layout_marginBottom="8dp"
             android:background="?attr/selectableItemBackground"
             android:backgroundTint="@color/main"
             android:contentDescription="@string/change_sort"
             android:scaleType="centerCrop"
             android:src="@drawable/sort_ascending"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/buttonViewType"
+            app:layout_constraintBottom_toBottomOf="@id/buttonViewType"
             app:layout_constraintEnd_toStartOf="@+id/textSortType" />
 
         <TextView
@@ -140,12 +140,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="7dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="3dp"
             android:includeFontPadding="false"
-            android:text="@string/sort_by_date"
+            android:text="@string/sort_by_title"
             android:textColor="@color/gray"
             android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/buttonViewType"
+            app:layout_constraintBottom_toBottomOf="@id/buttonViewType"
             app:layout_constraintEnd_toStartOf="@+id/textView"
             tools:ignore="HardcodedText" />
 
@@ -155,10 +156,10 @@
             android:layout_height="30dp"
             android:layout_marginEnd="26dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/main"
+            android:background="?attr/selectableItemBackground"
             android:contentDescription="@string/change_view_type"
             android:scaleType="centerCrop"
-            android:src="@drawable/dashboard"
+            android:src="@drawable/viewtype_list"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -167,13 +168,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="3dp"
-            android:layout_marginBottom="17dp"
+            android:layout_marginBottom="4dp"
             android:includeFontPadding="false"
             android:text="|"
             android:textColor="#8C8C8C"
             android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/buttonViewType"
             app:layout_constraintEnd_toStartOf="@+id/buttonViewType"
+            app:layout_constraintTop_toTopOf="@id/buttonViewType"
             tools:ignore="HardcodedText" />
 
         <ImageButton
@@ -199,7 +201,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="151dp"
         android:clipToPadding="false"
-        tools:listitem="@layout/item_scrap_grid" />
+        tools:listitem="@layout/item_scrap_list" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddScrap"
