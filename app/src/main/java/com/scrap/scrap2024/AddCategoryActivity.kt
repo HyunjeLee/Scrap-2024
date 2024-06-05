@@ -62,9 +62,11 @@ class AddCategoryActivity : AppCompatActivity() {
             insets
         }
 
+        binding.layoutTitleWithBack.textTitle.text = getString(R.string.add_category)
+
         // 카테고리 추가 취소 시
         binding.buttonCancel.setOnClickListener(clickCancelListener)
-        binding.buttonBack.setOnClickListener(clickCancelListener)
+        binding.layoutTitleWithBack.buttonBack.setOnClickListener(clickCancelListener)
         // 카테고리 추가 시
         binding.buttonAdd.setOnClickListener(clickAddListener)
 
