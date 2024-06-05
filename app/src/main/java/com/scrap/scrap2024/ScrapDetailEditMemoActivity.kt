@@ -13,8 +13,10 @@ class ScrapDetailEditMemoActivity : AppCompatActivity() {
         binding = ActivityScrapDetailEditMemoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.layoutTitleWithBack.textTitle.text = getString(R.string.memo_edit)
+
         // 뒤로가기 버튼
-        binding.buttonBack.setOnClickListener { finish() }
+        binding.layoutTitleWithBack.buttonBack.setOnClickListener { finish() }
         binding.buttonCancel.setOnClickListener { finish() }
 
         // 수정하기 버튼 // 추후 api 연결 후 구현
