@@ -156,7 +156,7 @@
             android:layout_height="30dp"
             android:layout_marginEnd="26dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/main"
+            android:background="?attr/selectableItemBackground"
             android:contentDescription="@string/change_view_type"
             android:scaleType="centerCrop"
             android:src="@drawable/viewtype_list"
