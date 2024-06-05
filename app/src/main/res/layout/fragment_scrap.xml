@@ -18,14 +18,14 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
             android:includeFontPadding="false"
             android:text="_CATEGORYTITLE"
             android:textSize="18sp"
             android:maxLines="1"
             android:ellipsize="end"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/buttonEdit"
+            app:layout_constraintBottom_toBottomOf="@id/buttonEdit"
             tools:ignore="HardcodedText" />
 
         <EditText
@@ -126,13 +126,13 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="2dp"
-            android:layout_marginBottom="8dp"
             android:background="?attr/selectableItemBackground"
             android:backgroundTint="@color/main"
             android:contentDescription="@string/change_sort"
             android:scaleType="centerCrop"
             android:src="@drawable/sort_ascending"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/buttonViewType"
+            app:layout_constraintBottom_toBottomOf="@id/buttonViewType"
             app:layout_constraintEnd_toStartOf="@+id/textSortType" />
 
         <TextView
@@ -140,12 +140,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="7dp"
-            android:layout_marginBottom="15dp"
             android:includeFontPadding="false"
             android:text="@string/sort_by_date"
             android:textColor="@color/gray"
             android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/buttonViewType"
+            app:layout_constraintBottom_toBottomOf="@id/buttonViewType"
             app:layout_constraintEnd_toStartOf="@+id/textView"
             tools:ignore="HardcodedText" />
 
@@ -167,12 +167,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="3dp"
-            android:layout_marginBottom="17dp"
+            android:layout_marginBottom="2dp"
             android:includeFontPadding="false"
             android:text="|"
             android:textColor="#8C8C8C"
             android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textSortType"
+            app:layout_constraintBottom_toBottomOf="@id/textSortType"
             app:layout_constraintEnd_toStartOf="@+id/buttonViewType"
             tools:ignore="HardcodedText" />
 
