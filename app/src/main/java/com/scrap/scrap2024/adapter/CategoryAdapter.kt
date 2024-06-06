@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.scrap.scrap2024.databinding.ItemCategoryBinding
+import java.util.Collections
 
-class CategoryAdapter(private val categoryList: MutableList<MutableList<String>>) :
-    RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+class CategoryAdapter(
+    private val categoryList: MutableList<MutableList<String>>
+) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>(), ItemTouchHelperAdapter {
 
     // recyclerview에서 하나의 아이템애 해당되는 viewHolder 정의 // item_category.xml 레이아웃 사용
     inner class ViewHolder(private val binding: ItemCategoryBinding) :
@@ -38,5 +40,17 @@ class CategoryAdapter(private val categoryList: MutableList<MutableList<String>>
     fun addCategory(category: MutableList<String>) {
         categoryList.add(category)
         notifyItemInserted(categoryList.size - 1)
+    }
+
+    override fun onItemMove(fromPosition: Int, toPosition: Int): Boolean {
+        Collections.swap(categoryList, fromPosition, toPosition)
+        notifyItemMoved(fromPosition, toPosition)
+
+        return true
+    }
+
+    override fun onItemDismiss(position: Int) {
+        categoryList.removeAt(position)
+        notifyItemRemoved(position)
     }
 }
