@@ -28,12 +28,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.scrap.scrap2024.ui.AddScrapActivity
 import com.scrap.scrap2024.ui.MainActivity
 import com.scrap.scrap2024.R
+import com.scrap.scrap2024.adapter.GridSpacingItemDecoration
 import com.scrap.scrap2024.adapter.ScrapGridAdapter
 import com.scrap.scrap2024.adapter.ScrapListAdapter
 import com.scrap.scrap2024.data.ViewType
 import com.scrap.scrap2024.data.ViewTypeManager
 import com.scrap.scrap2024.data.scrapList
 import com.scrap.scrap2024.databinding.FragmentScrapBinding
+import com.scrap.scrap2024.utils.Utils.dpToPx
 
 
 class ScrapFragment : Fragment() {
@@ -81,6 +83,9 @@ class ScrapFragment : Fragment() {
         // 뒤로가기 콜백 추가
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
+        // 그리드뷰의 decor
+        val gridSpacingItemDecoration =
+            GridSpacingItemDecoration(2, dpToPx(requireContext(), 15), true)
         // 뷰타입 초기화
         viewType = ViewTypeManager.initalViewType(requireContext())
         when (viewType) {
@@ -96,6 +101,7 @@ class ScrapFragment : Fragment() {
 
                 binding.recyclerViewScrap.layoutManager = gridLayoutManager
                 binding.recyclerViewScrap.adapter = scrapGridAdapter
+                binding.recyclerViewScrap.addItemDecoration(gridSpacingItemDecoration)
             }
         }
 
@@ -142,7 +148,7 @@ class ScrapFragment : Fragment() {
                     binding.buttonViewType.setImageResource(R.drawable.viewtype_grid)
                     binding.recyclerViewScrap.layoutManager = gridLayoutManager
                     binding.recyclerViewScrap.adapter = scrapGridAdapter
-                    // TODO:        binding.recyclerViewScrap.addItemDecoration(GridSpacingItemDecoration(requireContext()))
+                    binding.recyclerViewScrap.addItemDecoration(gridSpacingItemDecoration)
 
                     // 그리드뷰 뷰타입 저장
                     viewType = ViewType.GRID
@@ -153,6 +159,7 @@ class ScrapFragment : Fragment() {
                     binding.buttonViewType.setImageResource(R.drawable.viewtype_list)
                     binding.recyclerViewScrap.layoutManager = linearLayoutManager
                     binding.recyclerViewScrap.adapter = scrapListAdapter
+                    binding.recyclerViewScrap.removeItemDecoration(gridSpacingItemDecoration)
 
                     // 리스트뷰 뷰타입 저장
                     viewType = ViewType.LIST
