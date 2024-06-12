@@ -162,7 +162,7 @@
             android:backgroundTint="@color/main"
             android:contentDescription="@string/change_view_type"
             android:scaleType="centerCrop"
-            android:src="@drawable/dashboard"
+            android:src="@drawable/viewtype_grid"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

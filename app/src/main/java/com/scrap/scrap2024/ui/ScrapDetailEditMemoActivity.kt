@@ -2,6 +2,7 @@ package com.scrap.scrap2024.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.scrap.scrap2024.R
 import com.scrap.scrap2024.databinding.ActivityScrapDetailEditMemoBinding
 
 class ScrapDetailEditMemoActivity : AppCompatActivity() {
