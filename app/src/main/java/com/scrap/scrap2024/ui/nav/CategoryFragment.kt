@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.scrap.scrap2024.ui.AddCategoryActivity
 import com.scrap.scrap2024.adapter.CategoryAdapter
@@ -58,10 +59,19 @@ class CategoryFragment : Fragment() {
         // recyclerview 어댑터 연결
         binding.recyclerViewCategory.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewCategory.adapter = categoryAdapter
+      
         // recyclerview 프레스 시 드래그 앤 드롭 순서 변경
         val callback = ItemTouchHelperCallback(categoryAdapter)
         val itemTouchHelper = ItemTouchHelper(callback)
         itemTouchHelper.attachToRecyclerView(binding.recyclerViewCategory)
+        
+        // recyclerview의 아이템 간 분할선 추가
+        binding.recyclerViewCategory.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                LinearLayoutManager.VERTICAL
+            )
+        )
 
         binding.fabAddCategory.setOnClickListener {
             // 카테고리 추가 화면으로 이동

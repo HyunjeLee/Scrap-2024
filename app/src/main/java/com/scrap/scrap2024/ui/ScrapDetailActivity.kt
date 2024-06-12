@@ -30,7 +30,7 @@ class ScrapDetailActivity : AppCompatActivity() {
         binding.imageThumbnail.clipToOutline = true
 
         /*** 이전 화면에서의 변수 바인딩 ***/
-        binding.textTitle.text = intent.getStringExtra("title")
+        binding.layoutTitleWithBack.textTitle.text = intent.getStringExtra("title")
         binding.textLink.text = intent.getStringExtra("scrapURL")
         // 스크랩 이미지 출력
         Glide.with(applicationContext)
@@ -55,7 +55,7 @@ class ScrapDetailActivity : AppCompatActivity() {
         binding.bottomNavigationView.itemIconTintList = null
 
         // 뒤로가기 버튼 기능 구현
-        binding.buttonBack.setOnClickListener { finish() }
+        binding.layoutTitleWithBack.buttonBack.setOnClickListener { finish() }
 
         // 대표이미지 클릭 시 해당 스크랩 링크로 이동
         binding.imageThumbnail.setOnClickListener {

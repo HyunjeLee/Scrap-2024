@@ -2,6 +2,7 @@ package com.scrap.scrap2024.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.scrap.scrap2024.R
 import com.scrap.scrap2024.databinding.ActivityScrapDetailEditMemoBinding
 
 class ScrapDetailEditMemoActivity : AppCompatActivity() {
@@ -13,8 +14,10 @@ class ScrapDetailEditMemoActivity : AppCompatActivity() {
         binding = ActivityScrapDetailEditMemoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.layoutTitleWithBack.textTitle.text = getString(R.string.memo_edit)
+
         // 뒤로가기 버튼
-        binding.buttonBack.setOnClickListener { finish() }
+        binding.layoutTitleWithBack.buttonBack.setOnClickListener { finish() }
         binding.buttonCancel.setOnClickListener { finish() }
 
         // 수정하기 버튼 // 추후 api 연결 후 구현
