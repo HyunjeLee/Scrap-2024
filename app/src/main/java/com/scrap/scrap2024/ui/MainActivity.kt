@@ -1,4 +1,4 @@
-package com.scrap.scrap2024
+package com.scrap.scrap2024.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -8,11 +8,12 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.scrap.scrap2024.databinding.ActivityMainBinding
-import com.scrap.scrap2024.nav.CategoryFragment
-import com.scrap.scrap2024.nav.FavoriteFragment
-import com.scrap.scrap2024.nav.MypageFragment
-import com.scrap.scrap2024.nav.ScrapFragment
-import com.scrap.scrap2024.nav.SearchFragment
+import com.scrap.scrap2024.ui.nav.CategoryFragment
+import com.scrap.scrap2024.ui.nav.FavoriteFragment
+import com.scrap.scrap2024.ui.nav.MypageFragment
+import com.scrap.scrap2024.ui.nav.ScrapFragment
+import com.scrap.scrap2024.ui.nav.SearchFragment
+import com.scrap.scrap2024.R
 
 private const val TAG_CATEGORY = "CategoryFragment"
 private const val TAG_SCRAP = "ScrapFragment"

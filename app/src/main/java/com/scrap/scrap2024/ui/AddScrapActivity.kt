@@ -1,4 +1,4 @@
-package com.scrap.scrap2024
+package com.scrap.scrap2024.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

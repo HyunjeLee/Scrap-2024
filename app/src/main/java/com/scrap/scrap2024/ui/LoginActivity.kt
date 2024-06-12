@@ -1,4 +1,4 @@
-package com.scrap.scrap2024
+package com.scrap.scrap2024.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.scrap.scrap2024.R
 import com.scrap.scrap2024.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {

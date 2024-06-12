@@ -1,4 +1,4 @@
-package com.scrap.scrap2024.nav
+package com.scrap.scrap2024.ui.nav
 
 import android.app.Activity
 import android.content.Intent
@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.scrap.scrap2024.AddCategoryActivity
+import com.scrap.scrap2024.ui.AddCategoryActivity
 import com.scrap.scrap2024.adapter.CategoryAdapter
 import com.scrap.scrap2024.databinding.FragmentCategoryBinding
 
