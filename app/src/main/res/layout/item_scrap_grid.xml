@@ -7,14 +7,16 @@
     android:layout_width="160dp"
     android:layout_height="190dp"
     android:background="@drawable/bg_item_scrap_grid"
+    android:clickable="true"
+    android:focusable="true"
     android:clipToPadding="false"
     android:elevation="2dp">
-
 
     <ImageView
         android:id="@+id/imageScrap"
         android:layout_width="0dp"
         android:layout_height="97dp"
+        android:foreground="?attr/selectableItemBackground"
         android:background="@drawable/bg_image_scrap"
         android:contentDescription="@string/image_scrap"
         android:scaleType="centerCrop"
@@ -31,6 +33,7 @@
         android:layout_marginTop="7dp"
         android:contentDescription="@string/is_checked"
         android:visibility="gone"
+        tools:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/uncheck" />
@@ -43,6 +46,7 @@
         android:layout_marginTop="9dp"
         android:contentDescription="@string/is_favorite"
         android:visibility="gone"
+        tools:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageScrap"
         app:srcCompat="@drawable/favorite" />
