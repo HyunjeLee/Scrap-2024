@@ -136,20 +136,19 @@
             android:src="@drawable/sort_ascending"
             app:layout_constraintTop_toTopOf="@id/buttonViewType"
             app:layout_constraintBottom_toBottomOf="@id/buttonViewType"
-            app:layout_constraintEnd_toStartOf="@+id/textSortType" />
+            app:layout_constraintEnd_toStartOf="@+id/spinnerSortType" />
 
-        <TextView
-            android:id="@+id/textSortType"
+        <Spinner
+            android:id="@+id/spinnerSortType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="7dp"
-            android:includeFontPadding="false"
-            android:text="@string/sort_by_date"
-            android:textColor="@color/gray"
-            android:textSize="13sp"
-            app:layout_constraintTop_toTopOf="@id/buttonViewType"
+            android:background="@null"
+            android:gravity="end"
+            android:dropDownVerticalOffset="35dp"
             app:layout_constraintBottom_toBottomOf="@id/buttonViewType"
             app:layout_constraintEnd_toStartOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@id/buttonViewType"
             tools:ignore="HardcodedText" />
 
         <ImageButton
@@ -176,8 +175,8 @@
             android:text="|"
             android:textColor="#8C8C8C"
             android:textSize="13sp"
-            app:layout_constraintTop_toTopOf="@id/textSortType"
-            app:layout_constraintBottom_toBottomOf="@id/textSortType"
+            app:layout_constraintTop_toTopOf="@id/spinnerSortType"
+            app:layout_constraintBottom_toBottomOf="@id/spinnerSortType"
             app:layout_constraintEnd_toStartOf="@+id/buttonViewType"
             tools:ignore="HardcodedText" />
 

@@ -16,6 +16,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import android.widget.Button
@@ -198,6 +199,11 @@ class ScrapFragment : Fragment() {
         binding.buttonDelete.setOnClickListener {
             showDeleteDialog()
         }
+
+        // 스피너!
+        val items = arrayOf("제목 순", "스크랩한 날짜 순")
+        val adapter = ArrayAdapter(requireContext(), R.layout.item_spinner_sort_type, items)
+        binding.spinnerSortType.adapter = adapter
 
         return binding.root
     }
