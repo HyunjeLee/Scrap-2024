@@ -114,6 +114,21 @@ class ScrapDetailActivity : AppCompatActivity() {
                     true
                 }
 
+                R.id.shareIcon -> {
+                    val text =
+                        intent.getStringExtra("title") + "\n" + intent.getStringExtra("scrapURL")
+
+                    val intent = Intent().apply {
+                        action = Intent.ACTION_SEND
+                        putExtra(Intent.EXTRA_TEXT, text)
+                        type = "text/plain"
+                    }
+                    val shareIntent = Intent.createChooser(intent, null)
+                    startActivity(shareIntent)
+
+                    true
+                }
+
                 else -> false
             }
         }
