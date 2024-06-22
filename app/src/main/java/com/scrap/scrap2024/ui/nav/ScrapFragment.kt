@@ -21,7 +21,7 @@ import androidx.activity.OnBackPressedCallback
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
-import androidx.core.content.ContextCompat
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +30,10 @@ import com.scrap.scrap2024.ui.MainActivity
 import com.scrap.scrap2024.R
 import com.scrap.scrap2024.adapter.ScrapGridAdapter
 import com.scrap.scrap2024.adapter.ScrapListAdapter
+import com.scrap.scrap2024.data.OrderType
+import com.scrap.scrap2024.data.OrderTypeManager
+import com.scrap.scrap2024.data.SortType
+import com.scrap.scrap2024.data.SortTypeManager
 import com.scrap.scrap2024.data.ViewType
 import com.scrap.scrap2024.data.ViewTypeManager
 import com.scrap.scrap2024.data.scrapList
@@ -45,7 +49,8 @@ class ScrapFragment : Fragment() {
     private var scrapListAdapter: ScrapListAdapter = ScrapListAdapter(scrapList)
     private var scrapGridAdapter: ScrapGridAdapter = ScrapGridAdapter(scrapList)
     private lateinit var viewType: ViewType
-    private var isAscending: Boolean = true
+    private lateinit var sortType: SortType
+    private lateinit var orderType: OrderType
     private var editState: Boolean = false
     private val imm by lazy { requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager }
     private val callback by lazy {
@@ -99,6 +104,63 @@ class ScrapFragment : Fragment() {
             }
         }
 
+        // sort타입 초기화
+        sortType = SortTypeManager.initalSortType(requireContext())
+        when (sortType) {
+            SortType.SCRAP_DATE -> {    // 첫 실행 // 또는 저장된 sort타입이 스크랩한 날짜 순
+                // api 필요
+
+                // sort의 드롭다운 메뉴 내의 스크랩한 날짜 순 text의 색상 변경 및 체크 표시 추가
+                binding.textSortByDate.setTextColor(requireContext().getColor(R.color.main_heavy))
+                binding.textSortByDate.setCompoundDrawablesWithIntrinsicBounds(
+                    null,
+                    null,
+                    AppCompatResources.getDrawable(
+                        requireContext(),
+                        R.drawable.custom_check_11_8dp
+                    ),
+                    null
+                )
+                // 스크랩한 날짜 순 으로 표기
+                binding.textSort.text = binding.textSortByDate.text
+            }
+
+            SortType.TITLE -> { // 저장된 sort타입이 제목 순
+                // api 필요
+
+                // sort의 드롭다운 메뉴 내의 제목 순 text의 색상 변경 및 체크 표시 추가
+                binding.textSortByTitle.setTextColor(requireContext().getColor(R.color.main_heavy))
+                binding.textSortByTitle.setCompoundDrawablesWithIntrinsicBounds(
+                    null,
+                    null,
+                    AppCompatResources.getDrawable(
+                        requireContext(),
+                        R.drawable.custom_check_11_8dp
+                    ),
+                    null
+                )
+                // 제목 순 으로 표기
+                binding.textSort.text = binding.textSortByTitle.text
+            }
+        }
+
+        // order타입 초기화
+        orderType = OrderTypeManager.initalOrderType(requireContext())
+        when (orderType) {
+            OrderType.ASC -> {
+                // api 필요
+
+                binding.buttonOrder.setImageResource(R.drawable.sort_ascending)
+            }
+
+            OrderType.DESC -> {
+                // api 필요
+
+                binding.buttonOrder.setImageResource(R.drawable.sort_descending)
+            }
+        }
+
+
         // 스크랩 추가 버튼 클릭 시
         binding.fabAddScrap.setOnClickListener {
             startActivity(Intent(context, AddScrapActivity::class.java))
@@ -122,20 +184,28 @@ class ScrapFragment : Fragment() {
             binding.recyclerViewScrap.smoothScrollToPosition(0)
         }
 
-        // 정렬 버튼 클릭 시
-        binding.buttonSort.setOnClickListener {
-            if (isAscending) {
-                isAscending = false
-                binding.buttonSort.setImageResource(R.drawable.sort_descending)
-                // 추후 api 연결
-            } else {
-                isAscending = true
-                binding.buttonSort.setImageResource(R.drawable.sort_ascending)
-                // 추후 api 연결
+        // order 버튼 클릭 시
+        binding.buttonOrder.setOnClickListener {
+            when (orderType) {
+                OrderType.ASC -> {  // ASC -> DESC
+                    binding.buttonOrder.setImageResource(R.drawable.sort_descending)
+
+                    // order타입 저장
+                    orderType = OrderType.DESC
+                    OrderTypeManager.saveOrderType(requireContext(), orderType)
+                }
+
+                OrderType.DESC -> { // DESC -> ASC
+                    binding.buttonOrder.setImageResource(R.drawable.sort_ascending)
+
+                    // order타입 저장
+                    orderType = OrderType.ASC
+                    OrderTypeManager.saveOrderType(requireContext(), orderType)
+                }
             }
         }
 
-        // 리스트/그리드뷰 토글 버튼 클릭 시
+        // viewType 버튼 클릭 시
         binding.buttonViewType.setOnClickListener {
             when (viewType) {
                 ViewType.LIST -> { // 그리드뷰로 변경
@@ -146,7 +216,7 @@ class ScrapFragment : Fragment() {
 
                     // 그리드뷰 뷰타입 저장
                     viewType = ViewType.GRID
-                    ViewTypeManager.saveViewType(requireContext(), ViewType.GRID)
+                    ViewTypeManager.saveViewType(requireContext(), viewType)
                 }
 
                 ViewType.GRID -> { // 리스트뷰로 변경
@@ -156,7 +226,7 @@ class ScrapFragment : Fragment() {
 
                     // 리스트뷰 뷰타입 저장
                     viewType = ViewType.LIST
-                    ViewTypeManager.saveViewType(requireContext(), ViewType.LIST)
+                    ViewTypeManager.saveViewType(requireContext(), viewType)
                 }
 
             }
@@ -198,6 +268,74 @@ class ScrapFragment : Fragment() {
         binding.buttonDelete.setOnClickListener {
             showDeleteDialog()
         }
+
+        // sort 버튼 클릭 시 // 드롭다운 메뉴 표시 토글
+        binding.textSort.setOnClickListener {
+            if (binding.linearMenu.visibility == View.VISIBLE) {
+                binding.linearMenu.visibility = View.GONE
+            } else {
+                binding.linearMenu.visibility = View.VISIBLE
+            }
+        }
+        // 날짜 순 정렬
+        binding.textSortByDate.setOnClickListener {
+            // api 필요
+
+            // sort의 드롭다운 메뉴 내의 제목 순 text의 색상 변경 및 체크 표시 추가
+            binding.textSortByDate.setTextColor(requireContext().getColor(R.color.main_heavy))
+            binding.textSortByDate.setCompoundDrawablesWithIntrinsicBounds(
+                null,
+                null,
+                AppCompatResources.getDrawable(requireContext(), R.drawable.custom_check_11_8dp),
+                null
+            )
+            // 스크랩한 날짜 순 text의 색상 및 체크 표시 원상복귀
+            binding.textSortByTitle.setTextColor(requireContext().getColor(R.color.black))
+            binding.textSortByTitle.setCompoundDrawablesWithIntrinsicBounds(
+                null,
+                null,
+                null,
+                null
+            )
+
+            // 제목 순 으로 표기
+            binding.textSort.text = binding.textSortByDate.text
+            // 드롭다운 메뉴 숨기기
+            binding.linearMenu.visibility = View.GONE
+
+            // sort타입 저장
+            SortTypeManager.saveSortType(requireContext(), SortType.SCRAP_DATE)
+        }
+        // 제목 순 정렬
+        binding.textSortByTitle.setOnClickListener {
+            // api 필요
+
+            // sort의 드롭다운 메뉴 내의 스크랩한 날짜 순 text의 색상 변경 및 체크 표시 추가
+            binding.textSortByTitle.setTextColor(requireContext().getColor(R.color.main_heavy))
+            binding.textSortByTitle.setCompoundDrawablesWithIntrinsicBounds(
+                null,
+                null,
+                AppCompatResources.getDrawable(requireContext(), R.drawable.custom_check_11_8dp),
+                null
+            )
+            // 제목 순 text의 색상 및 체크 표시 원상복귀
+            binding.textSortByDate.setTextColor(requireContext().getColor(R.color.black))
+            binding.textSortByDate.setCompoundDrawablesWithIntrinsicBounds(
+                null,
+                null,
+                null,
+                null
+            )
+
+            // 스크랩한 날짜 순 으로 표기
+            binding.textSort.text = binding.textSortByTitle.text
+            // 드롭다운 메뉴 숨기기
+            binding.linearMenu.visibility = View.GONE
+
+            // sort타입 저장
+            SortTypeManager.saveSortType(requireContext(), SortType.TITLE)
+        }
+
 
 
         return binding.root
@@ -279,7 +417,7 @@ class ScrapFragment : Fragment() {
         val spannableStringDeleteDetail = SpannableString(textAlert + textAlertDetail)
         // textAlertDetail의 색상 및 크기 설정
         spannableStringDeleteDetail.setSpan(
-            ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.caution)),
+            ForegroundColorSpan(requireContext().getColor(R.color.caution)),
             textAlert.length,
             textAlert.length + textAlertDetail.length,
             Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
