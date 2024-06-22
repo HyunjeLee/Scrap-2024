@@ -20,10 +20,10 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigationView"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="68dp"
         android:background="@drawable/bg_nav_round"
+        android:paddingTop="2dp"
         android:paddingStart="10dp"
-        android:paddingTop="10dp"
         android:paddingEnd="10dp"
         app:itemIconTint="@drawable/color_nav_click"
         app:itemTextAppearanceActive="@style/CustomClickedLabelFont"

@@ -19,29 +19,10 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UseCompoundDrawables">
 
-        <Button
-            android:id="@+id/buttonBack"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/expand_left"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <include
+            android:id="@+id/layoutTitleWithBack"
+            layout="@layout/layout_title_with_back" />
 
-        <TextView
-            android:id="@+id/textTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="37dp"
-            android:singleLine="true"
-            android:text="_TITLE"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="HardcodedText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
@@ -109,15 +90,18 @@
                 app:layout_constraintTop_toTopOf="@+id/imageBackgroundMain"
                 tools:ignore="HardcodedText" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/buttonCopyLink"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="8dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:background="@drawable/copy"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="@+id/textLink"
                 app:layout_constraintEnd_toEndOf="@+id/textLink"
-                app:layout_constraintTop_toTopOf="@+id/textLink" />
+                app:layout_constraintTop_toTopOf="@+id/textLink"
+                android:contentDescription="@string/link_copy" />
 
             <TextView
                 android:id="@+id/textMAINDESCRIPTION"
@@ -219,10 +203,10 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="68dp"
         android:background="@drawable/bg_nav_round"
+        android:paddingTop="2dp"
         android:paddingStart="10dp"
-        android:paddingTop="10dp"
         android:paddingEnd="10dp"
         app:itemTextAppearanceActive="@style/CustomClickedLabelFontSize"
         app:labelVisibilityMode="labeled"

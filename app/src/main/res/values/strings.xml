@@ -22,6 +22,7 @@
     <string name="delete">삭제</string>
     <string name="add_scrap">스크랩 추가하기</string>
     <string name="go_up">맨 위로 이동</string>
+    <string name="go_back">뒤로가기</string>
     <string name="change_view_type">보기 방식 변경</string>
     <string name="edit_category">카테고리 수정하기</string>
     <string name="delete_category">카테고리 삭제하기</string>
@@ -39,4 +40,6 @@
     <string name="delete_category_radio_checked">해당 카테고리에 속한 모든 스크랩 ‘분류되지 않음’ 카테고리로 이동하기</string>
     <string name="alert_delete_category">정말 카테고리를 삭제하시겠습니까?\n</string>
     <string name="alert_delete_category_detail">(해당 카테고리에 속한 모든 스크랩 또한 삭제됩니다)</string>
+    <string name="link_copy">링크 복사</string>
+    <string name="error_empty_link">링크는 필수 입력입니다.</string>
 </resources>
