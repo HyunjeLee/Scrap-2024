@@ -125,7 +125,7 @@
             app:layout_constraintTop_toTopOf="@+id/imageBgSearch" />
 
         <ImageButton
-            android:id="@+id/buttonSort"
+            android:id="@+id/buttonOrder"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="2dp"
@@ -136,20 +136,21 @@
             android:src="@drawable/sort_ascending"
             app:layout_constraintTop_toTopOf="@id/buttonViewType"
             app:layout_constraintBottom_toBottomOf="@id/buttonViewType"
-            app:layout_constraintEnd_toStartOf="@+id/spinnerSortType" />
+            app:layout_constraintEnd_toStartOf="@+id/textSort" />
 
-        <Spinner
-            android:id="@+id/spinnerSortType"
+        <TextView
+            android:id="@+id/textSort"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:includeFontPadding="false"
+            tools:text="스크랩한 날짜 순"
+            android:textSize="13sp"
+            android:textColor="@color/gray_heavy"
             android:layout_marginEnd="7dp"
-            android:background="@null"
-            android:gravity="end"
-            android:dropDownVerticalOffset="35dp"
             app:layout_constraintBottom_toBottomOf="@id/buttonViewType"
             app:layout_constraintEnd_toStartOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="@id/buttonViewType"
-            tools:ignore="HardcodedText" />
+            app:layout_constraintTop_toTopOf="@id/buttonViewType" />
 
         <ImageButton
             android:id="@+id/buttonViewType"
@@ -175,8 +176,8 @@
             android:text="|"
             android:textColor="#8C8C8C"
             android:textSize="13sp"
-            app:layout_constraintTop_toTopOf="@id/spinnerSortType"
-            app:layout_constraintBottom_toBottomOf="@id/spinnerSortType"
+            app:layout_constraintTop_toTopOf="@id/textSort"
+            app:layout_constraintBottom_toBottomOf="@id/textSort"
             app:layout_constraintEnd_toStartOf="@+id/buttonViewType"
             tools:ignore="HardcodedText" />
 
@@ -236,5 +237,46 @@
         app:fabCustomSize="45dp"
         app:maxImageSize="20dp"
         tools:ignore="TouchTargetSizeCheck" />
+
+    <LinearLayout
+        android:id="@+id/linearMenu"
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="142dp"
+        android:background="@drawable/bg_round_20dp"
+        android:backgroundTint="@color/main"
+        android:elevation="6dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_anchor="@id/textSort"
+        app:layout_anchorGravity="center|bottom"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/textSortByTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:paddingStart="12dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="8dp"
+            android:text="@string/sort_by_title"
+            android:textSize="12sp"
+            tools:drawableEnd="@drawable/custom_check_11_8dp" />
+
+        <TextView
+            android:id="@+id/textSortByDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:paddingStart="12dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="16dp"
+            android:text="@string/sort_by_date"
+            android:textSize="12sp" />
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
