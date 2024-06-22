@@ -113,7 +113,7 @@ class ScrapDetailActivity : AppCompatActivity() {
 
                     true
                 }
-
+                // 공유
                 R.id.shareIcon -> {
                     val text =
                         intent.getStringExtra("title") + "\n" + intent.getStringExtra("scrapURL")
