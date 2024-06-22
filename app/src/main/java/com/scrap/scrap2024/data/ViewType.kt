@@ -1,6 +1,7 @@
 package com.scrap.scrap2024.data
 
 import android.content.Context
+import android.util.Log
 
 enum class ViewType {
     LIST, GRID
@@ -15,10 +16,23 @@ object ViewTypeManager {
         val viewType = sharedPref.getString(KEY_VIEW_TYPE, null)    // string? 으로 반환
 
         return if (viewType != null) { // 앱 초기 실행이 아닌 경우
-            if (viewType == ViewType.LIST.name) ViewType.LIST    // .name은 string으로 반환 // LIST == LIST
-            else ViewType.GRID
-        } else {    // 앱 초기 실행 // 기본값 LIST
-            ViewType.LIST
+            when (viewType) {
+                ViewType.LIST.name -> {
+                    ViewType.LIST
+                }
+
+                ViewType.GRID.name -> {
+                    ViewType.GRID
+                }
+
+                else -> {   // error
+                    val errorMessage = "Invalid viewType: $viewType"
+                    Log.e("SHARED_PREF_VIEW_TYPE", errorMessage)
+                    throw IllegalArgumentException(errorMessage)
+                }
+            }
+        } else {    //null // 초기 실행
+            ViewType.LIST // default
         }
     }
 
