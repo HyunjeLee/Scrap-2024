@@ -31,13 +31,13 @@ import com.scrap.scrap2024.R
 import com.scrap.scrap2024.adapter.ScrapGridAdapter
 import com.scrap.scrap2024.adapter.ScrapListAdapter
 import com.scrap.scrap2024.data.OrderType
-import com.scrap.scrap2024.data.OrderTypeManager
 import com.scrap.scrap2024.data.SortType
-import com.scrap.scrap2024.data.SortTypeManager
 import com.scrap.scrap2024.data.ViewType
-import com.scrap.scrap2024.data.ViewTypeManager
 import com.scrap.scrap2024.data.scrapList
 import com.scrap.scrap2024.databinding.FragmentScrapBinding
+import com.scrap.scrap2024.preferenceManager.OrderTypePreferenceManager
+import com.scrap.scrap2024.preferenceManager.SortTypePreferenceManager
+import com.scrap.scrap2024.preferenceManager.ViewTypePreferenceManager
 
 
 class ScrapFragment : Fragment() {
@@ -75,7 +75,6 @@ class ScrapFragment : Fragment() {
         }
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -87,7 +86,7 @@ class ScrapFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
         // 뷰타입 초기화
-        viewType = ViewTypeManager.initalViewType(requireContext())
+        viewType = ViewTypePreferenceManager.getInitialType(requireContext())
         when (viewType) {
             ViewType.LIST -> {  // 첫 실행 // 또는 저장된 뷰타입이 리스트뷰
                 binding.buttonViewType.setImageResource(R.drawable.viewtype_list)
@@ -105,7 +104,7 @@ class ScrapFragment : Fragment() {
         }
 
         // sort타입 초기화
-        sortType = SortTypeManager.initalSortType(requireContext())
+        sortType = SortTypePreferenceManager.getInitialType(requireContext())
         when (sortType) {
             SortType.SCRAP_DATE -> {    // 첫 실행 // 또는 저장된 sort타입이 스크랩한 날짜 순
                 // api 필요
@@ -145,7 +144,7 @@ class ScrapFragment : Fragment() {
         }
 
         // order타입 초기화
-        orderType = OrderTypeManager.initalOrderType(requireContext())
+        orderType = OrderTypePreferenceManager.getInitialType(requireContext())
         when (orderType) {
             OrderType.ASC -> {
                 // api 필요
@@ -192,7 +191,7 @@ class ScrapFragment : Fragment() {
 
                     // order타입 저장
                     orderType = OrderType.DESC
-                    OrderTypeManager.saveOrderType(requireContext(), orderType)
+                    OrderTypePreferenceManager.saveType(requireContext(), orderType)
                 }
 
                 OrderType.DESC -> { // DESC -> ASC
@@ -200,7 +199,7 @@ class ScrapFragment : Fragment() {
 
                     // order타입 저장
                     orderType = OrderType.ASC
-                    OrderTypeManager.saveOrderType(requireContext(), orderType)
+                    OrderTypePreferenceManager.saveType(requireContext(), orderType)
                 }
             }
         }
@@ -216,7 +215,7 @@ class ScrapFragment : Fragment() {
 
                     // 그리드뷰 뷰타입 저장
                     viewType = ViewType.GRID
-                    ViewTypeManager.saveViewType(requireContext(), viewType)
+                    ViewTypePreferenceManager.saveType(requireContext(), viewType)
                 }
 
                 ViewType.GRID -> { // 리스트뷰로 변경
@@ -226,7 +225,7 @@ class ScrapFragment : Fragment() {
 
                     // 리스트뷰 뷰타입 저장
                     viewType = ViewType.LIST
-                    ViewTypeManager.saveViewType(requireContext(), viewType)
+                    ViewTypePreferenceManager.saveType(requireContext(), viewType)
                 }
 
             }
@@ -298,13 +297,13 @@ class ScrapFragment : Fragment() {
                 null
             )
 
-            // 제목 순 으로 표기
+            // 스크랩한 날짜 순 으로 표기
             binding.textSort.text = binding.textSortByDate.text
             // 드롭다운 메뉴 숨기기
             binding.linearMenu.visibility = View.GONE
 
             // sort타입 저장
-            SortTypeManager.saveSortType(requireContext(), SortType.SCRAP_DATE)
+            SortTypePreferenceManager.saveType(requireContext(), SortType.SCRAP_DATE)
         }
         // 제목 순 정렬
         binding.textSortByTitle.setOnClickListener {
@@ -327,13 +326,13 @@ class ScrapFragment : Fragment() {
                 null
             )
 
-            // 스크랩한 날짜 순 으로 표기
+            // 제목 순 으로 표기
             binding.textSort.text = binding.textSortByTitle.text
             // 드롭다운 메뉴 숨기기
             binding.linearMenu.visibility = View.GONE
 
             // sort타입 저장
-            SortTypeManager.saveSortType(requireContext(), SortType.TITLE)
+            SortTypePreferenceManager.saveType(requireContext(), SortType.TITLE)
         }
 
 
