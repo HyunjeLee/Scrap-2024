@@ -1,12 +1,14 @@
 package com.scrap.scrap2024.adapter
 
-import android.content.Context
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.scrap.scrap2024.utils.Utils.dpToPx
 
-class GridSpacingItemDecoration(private val context: Context) : RecyclerView.ItemDecoration() {
+class GridSpacingItemDecoration(
+    private val spanCount: Int,
+    private val spacing: Int,
+    private val includeEdge: Boolean
+) : RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(
         outRect: Rect,
@@ -14,21 +16,25 @@ class GridSpacingItemDecoration(private val context: Context) : RecyclerView.Ite
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
+        // 현재 아이템 위치
         val position = parent.getChildAdapterPosition(view)
-        val spanCount = 2
+        // 현재 아이템이 속한 열 // 0 or 1
+        val column = position % spanCount
 
-        if (position % spanCount == 0) {
-            // 0,2,4 번째 아이템
-            outRect.left = dpToPx(context, 15)
-            outRect.right = dpToPx(context, 7)
-        } else {
-            // 1,3,5 번째 아이템
-            outRect.left = dpToPx(context, 7)
-            outRect.right = dpToPx(context, 15)
+        if (includeEdge) {  // 가장자리 포함하여 간격 설정
+            outRect.left = spacing - column * spacing / spanCount
+            outRect.right = (column + 1) * spacing / spanCount
+            outRect.bottom = spacing // 아이템 하단 간격
+
+            if (position < spanCount) { // 첫 번째 행
+                outRect.top = spacing
+            }
+        } else {    // 가장자리 미포함
+            outRect.left = column * spacing / spanCount
+            outRect.right = spacing - (column + 1) * spacing / spanCount
+            if (position >= spanCount) {
+                outRect.top = spacing // 첫 번째 행
+            }
         }
-        outRect.top = dpToPx(context, 7)
-        outRect.bottom = dpToPx(context, 8)
     }
-
-
 }
