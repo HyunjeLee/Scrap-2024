@@ -17,7 +17,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
@@ -30,6 +29,7 @@ import com.scrap.scrap2024.ui.MainActivity
 import com.scrap.scrap2024.R
 import com.scrap.scrap2024.adapter.ScrapGridAdapter
 import com.scrap.scrap2024.adapter.ScrapListAdapter
+import com.scrap.scrap2024.callback.CustomOnBackPressedCallback
 import com.scrap.scrap2024.data.OrderType
 import com.scrap.scrap2024.data.SortType
 import com.scrap.scrap2024.data.ViewType
@@ -53,27 +53,8 @@ class ScrapFragment : Fragment() {
     private lateinit var orderType: OrderType
     private var editState: Boolean = false
     private val imm by lazy { requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager }
-    private val callback by lazy {
-        // 뒤로가기 기능 커스텀
-        object : OnBackPressedCallback(false) {
-            override fun handleOnBackPressed() {
+    private lateinit var customOnBackPressedCallback: CustomOnBackPressedCallback
 
-                // 편집 모드 비활성화
-                binding.buttonEdit.visibility = View.VISIBLE
-                binding.buttonDelete.visibility = View.VISIBLE
-                binding.buttonEditCheck.visibility = View.GONE
-
-                binding.editTextCategoryTitle.visibility = View.GONE
-                binding.textCategoryTitle.visibility = View.VISIBLE
-
-                // 카테고리명 편집내역 날리기
-                binding.editTextCategoryTitle.setText(binding.textCategoryTitle.text)
-
-                // callback 비활성화
-                this.isEnabled = false
-            }
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -81,9 +62,13 @@ class ScrapFragment : Fragment() {
     ): View {
         // 레이아웃 inflate
         binding = FragmentScrapBinding.inflate(inflater, container, false)
+        customOnBackPressedCallback = CustomOnBackPressedCallback(binding)
 
         // 뒤로가기 콜백 추가
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            customOnBackPressedCallback
+        )
 
         // 뷰타입 초기화
         viewType = ViewTypePreferenceManager.getInitialType(requireContext())
@@ -346,7 +331,7 @@ class ScrapFragment : Fragment() {
         editState = binding.editTextCategoryTitle.length() in 1..21
 
         // callback 활성화 // 뒤로가기 기능 커스텀
-        callback.isEnabled = true
+        customOnBackPressedCallback.isEnabled = true
 
         // textview switch
         binding.editTextCategoryTitle.visibility = View.VISIBLE
