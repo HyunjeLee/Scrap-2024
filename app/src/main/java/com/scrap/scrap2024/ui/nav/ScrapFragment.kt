@@ -4,6 +4,8 @@ import android.content.Context
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.text.SpannableString
@@ -165,7 +167,10 @@ class ScrapFragment : Fragment() {
             SortType.TITLE -> setSortMenu(binding.textSortByTitle, binding.textSortByDate)
         }
         SortTypePreferenceManager.saveType(requireContext(), sortType)
-        binding.linearMenu.visibility = View.GONE
+
+        Handler(Looper.getMainLooper()).postDelayed({   // 0.15초 지연 후 드롭다운 메뉴 숨김
+            binding.linearMenu.visibility = View.GONE
+        }, 150)
     }
 
     private fun setRecyclerView(viewType: ViewType) {
