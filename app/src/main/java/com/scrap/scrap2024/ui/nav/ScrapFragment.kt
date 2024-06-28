@@ -29,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.scrap.scrap2024.ui.AddScrapActivity
 import com.scrap.scrap2024.ui.MainActivity
 import com.scrap.scrap2024.R
+import com.scrap.scrap2024.adapter.GridSpacingItemDecoration
 import com.scrap.scrap2024.adapter.ScrapGridAdapter
 import com.scrap.scrap2024.adapter.ScrapListAdapter
 import com.scrap.scrap2024.callback.CustomOnBackPressedCallback
@@ -37,6 +38,7 @@ import com.scrap.scrap2024.data.enums.SortType
 import com.scrap.scrap2024.data.enums.ViewType
 import com.scrap.scrap2024.data.scrapList
 import com.scrap.scrap2024.databinding.FragmentScrapBinding
+import com.scrap.scrap2024.utils.Utils.dpToPx
 import com.scrap.scrap2024.preferenceManager.OrderTypePreferenceManager
 import com.scrap.scrap2024.preferenceManager.SortTypePreferenceManager
 import com.scrap.scrap2024.preferenceManager.ViewTypePreferenceManager
@@ -52,6 +54,13 @@ class ScrapFragment : Fragment() {
     // 어댑터 변수
     private var scrapListAdapter: ScrapListAdapter = ScrapListAdapter(scrapList)
     private var scrapGridAdapter: ScrapGridAdapter = ScrapGridAdapter(scrapList)
+    private val gridSpacingItemDecoration by lazy {
+        GridSpacingItemDecoration(
+            2,
+            dpToPx(requireContext(), 15),
+            true
+        )
+    }
 
     // enum 변수
     private lateinit var viewType: ViewType
@@ -179,12 +188,14 @@ class ScrapFragment : Fragment() {
                 binding.buttonViewType.setImageResource(R.drawable.viewtype_list)
                 binding.recyclerViewScrap.layoutManager = linearLayoutManager
                 binding.recyclerViewScrap.adapter = scrapListAdapter
+                binding.recyclerViewScrap.removeItemDecoration(gridSpacingItemDecoration)
             }
 
             ViewType.GRID -> {
                 binding.buttonViewType.setImageResource(R.drawable.viewtype_grid)
                 binding.recyclerViewScrap.layoutManager = gridLayoutManager
                 binding.recyclerViewScrap.adapter = scrapGridAdapter
+                binding.recyclerViewScrap.addItemDecoration(gridSpacingItemDecoration)
             }
         }
     }

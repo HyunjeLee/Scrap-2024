@@ -1,6 +1,8 @@
 package com.scrap.scrap2024.ui
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.scrap.scrap2024.R
 import com.scrap.scrap2024.databinding.ActivityAddScrapBinding
@@ -22,9 +24,20 @@ class AddScrapActivity : AppCompatActivity() {
         binding.buttonCancel.setOnClickListener { finish() }
         binding.layoutTitleWithBack.buttonBack.setOnClickListener { finish() }
         // 스크랩 추가 시
-        binding.buttonAdd.setOnClickListener {
-            // 추후 api 연결 시 구현
-        }
+        binding.buttonAdd.setOnClickListener(clickAddListener)
 
+    }
+
+    val clickAddListener = View.OnClickListener {
+        if (binding.editTextLink.text.isNullOrEmpty()) {
+            Toast.makeText(
+                this@AddScrapActivity,
+                getString(R.string.error_empty_link),
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
+            // 추후 api 연결 시 구현
+
+        }
     }
 }
