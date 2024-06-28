@@ -149,7 +149,7 @@
             android:textColor="@color/gray_heavy"
             android:layout_marginEnd="7dp"
             app:layout_constraintBottom_toBottomOf="@id/buttonViewType"
-            app:layout_constraintEnd_toStartOf="@+id/textView"
+            app:layout_constraintEnd_toStartOf="@id/textI"
             app:layout_constraintTop_toTopOf="@id/buttonViewType" />
 
         <ImageButton
@@ -167,7 +167,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="3dp"
@@ -240,16 +240,16 @@
 
     <LinearLayout
         android:id="@+id/linearMenu"
-        android:layout_width="138dp"
+        android:layout_width="176dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="142dp"
+        android:layout_marginTop="145dp"
         android:background="@drawable/bg_round_20dp"
         android:backgroundTint="@color/main"
         android:elevation="6dp"
         android:orientation="vertical"
         android:visibility="gone"
         app:layout_anchor="@id/textSort"
-        app:layout_anchorGravity="center|bottom"
+        app:layout_anchorGravity="bottom|center"
         tools:visibility="visible">
 
         <TextView
@@ -257,12 +257,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
-            android:paddingStart="12dp"
-            android:paddingTop="16dp"
-            android:paddingEnd="12dp"
+            android:paddingStart="20dp"
+            android:paddingTop="18dp"
+            android:paddingEnd="20dp"
             android:paddingBottom="8dp"
             android:text="@string/sort_by_title"
-            android:textSize="12sp"
+            android:textSize="15sp"
             tools:drawableEnd="@drawable/custom_check_11_8dp" />
 
         <TextView
@@ -271,12 +271,12 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:includeFontPadding="false"
-            android:paddingStart="12dp"
+            android:paddingStart="20dp"
             android:paddingTop="8dp"
-            android:paddingEnd="12dp"
-            android:paddingBottom="16dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="18dp"
             android:text="@string/sort_by_date"
-            android:textSize="12sp" />
+            android:textSize="15sp" />
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
