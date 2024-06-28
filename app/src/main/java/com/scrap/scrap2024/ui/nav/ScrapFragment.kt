@@ -32,9 +32,9 @@ import com.scrap.scrap2024.R
 import com.scrap.scrap2024.adapter.ScrapGridAdapter
 import com.scrap.scrap2024.adapter.ScrapListAdapter
 import com.scrap.scrap2024.callback.CustomOnBackPressedCallback
-import com.scrap.scrap2024.data.OrderType
-import com.scrap.scrap2024.data.SortType
-import com.scrap.scrap2024.data.ViewType
+import com.scrap.scrap2024.data.enums.OrderType
+import com.scrap.scrap2024.data.enums.SortType
+import com.scrap.scrap2024.data.enums.ViewType
 import com.scrap.scrap2024.data.scrapList
 import com.scrap.scrap2024.databinding.FragmentScrapBinding
 import com.scrap.scrap2024.preferenceManager.OrderTypePreferenceManager

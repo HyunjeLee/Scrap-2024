@@ -1,7 +1,7 @@
 package com.scrap.scrap2024.preferenceManager
 
 import android.content.Context
-import com.scrap.scrap2024.data.ViewType
+import com.scrap.scrap2024.data.enums.ViewType
 
 object ViewTypePreferenceManager : PreferenceManager<ViewType> {
 

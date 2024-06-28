@@ -1,7 +1,7 @@
 package com.scrap.scrap2024.preferenceManager
 
 import android.content.Context
-import com.scrap.scrap2024.data.SortType
+import com.scrap.scrap2024.data.enums.SortType
 
 object SortTypePreferenceManager : PreferenceManager<SortType> {
 
