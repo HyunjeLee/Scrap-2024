@@ -4,6 +4,8 @@ import android.content.Context
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.text.SpannableString
@@ -17,11 +19,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
-import androidx.core.content.ContextCompat
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,261 +32,277 @@ import com.scrap.scrap2024.R
 import com.scrap.scrap2024.adapter.GridSpacingItemDecoration
 import com.scrap.scrap2024.adapter.ScrapGridAdapter
 import com.scrap.scrap2024.adapter.ScrapListAdapter
-import com.scrap.scrap2024.data.ViewType
-import com.scrap.scrap2024.data.ViewTypeManager
+import com.scrap.scrap2024.callback.CustomOnBackPressedCallback
+import com.scrap.scrap2024.data.enums.OrderType
+import com.scrap.scrap2024.data.enums.SortType
+import com.scrap.scrap2024.data.enums.ViewType
 import com.scrap.scrap2024.data.scrapList
 import com.scrap.scrap2024.databinding.FragmentScrapBinding
 import com.scrap.scrap2024.utils.Utils.dpToPx
+import com.scrap.scrap2024.preferenceManager.OrderTypePreferenceManager
+import com.scrap.scrap2024.preferenceManager.SortTypePreferenceManager
+import com.scrap.scrap2024.preferenceManager.ViewTypePreferenceManager
 
 
 class ScrapFragment : Fragment() {
-    // TODO: 카테고리명 동일 시 api 요청 X // UI는 동일하게 클릭 가능
 
-    private lateinit var binding: FragmentScrapBinding
+    // 레이아웃 관련 변수
+    private val binding by lazy { FragmentScrapBinding.inflate(layoutInflater) }
     private var linearLayoutManager = LinearLayoutManager(context)
     private var gridLayoutManager = GridLayoutManager(context, 2)
+
+    // 어댑터 변수
     private var scrapListAdapter: ScrapListAdapter = ScrapListAdapter(scrapList)
     private var scrapGridAdapter: ScrapGridAdapter = ScrapGridAdapter(scrapList)
-    private lateinit var viewType: ViewType
-    private var isAscending: Boolean = true
-    private var editState: Boolean = false
-    private val imm by lazy { requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager }
-    private val callback by lazy {
-        // 뒤로가기 기능 커스텀
-        object : OnBackPressedCallback(false) {
-            override fun handleOnBackPressed() {
-
-                // 편집 모드 비활성화
-                binding.buttonEdit.visibility = View.VISIBLE
-                binding.buttonDelete.visibility = View.VISIBLE
-                binding.buttonEditCheck.visibility = View.GONE
-
-                binding.editTextCategoryTitle.visibility = View.GONE
-                binding.textCategoryTitle.visibility = View.VISIBLE
-
-                // 카테고리명 편집내역 날리기
-                binding.editTextCategoryTitle.setText(binding.textCategoryTitle.text)
-
-                // callback 비활성화
-                this.isEnabled = false
-            }
-        }
+    private val gridSpacingItemDecoration by lazy {
+        GridSpacingItemDecoration(
+            2,
+            dpToPx(requireContext(), 15),
+            true
+        )
     }
+
+    // enum 변수
+    private lateinit var viewType: ViewType
+    private lateinit var sortType: SortType // TODO: spinner로 변경 필수!! // 현행은 코드 구조 일관성 하락
+    private lateinit var orderType: OrderType
+
+    // 상태 변수
+    private var editableState: Boolean = false
+
+    // 시스템 변수
+    private val imm by lazy { requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager }
+    private lateinit var customOnBackPressedCallback: CustomOnBackPressedCallback
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // 레이아웃 inflate
-        binding = FragmentScrapBinding.inflate(inflater, container, false)
 
         // 뒤로가기 콜백 추가
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+        customOnBackPressedCallback = CustomOnBackPressedCallback(binding)
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            customOnBackPressedCallback
+        )
 
-        // 그리드뷰의 decor
-        val gridSpacingItemDecoration =
-            GridSpacingItemDecoration(2, dpToPx(requireContext(), 15), true)
-        // 뷰타입 초기화
-        viewType = ViewTypeManager.initalViewType(requireContext())
+        // 저장된 sharedPreference 초기화
+        initializeViewType()
+        initializeSortType()
+        initializeOrderType()
+
+
+        // 스크랩 추가 버튼 클릭 시   // 스크랩 추가 화면으로 이동
+        binding.fabAddScrap.setOnClickListener {
+            startActivity(
+                Intent(
+                    context,
+                    AddScrapActivity::class.java
+                )
+            )
+        }
+
+        // recyclerview 스크롤 시 fabUp 표시 여부
+        binding.recyclerViewScrap.addOnScrollListener(customScrollListener)
+        // fabUp 클릭 시 맨 위로 스크롤 이동
+        binding.fabUp.setOnClickListener { binding.recyclerViewScrap.smoothScrollToPosition(0) }
+
+        // 수정 버튼 클릭 시
+        binding.buttonEdit.setOnClickListener { activateEditMode() }
+        // 수정 중 체크 버튼 클릭 시  // 수정 완료
+        binding.buttonEditCheck.setOnClickListener { confirmEditMode() }
+        // 삭제 버튼 클릭 시
+        binding.buttonDelete.setOnClickListener { showDeleteDialog() }
+
+        // viewType 버튼 토글
+        binding.buttonViewType.setOnClickListener { toggleViewType() }
+        // order 버튼 토글
+        binding.buttonOrder.setOnClickListener { toggleOrderType() }
+        // sort // 날짜 순 정렬
+        binding.textSortByDate.setOnClickListener { toggleSortType(SortType.SCRAP_DATE) }
+        // sort // 제목 순 정렬
+        binding.textSortByTitle.setOnClickListener { toggleSortType(SortType.TITLE) }
+        // sort // 드롭다운 메뉴 표시
+        binding.textSort.setOnClickListener { showSortMenu() }
+
+
+        return binding.root
+    }
+
+
+    private fun initializeViewType() {
+        viewType = ViewTypePreferenceManager.getInitialType(requireContext())
+        setRecyclerView(viewType)
+    }
+
+    private fun initializeSortType() {  // spinner로 변경
+        sortType = SortTypePreferenceManager.getInitialType(requireContext())
+        when (sortType) {   // 1번째 인자는 선택된 아이템 // 2번째 이후 인자는 선택되지 않은 아이템
+            SortType.SCRAP_DATE -> setSortMenu(binding.textSortByDate, binding.textSortByTitle)
+            SortType.TITLE -> setSortMenu(binding.textSortByTitle, binding.textSortByDate)
+        }
+    }
+
+    private fun initializeOrderType() {
+        // api 추가 필요
+        orderType = OrderTypePreferenceManager.getInitialType(requireContext())
+        binding.buttonOrder.setImageResource(
+            when (orderType) {
+                OrderType.ASC -> R.drawable.sort_ascending
+                OrderType.DESC -> R.drawable.sort_descending
+            }
+        )
+    }
+
+    private fun toggleViewType() {
+        viewType = if (viewType == ViewType.LIST) ViewType.GRID else ViewType.LIST
+        setRecyclerView(viewType)
+        ViewTypePreferenceManager.saveType(requireContext(), viewType)
+    }
+
+    private fun toggleOrderType() {
+        orderType = if (orderType == OrderType.ASC) OrderType.DESC else OrderType.ASC
+        binding.buttonOrder.setImageResource(
+            if (orderType == OrderType.ASC) R.drawable.sort_ascending else R.drawable.sort_descending
+        )
+        OrderTypePreferenceManager.saveType(requireContext(), orderType)
+    }
+
+    private fun toggleSortType(sortType: SortType) {
+        this.sortType = sortType
+        when (sortType) {
+            SortType.SCRAP_DATE -> setSortMenu(binding.textSortByDate, binding.textSortByTitle)
+            SortType.TITLE -> setSortMenu(binding.textSortByTitle, binding.textSortByDate)
+        }
+        SortTypePreferenceManager.saveType(requireContext(), sortType)
+
+        Handler(Looper.getMainLooper()).postDelayed({   // 0.15초 지연 후 드롭다운 메뉴 숨김
+            binding.linearMenu.visibility = View.GONE
+        }, 150)
+    }
+
+    private fun setRecyclerView(viewType: ViewType) {
         when (viewType) {
-            ViewType.LIST -> {  // 첫 실행 // 또는 저장된 뷰타입이 리스트뷰
+            ViewType.LIST -> {
                 binding.buttonViewType.setImageResource(R.drawable.viewtype_list)
-
                 binding.recyclerViewScrap.layoutManager = linearLayoutManager
                 binding.recyclerViewScrap.adapter = scrapListAdapter
+                binding.recyclerViewScrap.removeItemDecoration(gridSpacingItemDecoration)
             }
 
-            ViewType.GRID -> {  // 저장된 뷰타입이 그리드뷰
+            ViewType.GRID -> {
                 binding.buttonViewType.setImageResource(R.drawable.viewtype_grid)
-
                 binding.recyclerViewScrap.layoutManager = gridLayoutManager
                 binding.recyclerViewScrap.adapter = scrapGridAdapter
                 binding.recyclerViewScrap.addItemDecoration(gridSpacingItemDecoration)
             }
         }
-
-        // 스크랩 추가 버튼 클릭 시
-        binding.fabAddScrap.setOnClickListener {
-            startActivity(Intent(context, AddScrapActivity::class.java))
-        }
-
-        // recyclerview 스크롤 시 fabUp 표시 여부
-        binding.recyclerViewScrap.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-
-                Log.i("_SCROLL_OFFSET", "offset :${recyclerView.computeVerticalScrollOffset()}")
-                if (recyclerView.computeVerticalScrollOffset() == 0) {
-                    binding.fabUp.hide()
-                } else {
-                    binding.fabUp.show()
-                }
-            }
-        })
-        // fabUp 클릭 시 맨 위로 스크롤 이동
-        binding.fabUp.setOnClickListener {
-            binding.recyclerViewScrap.smoothScrollToPosition(0)
-        }
-
-        // 정렬 버튼 클릭 시
-        binding.buttonSort.setOnClickListener {
-            if (isAscending) {
-                isAscending = false
-                binding.buttonSort.setImageResource(R.drawable.sort_descending)
-                // 추후 api 연결
-            } else {
-                isAscending = true
-                binding.buttonSort.setImageResource(R.drawable.sort_ascending)
-                // 추후 api 연결
-            }
-        }
-
-        // 리스트/그리드뷰 토글 버튼 클릭 시
-        binding.buttonViewType.setOnClickListener {
-            when (viewType) {
-                ViewType.LIST -> { // 그리드뷰로 변경
-                    binding.buttonViewType.setImageResource(R.drawable.viewtype_grid)
-                    binding.recyclerViewScrap.layoutManager = gridLayoutManager
-                    binding.recyclerViewScrap.adapter = scrapGridAdapter
-                    binding.recyclerViewScrap.addItemDecoration(gridSpacingItemDecoration)
-
-                    // 그리드뷰 뷰타입 저장
-                    viewType = ViewType.GRID
-                    ViewTypeManager.saveViewType(requireContext(), ViewType.GRID)
-                }
-
-                ViewType.GRID -> { // 리스트뷰로 변경
-                    binding.buttonViewType.setImageResource(R.drawable.viewtype_list)
-                    binding.recyclerViewScrap.layoutManager = linearLayoutManager
-                    binding.recyclerViewScrap.adapter = scrapListAdapter
-                    binding.recyclerViewScrap.removeItemDecoration(gridSpacingItemDecoration)
-
-                    // 리스트뷰 뷰타입 저장
-                    viewType = ViewType.LIST
-                    ViewTypeManager.saveViewType(requireContext(), ViewType.LIST)
-                }
-
-            }
-        }
-
-        // 수정 버튼 클릭 시
-        binding.buttonEdit.setOnClickListener {
-
-            binding.buttonEdit.visibility = View.GONE
-            binding.buttonDelete.visibility = View.GONE
-            binding.buttonEditCheck.visibility = View.VISIBLE
-
-            // 카테고리명 수정 활성화
-            activateEdit()
-        }
-
-        // 수정 완료 시
-        binding.buttonEditCheck.setOnClickListener {
-            if (editState) {
-
-                binding.buttonEdit.visibility = View.VISIBLE
-                binding.buttonDelete.visibility = View.VISIBLE
-                binding.buttonEditCheck.visibility = View.GONE
-
-                // textview switch & pass
-                binding.textCategoryTitle.text = binding.editTextCategoryTitle.text.toString()
-                binding.editTextCategoryTitle.visibility = View.GONE
-                binding.textCategoryTitle.visibility = View.VISIBLE
-
-                // 키보드 내리기
-                imm.hideSoftInputFromWindow(binding.editTextCategoryTitle.windowToken, 0)
-
-                // 카테고리명 수정
-                // TODO: 추후 api 연결 후 구현
-            }
-        }
-
-        // 삭제 버튼 클릭 시
-        binding.buttonDelete.setOnClickListener {
-            showDeleteDialog()
-        }
-
-        return binding.root
     }
 
-    private fun activateEdit() {
+    private fun setSortMenu(
+        selectedView: TextView,
+        vararg unselectedViews: TextView
+    ) { // spinner로 변경
+        // api 필요?
+        // 선택된 TextView 설정
+        selectedView.setTextColor(requireContext().getColor(R.color.main_heavy))
+        selectedView.setCompoundDrawablesWithIntrinsicBounds(
+            null,
+            null,
+            AppCompatResources.getDrawable(requireContext(), R.drawable.custom_check_11_8dp),
+            null
+        )
+        binding.textSort.text = selectedView.text
 
-        // editState 초기화
-        editState = binding.editTextCategoryTitle.length() in 1..21
+        // 선택되지 않은 TextView들 설정
+        for (unselectedView in unselectedViews) {
+            unselectedView.setTextColor(requireContext().getColor(R.color.black))
+            unselectedView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
+        }
+    }
 
-        // callback 활성화 // 뒤로가기 기능 커스텀
-        callback.isEnabled = true
-
-        // textview switch
-        binding.editTextCategoryTitle.visibility = View.VISIBLE
-        binding.textCategoryTitle.visibility = View.GONE
-
-        // 커서 표시
-        binding.editTextCategoryTitle.requestFocus()
-        // 텍스트의 맨 끝으로 커서 위치 변경
-        binding.editTextCategoryTitle.setSelection(binding.editTextCategoryTitle.length())
-
-        // 키보드 표시
-        imm.showSoftInput(binding.editTextCategoryTitle, InputMethodManager.SHOW_IMPLICIT)
+    private fun showSortMenu() {  // spinner로 변경
+        binding.linearMenu.visibility =
+            if (binding.linearMenu.visibility == View.VISIBLE) View.GONE else View.VISIBLE
+    }
 
 
-        // editTextCategoryTitle의 글자 수에 따른 editState 변경
-        binding.editTextCategoryTitle.addTextChangedListener(object : TextWatcher {
+    private fun activateEditMode() {
+        // 기존 편집/삭제 버튼 숨기기 및 체크 버튼 표시
+        binding.buttonEdit.visibility = View.GONE
+        binding.buttonDelete.visibility = View.GONE
+        binding.buttonEditCheck.visibility = View.VISIBLE
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+        // 편집 모드 활성화
+        switchToEditMode(true)
+    }
 
-                if (p0.isNullOrEmpty()) {
-                    binding.buttonEditCheck.setImageResource(R.drawable.check_error)
+    private fun confirmEditMode() {
+        // TODO: 카테고리명 동일 시 api 요청 X // UI는 동일하게 클릭 가능
 
-                    Toast.makeText(
-                        requireContext(),
-                        getString(R.string.error_text_length_0),
-                        Toast.LENGTH_SHORT
-                    ).show()
+        if (editableState) {
+            // 기존 편집/삭제 버튼 표시 및 체크 버튼 숨기기
+            binding.buttonEdit.visibility = View.VISIBLE
+            binding.buttonDelete.visibility = View.VISIBLE
+            binding.buttonEditCheck.visibility = View.GONE
 
-                    editState = false
-                } else if (p0.length > 21) {
-                    binding.buttonEditCheck.setImageResource(R.drawable.check_error)
+            // 변경된 제목 text 변경
+            binding.textCategoryTitle.text = binding.editTextCategoryTitle.text.toString()
 
-                    Toast.makeText(
-                        requireContext(),
-                        getString(R.string.error_text_length_22),
-                        Toast.LENGTH_SHORT
-                    ).show()
+            // 편집 모드 비활성화
+            switchToEditMode(false)
+        }
+    }
 
-                    editState = false
-                } else {
-                    binding.buttonEditCheck.setImageResource(R.drawable.check)
+    private fun switchToEditMode(isEditing: Boolean) {
+        // 편집 여부에 따라 제목 textview 또는 편집전용제목 textview 표시
+        binding.editTextCategoryTitle.visibility = if (isEditing) View.VISIBLE else View.GONE
+        binding.textCategoryTitle.visibility = if (isEditing) View.GONE else View.VISIBLE
 
-                    editState = true
-                }
-            }
+        if (isEditing) {    // 편집 중인 경우 키보드 표시 및 커서 맨 끝으로 이동  // textWatcher 부착
+            binding.editTextCategoryTitle.requestFocus()
+            binding.editTextCategoryTitle.setSelection(binding.editTextCategoryTitle.length())
+            imm.showSoftInput(binding.editTextCategoryTitle, InputMethodManager.SHOW_IMPLICIT)
+            binding.editTextCategoryTitle.addTextChangedListener(editTextWatcher)
+        } else {    // 편집 중이 아닌 경우 키보드 숨기기
+            imm.hideSoftInputFromWindow(binding.editTextCategoryTitle.windowToken, 0)
+        }
 
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            override fun afterTextChanged(p0: Editable?) {}
+        // 뒤로가기 콜백 설정
+        customOnBackPressedCallback.isEnabled = isEditing
+    }
 
-        })
 
+    private fun showErrorToast(text: CharSequence?) {
+        // 메세지 분기
+        val errorMessage = when {
+            text.isNullOrEmpty() -> getString(R.string.error_text_length_0)
+            text.length > 21 -> getString(R.string.error_text_length_22)
+            else -> throw IllegalArgumentException("Invalid text: $text")
+        }
+        // 토스트 메세지 출력
+        Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
     }
 
     private fun showDeleteDialog() {
+        // 중복 사용 시 class로 따로 뺄 것
+
+        // 다이얼로그 생성
         val dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.dialog_delete)
-
         // 추가 경고 문구 표시
         dialog.findViewById<CheckBox>(R.id.checkboxAlert).visibility = View.VISIBLE
-
         // 다이얼로그 라운딩 처리
         dialog.window?.setBackgroundDrawableResource(R.drawable.bg_round_20dp)
 
-        // 경고 문구 출력
+        // 경고 문구 text 출력
         val textAlert = getString(R.string.alert_delete_category)
         val textAlertDetail = getString(R.string.alert_delete_category_detail)
         val spannableStringDeleteDetail = SpannableString(textAlert + textAlertDetail)
         // textAlertDetail의 색상 및 크기 설정
         spannableStringDeleteDetail.setSpan(
-            ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.caution)),
+            ForegroundColorSpan(requireContext().getColor(R.color.caution)),
             textAlert.length,
             textAlert.length + textAlertDetail.length,
             Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
@@ -296,12 +313,12 @@ class ScrapFragment : Fragment() {
             textAlert.length + textAlertDetail.length,
             Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
+        // text 바인딩
         dialog.findViewById<TextView>(R.id.textAlert).text = spannableStringDeleteDetail
 
+
         // 취소 시
-        dialog.findViewById<Button>(R.id.buttonCancel).setOnClickListener {
-            dialog.dismiss()
-        }
+        dialog.findViewById<Button>(R.id.buttonCancel).setOnClickListener { dialog.dismiss() }
 
         // 삭제 시
         dialog.findViewById<Button>(R.id.buttonDelete).setOnClickListener {
@@ -316,7 +333,33 @@ class ScrapFragment : Fragment() {
             (requireActivity() as MainActivity).goToCategoryFragment()
         }
 
+        // 다이얼로그 출력
         dialog.show()
+    }
+
+
+    private val customScrollListener = object : RecyclerView.OnScrollListener() {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+
+            Log.i("_SCROLL_OFFSET", "offset :${recyclerView.computeVerticalScrollOffset()}")
+            // 사용자의 스크롤 위치에 따라 fabUp 버튼 표시
+            if (recyclerView.computeVerticalScrollOffset() == 0) binding.fabUp.hide() else binding.fabUp.show()
+        }
+    }
+    private val editTextWatcher = object : TextWatcher {
+        // 텍스트 변경 시
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            // 글자 수에 따라 상태변수 설정
+            editableState = p0?.length in 1..21
+            // 이미지 설정
+            binding.buttonEditCheck.setImageResource(if (editableState) R.drawable.check else R.drawable.check_error)
+            // 에러 토스트 메세지 출력
+            if (!editableState) showErrorToast(p0)
+        }
+
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+        override fun afterTextChanged(p0: Editable?) {}
     }
 
 }

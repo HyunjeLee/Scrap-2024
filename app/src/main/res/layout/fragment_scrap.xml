@@ -125,7 +125,7 @@
             app:layout_constraintTop_toTopOf="@+id/imageBgSearch" />
 
         <ImageButton
-            android:id="@+id/buttonSort"
+            android:id="@+id/buttonOrder"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="2dp"
@@ -136,21 +136,21 @@
             android:src="@drawable/sort_ascending"
             app:layout_constraintTop_toTopOf="@id/buttonViewType"
             app:layout_constraintBottom_toBottomOf="@id/buttonViewType"
-            app:layout_constraintEnd_toStartOf="@+id/textSortType" />
+            app:layout_constraintEnd_toStartOf="@+id/textSort" />
 
         <TextView
-            android:id="@+id/textSortType"
+            android:id="@+id/textSort"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="7dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:includeFontPadding="false"
-            android:text="@string/sort_by_date"
-            android:textColor="@color/gray"
+            tools:text="스크랩한 날짜 순"
             android:textSize="13sp"
-            app:layout_constraintTop_toTopOf="@id/buttonViewType"
+            android:textColor="@color/gray_heavy"
+            android:layout_marginEnd="7dp"
             app:layout_constraintBottom_toBottomOf="@id/buttonViewType"
-            app:layout_constraintEnd_toStartOf="@+id/textView"
-            tools:ignore="HardcodedText" />
+            app:layout_constraintEnd_toStartOf="@id/textI"
+            app:layout_constraintTop_toTopOf="@id/buttonViewType" />
 
         <ImageButton
             android:id="@+id/buttonViewType"
@@ -167,7 +167,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="3dp"
@@ -176,8 +176,8 @@
             android:text="|"
             android:textColor="#8C8C8C"
             android:textSize="13sp"
-            app:layout_constraintTop_toTopOf="@id/textSortType"
-            app:layout_constraintBottom_toBottomOf="@id/textSortType"
+            app:layout_constraintTop_toTopOf="@id/textSort"
+            app:layout_constraintBottom_toBottomOf="@id/textSort"
             app:layout_constraintEnd_toStartOf="@+id/buttonViewType"
             tools:ignore="HardcodedText" />
 
@@ -237,5 +237,50 @@
         app:fabCustomSize="45dp"
         app:maxImageSize="20dp"
         tools:ignore="TouchTargetSizeCheck" />
+
+    <LinearLayout
+        android:id="@+id/linearMenu"
+        android:layout_width="176dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="145dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/bg_round_20dp"
+        android:backgroundTint="@color/main"
+        android:elevation="6dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/textSortByTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ripple_dropdown_menu_up"
+            android:backgroundTint="@color/main"
+            android:includeFontPadding="false"
+            android:paddingStart="20dp"
+            android:paddingTop="18dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="8dp"
+            android:text="@string/sort_by_title"
+            android:textSize="15sp"
+            tools:drawableEnd="@drawable/custom_check_11_8dp" />
+
+        <TextView
+            android:id="@+id/textSortByDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ripple_dropdown_menu_down"
+            android:backgroundTint="@color/main"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:paddingStart="20dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="18dp"
+            android:text="@string/sort_by_date"
+            android:textSize="15sp" />
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
