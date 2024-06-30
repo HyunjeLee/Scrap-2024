@@ -242,14 +242,14 @@
         android:id="@+id/linearMenu"
         android:layout_width="176dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="end"
         android:layout_marginTop="145dp"
+        android:layout_marginEnd="60dp"
         android:background="@drawable/bg_round_20dp"
         android:backgroundTint="@color/main"
         android:elevation="6dp"
         android:orientation="vertical"
         android:visibility="gone"
-        app:layout_anchor="@id/textSort"
-        app:layout_anchorGravity="bottom|center"
         tools:visibility="visible">
 
         <TextView
