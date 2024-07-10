@@ -38,17 +38,16 @@
 
     <TextView
         android:id="@+id/textCategoryCount"
-        android:layout_width="19dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
         android:gravity="center"
-        android:text="99"
+        android:includeFontPadding="false"
+        android:text="9999"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/imageCount"
+        app:layout_constraintEnd_toEndOf="@id/imageCount"
+        app:layout_constraintStart_toStartOf="@id/imageCount"
+        app:layout_constraintTop_toTopOf="@id/imageCount"
         tools:ignore="HardcodedText" />
 
 
