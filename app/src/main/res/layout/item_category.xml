@@ -24,17 +24,17 @@
 
     <ImageView
         android:id="@+id/imageCount"
-        android:layout_width="40dp"
+        android:layout_width="45dp"
         android:layout_height="30dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="15dp"
         android:background="@drawable/bg_button"
         android:backgroundTint="#F5F9F3"
+        android:importantForAccessibility="no"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:importantForAccessibility="no" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textCategoryCount"
