@@ -18,15 +18,14 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:includeFontPadding="false"
-            android:text="_CATEGORYTITLE"
-            android:textSize="18sp"
-            android:maxLines="1"
+            android:layout_marginTop="20dp"
             android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="카테고리명"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/buttonEdit"
-            app:layout_constraintBottom_toBottomOf="@id/buttonEdit"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="HardcodedText" />
 
         <EditText
