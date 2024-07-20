@@ -32,7 +32,7 @@
 
         <ImageView
             android:id="@+id/iv_background_et_searchview"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="42dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="58dp"
@@ -115,24 +115,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
+                    android:text="@string/search_range"
+                    android:textSize="15sp"
                     android:layout_marginStart="15dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:textSize="15sp"
-                    android:text="@string/search_range" />
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <RadioGroup
                     android:id="@+id/radiogroup_search_range"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:gravity="start|center"
                     android:orientation="horizontal"
                     android:layout_marginStart="12dp"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/tv_search_range">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_search_range"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <RadioButton
                         android:id="@+id/rbtn_title"
@@ -162,6 +162,7 @@
                         android:text="@string/memo" />
                 </RadioGroup>
 
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
@@ -178,30 +179,31 @@
                     android:id="@+id/tv_search_category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:includeFontPadding="false"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
-                    android:layout_marginStart="15dp"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:includeFontPadding="false"
+                    android:text="@string/category"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:textSize="15sp"
-                    android:text="@string/category" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
                     android:id="@+id/btn_add_search_category"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginStart="83dp"
                     android:background="@drawable/add_round_duotone_line"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tv_search_category"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/scrollview_search_category"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <HorizontalScrollView
                     android:id="@+id/scrollview_search_category"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/btn_add_search_category"
@@ -222,8 +224,67 @@
                 android:background="?android:attr/listDivider" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintlayout_search_date"
                 android:layout_width="match_parent"
                 android:layout_height="48dp">
+
+                <TextView
+                    android:id="@+id/tv_search_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:includeFontPadding="false"
+                    android:text="@string/date"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_background_start_date"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginVertical="7dp"
+                    android:layout_marginStart="87dp"
+                    android:background="@drawable/bg_round_8dp"
+                    android:backgroundTint="@color/main_light"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/tv_tilde"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:importantForAccessibility="no" />
+
+                <TextView
+                    android:id="@+id/tv_tilde"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:fontFamily="@font/notosanskr_bold"
+                    android:includeFontPadding="false"
+                    android:text="~"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/iv_background_end_date"
+                    app:layout_constraintStart_toEndOf="@+id/iv_background_start_date"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="HardcodedText" />
+
+                <ImageView
+                    android:id="@+id/iv_background_end_date"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginVertical="7dp"
+                    android:background="@drawable/bg_round_8dp"
+                    android:backgroundTint="@color/main_light"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_tilde"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:importantForAccessibility="no" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
