@@ -128,10 +128,10 @@
                     android:layout_height="wrap_content"
                     android:gravity="start|center"
                     android:orientation="horizontal"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginStart="87dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/tv_search_range"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <RadioButton
