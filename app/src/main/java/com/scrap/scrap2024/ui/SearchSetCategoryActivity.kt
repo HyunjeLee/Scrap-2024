@@ -1,7 +1,6 @@
 package com.scrap.scrap2024.ui
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,15 +21,12 @@ class SearchSetCategoryActivity : AppCompatActivity() {
         // 상단 화면 이름 바인딩
         binding.viewTitleWithBack.textTitle.text = getString(R.string.category)
 
+        // 뒤로가기 기능
+        binding.viewTitleWithBack.buttonBack.setOnClickListener { finish() }
+        binding.btnCancel.setOnClickListener { finish() }
+
         // recyclerveiw 초기화
         initRecyclerview()
-
-
-        // 아이템 출력
-        binding.btnComplete.setOnClickListener {
-            Toast.makeText(this, categorySetAdapter.list.sorted().toString(), Toast.LENGTH_SHORT)
-                .show()
-        }
 
     }
 
