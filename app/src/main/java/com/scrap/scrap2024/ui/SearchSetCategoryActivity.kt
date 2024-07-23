@@ -1,6 +1,9 @@
 package com.scrap.scrap2024.ui
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,12 +25,28 @@ class SearchSetCategoryActivity : AppCompatActivity() {
         binding.viewTitleWithBack.textTitle.text = getString(R.string.category)
 
         // 뒤로가기 기능
-        binding.viewTitleWithBack.buttonBack.setOnClickListener { finish() }
-        binding.btnCancel.setOnClickListener { finish() }
+        binding.viewTitleWithBack.buttonBack.setOnClickListener(onClickListenerCancel)
+        binding.btnCancel.setOnClickListener(onClickListenerCancel)
+
+        // 완료 버튼 클릭 시
+        binding.btnComplete.setOnClickListener(onClickListenerComplete)
 
         // recyclerveiw 초기화
         initRecyclerview()
 
+    }
+
+    private val onClickListenerCancel = View.OnClickListener {
+        setResult(Activity.RESULT_CANCELED)
+        finish()
+    }
+    private val onClickListenerComplete = View.OnClickListener {
+        val intentSearchSetCategory = Intent()
+        val selectedCategoryTitleArrayList: ArrayList<String> = ArrayList(categorySetAdapter.selectedCategoryTitleSet.sorted())
+
+        intentSearchSetCategory.putExtra("categoryTitleList", selectedCategoryTitleArrayList)
+        setResult(Activity.RESULT_OK, intentSearchSetCategory)
+        finish()
     }
 
     private fun initRecyclerview() {
