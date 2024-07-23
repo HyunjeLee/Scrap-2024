@@ -122,45 +122,50 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
-                <RadioGroup
-                    android:id="@+id/radiogroup_search_range"
-                    android:layout_width="0dp"
+
+                <CheckBox
+                    android:id="@+id/checkbox_title"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="start|center"
-                    android:orientation="horizontal"
                     android:layout_marginStart="87dp"
+                    android:button="@drawable/custom_checkbox_button"
+                    android:paddingStart="4dp"
+                    android:text="@string/title"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/checkbox_description"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="RtlSymmetry" />
 
-                    <RadioButton
-                        android:id="@+id/rbtn_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/custom_checkbox_button"
-                        android:paddingStart="4dp"
-                        android:paddingEnd="20dp"
-                        android:text="@string/title" />
+                <CheckBox
+                    android:id="@+id/checkbox_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/custom_checkbox_button"
+                    android:layout_marginStart="20dp"
+                    android:paddingStart="4dp"
+                    android:text="@string/description"
+                    app:layout_constraintStart_toEndOf="@id/checkbox_title"
+                    app:layout_constraintEnd_toStartOf="@id/checkbox_memo"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:ignore="RtlSymmetry" />
 
-                    <RadioButton
-                        android:id="@+id/rbtn_description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/custom_checkbox_button"
-                        android:paddingStart="4dp"
-                        android:paddingEnd="20dp"
-                        android:text="@string/description" />
-
-                    <RadioButton
-                        android:id="@+id/rbtn_memo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/custom_checkbox_button"
-                        android:paddingStart="4dp"
-                        android:paddingEnd="20dp"
-                        android:text="@string/memo" />
-                </RadioGroup>
+                <CheckBox
+                    android:id="@+id/checkbox_memo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/custom_checkbox_button"
+                    android:layout_marginStart="20dp"
+                    android:paddingStart="4dp"
+                    android:text="@string/memo"
+                    app:layout_constraintStart_toEndOf="@id/checkbox_description"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:ignore="RtlSymmetry" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
