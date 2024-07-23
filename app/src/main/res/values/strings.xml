@@ -47,4 +47,5 @@
     <string name="search_range">검색 범위</string>
     <string name="title">제목</string>
     <string name="date">날짜</string>
+    <string name="error_search_range_at_least_1">검색 범위는 최소 1개 이상 선택해주세요.</string>
 </resources>
