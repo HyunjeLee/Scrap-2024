@@ -69,6 +69,7 @@
             android:hint="@string/hint_search"
             android:includeFontPadding="false"
             android:textSize="15sp"
+            android:imeOptions="actionSearch"
             android:inputType="text"
             app:layout_constraintBottom_toBottomOf="@id/iv_background_et_searchview"
             app:layout_constraintStart_toEndOf="@id/iv_icon_search"
