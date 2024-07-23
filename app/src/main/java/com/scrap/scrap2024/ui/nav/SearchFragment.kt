@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.scrap.scrap2024.R
+import com.scrap.scrap2024.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
+
+    private val binding by lazy { FragmentSearchBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,9 +18,13 @@ class SearchFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // 레이아웃 inflate
-        return inflater.inflate(R.layout.fragment_search, container, false)
+    ): View {
+
+        binding.ivIconErase.setOnClickListener {
+            binding.etSearch.text = null
+        }
+
+        return binding.root
     }
 
 }
