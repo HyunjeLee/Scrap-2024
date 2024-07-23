@@ -20,9 +20,9 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding.ivIconErase.setOnClickListener {
-            binding.etSearch.text = null
-        }
+        // 상단 검색 창의 지우기 버튼 클릭 시
+        binding.ivIconErase.setOnClickListener { binding.etSearch.text = null }
+
 
         return binding.root
     }
