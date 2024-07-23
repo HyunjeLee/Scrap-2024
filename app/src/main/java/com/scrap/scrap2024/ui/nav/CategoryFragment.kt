@@ -14,22 +14,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.scrap.scrap2024.ui.AddCategoryActivity
 import com.scrap.scrap2024.adapter.CategoryAdapter
 import com.scrap.scrap2024.callback.ItemTouchHelperCallback
+import com.scrap.scrap2024.data.Category
+import com.scrap.scrap2024.data.categoryList
 import com.scrap.scrap2024.databinding.FragmentCategoryBinding
 
-
-// 테스트 데이터 // 카테고리
-private var categoryList = mutableListOf(
-    mutableListOf("아이템 1", "22"),
-    mutableListOf("아이템 2", "3"),
-    mutableListOf("아이템 3", "44")
-)
 
 class CategoryFragment : Fragment() {
 
     private lateinit var binding: FragmentCategoryBinding
 
     //    private lateinit var categoryList: MutableList<MutableList<String>>   // 추후 api 연결 시
-    private val categoryAdapter: CategoryAdapter by lazy { CategoryAdapter(categoryList) }
+    private val categoryAdapter = CategoryAdapter(categoryList)
 
     // 카테고리 추가화면에서 추가 시 해당 데이터 전달용 launcher
     private val addCategoryActivityResultLauncher =
@@ -39,7 +34,7 @@ class CategoryFragment : Fragment() {
                 val categoryTitle: String? = data?.getStringExtra("title")
                 // 전달받은 name을 카테고리뷰에 추가 및 동기화 // "0"은 카테고리 내부 스크랩 개수
                 categoryTitle?.let { title ->
-                    categoryAdapter.addCategory(mutableListOf(title, "0"))
+                    categoryAdapter.addCategory(Category(title, 0))
                 }
             }
         }
@@ -59,12 +54,12 @@ class CategoryFragment : Fragment() {
         // recyclerview 어댑터 연결
         binding.recyclerViewCategory.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewCategory.adapter = categoryAdapter
-      
+
         // recyclerview 프레스 시 드래그 앤 드롭 순서 변경
         val callback = ItemTouchHelperCallback(categoryAdapter)
         val itemTouchHelper = ItemTouchHelper(callback)
         itemTouchHelper.attachToRecyclerView(binding.recyclerViewCategory)
-        
+
         // recyclerview의 아이템 간 분할선 추가
         binding.recyclerViewCategory.addItemDecoration(
             DividerItemDecoration(
