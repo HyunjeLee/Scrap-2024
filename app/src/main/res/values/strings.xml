@@ -15,7 +15,7 @@
     <string name="error_text_length_22">최대 21자까지만 입력할 수 있습니다.</string>
     <string name="memo">메모</string>
     <string name="main_description_default">본문 내용이 없습니다</string>
-    <string name="main_description">본문내용</string>
+    <string name="description">본문내용</string>
     <string name="move">이동</string>
     <string name="share">공유</string>
     <string name="memo_edit">메모 수정</string>
@@ -26,7 +26,8 @@
     <string name="change_view_type">보기 방식 변경</string>
     <string name="edit_category">카테고리 수정하기</string>
     <string name="delete_category">카테고리 삭제하기</string>
-    <string name="hint_search">제목으로 검색하기</string>
+    <string name="hint_search_by_title">제목으로 검색하기</string>
+    <string name="hint_search">검색하기</string>
     <string name="change_sort">정렬 방식 변경</string>
     <string name="image_scrap">스크랩 미리보기 이미지</string>
     <string name="is_checked">아이템 선택 표시</string>
@@ -42,4 +43,8 @@
     <string name="alert_delete_category_detail">(해당 카테고리에 속한 모든 스크랩 또한 삭제됩니다)</string>
     <string name="link_copy">링크 복사</string>
     <string name="error_empty_link">링크는 필수 입력입니다.</string>
+    <string name="erase_searchview">검색창 비우기</string>
+    <string name="search_range">검색 범위</string>
+    <string name="title">제목</string>
+    <string name="date">날짜</string>
 </resources>

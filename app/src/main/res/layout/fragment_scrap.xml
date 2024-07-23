@@ -112,7 +112,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
             android:background="@android:color/transparent"
-            android:hint="@string/hint_search"
+            android:hint="@string/hint_search_by_title"
             android:importantForAutofill="no"
             android:includeFontPadding="false"
             android:inputType="text"
