@@ -12,7 +12,7 @@ class CategorySetAdapter(
     private val categoryList: MutableList<Category>
 ) : RecyclerView.Adapter<CategorySetAdapter.ViewHolder>() {
 
-    val list = mutableSetOf<String>()
+    val selectedCategoryTitleSet = mutableSetOf<String>()
 
     // recyclerview에서 하나의 아이템애 해당되는 viewHolder 정의 // item_category.xml 레이아웃 사용
     inner class ViewHolder(private val binding: ItemCategoryBinding) :
@@ -35,7 +35,7 @@ class CategorySetAdapter(
                     it.setBackgroundResource(R.color.main)
                     binding.ivCheck.visibility = View.GONE
                     // list에서 해당 값 제거
-                    list.remove(item.title)
+                    selectedCategoryTitleSet.remove(item.title)
                     // 상태 변경
                     isClicked = false
                 } else {
@@ -43,7 +43,7 @@ class CategorySetAdapter(
                     it.setBackgroundResource(R.color.main_light)
                     binding.ivCheck.visibility = View.VISIBLE
                     // list에 해당 값 추가
-                    list.add(item.title)
+                    selectedCategoryTitleSet.add(item.title)
                     // 상태 변경
                     isClicked = true
                 }
